@@ -281,15 +281,98 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);line-height:1.8}
 .store-svc-name{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--text)}
 .store-svc-desc{font-size:12px;color:var(--muted);line-height:1.6}
 .store-svc-free{display:inline-block;background:#e8f8e8;color:#0a8a4c;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-top:6px}
-@media(max-width:640px){
-  .hero-inner{grid-template-columns:1fr}
+@media(max-width:768px){
+  /* HERO */
+  .hero{padding:2.5rem 1rem 2rem}
+  .hero-inner{grid-template-columns:1fr;gap:1.5rem}
   .mgr-card{display:none}
+  .hero h1{font-size:clamp(26px,7vw,38px)}
+  .hero-desc{font-size:13px}
+  .hero-btns{flex-direction:column;gap:8px}
+  .btn-red,.btn-ghost{width:100%;text-align:center;padding:13px 20px}
+
+  /* STATS */
   .stats-bar{grid-template-columns:repeat(2,1fr)}
-  .stat{border-bottom:1px solid var(--gray2)}
+  .stat{border-bottom:1px solid var(--gray2);padding:1rem .5rem}
+  .stat-n{font-size:22px}
+
+  /* SECTIONS */
+  .sec{padding:2.5rem 1rem}
+
+  /* SERVICES */
+  .services-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .svc-card{padding:1.2rem 1rem}
+  .svc-icon{font-size:24px}
+  .svc-name{font-size:14px}
+
+  /* TARIFF TABLE */
+  .tariff-table-wrap{font-size:12px}
+  .tariff-table thead th{padding:8px 10px;font-size:11px}
+  .tariff-table tbody td{padding:8px 10px}
+
+  /* INTERNET */
+  .internet-grid{grid-template-columns:1fr 1fr}
+
+  /* GENIE */
+  .genie-plans-grid{grid-template-columns:1fr 1fr}
+  .genie-base{flex-direction:column;gap:.8rem}
+  .genie-base-features{gap:1rem}
+
+  /* CALC */
   .calc-row{grid-template-columns:1fr}
-  .map-info-bar{flex-direction:column;align-items:flex-start}
-  .float-bar{gap:7px}
-  .float-btn{font-size:12px;padding:10px 6px}
+  .calc-result{grid-template-columns:1fr 1fr 1fr;gap:.5rem}
+  .calc-result-item .val{font-size:16px}
+
+  /* CATALOG */
+  .catalog-item{flex-wrap:wrap}
+
+  /* PROMO */
+  .promo-grid{grid-template-columns:1fr}
+
+  /* HOURS */
+  .hours-grid{grid-template-columns:repeat(4,1fr)}
+
+  /* MAP */
+  .map-info-bar{flex-direction:column;align-items:flex-start;gap:.8rem}
+  .map-visual{height:200px}
+
+  /* REVIEWS */
+  .reviews-grid{grid-template-columns:1fr}
+
+  /* STORE SERVICES */
+  .store-svc-grid{grid-template-columns:1fr 1fr}
+
+  /* MOTO PROMO BANNER */
+  .moto-promo-inner{flex-direction:column;padding:2.5rem 1rem 1rem;gap:.8rem}
+  .moto-promo-right{width:100%;justify-content:center}
+  .moto-promo-right img{height:160px}
+  .moto-promo-title{font-size:22px}
+  .moto-prices{flex-direction:column;gap:8px;align-items:flex-start}
+  .moto-price-box{width:100%;box-sizing:border-box}
+  .moto-spec-chip{font-size:11px}
+
+  /* FLOAT BAR */
+  .float-bar{gap:5px;padding:.7rem 1rem}
+  .float-btn{font-size:11px;padding:10px 5px;gap:4px}
+
+  /* FORM */
+  .form-card{padding:1.4rem 1rem}
+  .form-sec{padding:2.5rem 1rem}
+
+  /* FOOTER */
+  footer{padding:1.5rem 1rem}
+  footer p{font-size:11px}
+}
+
+@media(max-width:400px){
+  .services-grid{grid-template-columns:1fr}
+  .hours-grid{grid-template-columns:repeat(2,1fr)}
+  .genie-plans-grid{grid-template-columns:1fr}
+  .internet-grid{grid-template-columns:1fr}
+  .store-svc-grid{grid-template-columns:1fr}
+  .float-btn{font-size:10px;padding:9px 4px}
+  .moto-promo-specs{gap:6px}
+  .moto-spec-chip{font-size:10px;padding:4px 8px}
 }
 </style>
 </head>
