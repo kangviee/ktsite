@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이앤애프 KT | MA VLADIMIR</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#e00;--red-dark:#b00;--black:#0f0f0f;--white:#fff;
+  --gray:#f6f6f6;--gray2:#e8e8e8;--text:#1a1a1a;--muted:#888;
+  --font-ko:'Noto Sans KR',sans-serif;--font-en:'Montserrat',sans-serif;
+  --r:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-ko);color:var(--text);background:var(--white);line-height:1.6;padding-bottom:80px}
+
+/* ── LANG SWITCHER ── */
+.lang-bar{background:#111;padding:6px 1.5rem;display:flex;align-items:center;justify-content:flex-end;gap:6px}
+.lang-btn{background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;cursor:pointer;transition:.2s;font-family:var(--font-en);letter-spacing:.04em}
+.lang-btn:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.lang-btn.active{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--gray2);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-kt{background:var(--red);color:#fff;font-family:var(--font-en);font-weight:900;font-size:18px;padding:3px 12px;border-radius:7px;letter-spacing:-0.5px}
+.logo-sub{font-size:12px;color:var(--muted);line-height:1.3}
+.logo-sub strong{display:block;color:var(--text);font-size:13px;font-weight:700}
+.hdr-call{background:var(--red);color:#fff;text-decoration:none;padding:7px 18px;border-radius:100px;font-size:13px;font-weight:700;white-space:nowrap}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(140deg,#0a0a0a 0%,#1c0000 100%);color:#fff;padding:4rem 1.5rem 3rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--red)}
+.hero-glow{position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(220,0,0,.18) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 220px;gap:2.5rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);padding:4px 12px;border-radius:100px;font-size:11px;color:rgba(255,255,255,.6);margin-bottom:1.2rem;letter-spacing:.04em}
+.hero-badge b{color:var(--red)}
+.hero h1{font-family:var(--font-en);font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.1;margin-bottom:.4rem}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero-name-ko{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:1.2rem}
+.hero-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.8;max-width:440px;margin-bottom:1.8rem}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-red{background:var(--red);color:#fff;padding:12px 24px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:.2s;display:inline-block}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.75);padding:12px 24px;border-radius:100px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.22);cursor:pointer;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.mgr-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:1.8rem 1.4rem;text-align:center;backdrop-filter:blur(8px)}
+.mgr-avatar{width:72px;height:72px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-en);font-weight:900;font-size:22px;color:#fff;margin:0 auto .9rem;overflow:hidden}
+.mgr-name{font-family:var(--font-en);font-weight:800;font-size:16px;color:#fff;margin-bottom:2px}
+.mgr-name-ko{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:10px}
+.mgr-role{background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:14px;letter-spacing:.04em}
+.mgr-phone{font-family:var(--font-en);font-size:14px;font-weight:700;color:rgba(255,255,255,.9)}
+
+/* ── STATS ── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--gray2)}
+.stat{padding:1.4rem 1rem;text-align:center;border-right:1px solid var(--gray2)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:var(--font-en);font-size:26px;font-weight:900;color:var(--red);display:block;line-height:1}
+.stat-l{font-size:11px;color:var(--muted);margin-top:3px;display:block}
+
+/* ── SECTIONS ── */
+.sec{padding:4rem 1.5rem;max-width:860px;margin:0 auto}
+.sec-label{font-size:11px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.sec-title{font-family:var(--font-en);font-size:clamp(22px,3vw,32px);font-weight:900;margin-bottom:6px;line-height:1.15}
+.sec-sub{color:var(--muted);font-size:14px;margin-bottom:2rem}
+
+/* ── SERVICES ── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.svc-card{background:var(--gray);border-radius:var(--r);padding:1.5rem;border:2px solid transparent;cursor:pointer;transition:.25s;position:relative}
+.svc-card:hover,.svc-card.hot{background:#fff;border-color:var(--red);box-shadow:0 6px 24px rgba(220,0,0,.1);transform:translateY(-2px)}
+.svc-hot-badge{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px}
+.svc-icon{font-size:30px;margin-bottom:.8rem;display:block}
+.svc-tag{font-size:10px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.svc-name{font-size:15px;font-weight:700;margin-bottom:5px;color:var(--text)}
+.svc-desc{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* ── TARIFFS ── */
+.tariff-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.tariff-card{border:2px solid var(--gray2);border-radius:var(--r);padding:1.5rem;transition:.25s;position:relative;background:#fff}
+.tariff-card:hover{border-color:var(--red);box-shadow:0 6px 24px rgba(220,0,0,.09)}
+.tariff-card.featured{border-color:var(--red)}
+.tariff-featured-badge{background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:10px}
+.tariff-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.tariff-price{font-family:var(--font-en);font-size:28px;font-weight:900;color:var(--red);margin-bottom:2px;line-height:1}
+.tariff-price span{font-size:13px;font-weight:400;color:var(--muted)}
+.tariff-divider{border:none;border-top:1px solid var(--gray2);margin:12px 0}
+.tariff-perks{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tariff-perks li{font-size:13px;color:var(--text);display:flex;align-items:center;gap:7px}
+.tariff-perks li::before{content:'✓';color:var(--red);font-weight:700;font-size:12px}
+
+/* ── PROMOS ── */
+.promo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.promo-card{border-radius:var(--r);padding:1.5rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#0f0f0f,#2a0000);color:#fff;border:1px solid rgba(255,255,255,.08)}
+.promo-card.light{background:var(--gray);color:var(--text);border:1px solid var(--gray2)}
+.promo-tag{font-size:10px;font-weight:700;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.promo-title{font-size:16px;font-weight:700;margin-bottom:6px;line-height:1.35}
+.promo-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.6}
+.promo-card.light .promo-desc{color:var(--muted)}
+.promo-until{margin-top:10px;font-size:11px;color:rgba(255,255,255,.35)}
+.promo-card.light .promo-until{color:var(--muted)}
+.promo-icon{font-size:36px;position:absolute;bottom:12px;right:16px;opacity:.25}
+
+/* ── CALCULATOR ── */
+.calc-sec{background:var(--gray);padding:4rem 1.5rem}
+.calc-inner{max-width:680px;margin:0 auto}
+.calc-card{background:#fff;border-radius:20px;padding:2rem;box-shadow:0 2px 32px rgba(0,0,0,.07);border:1px solid var(--gray2)}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1rem}
+.calc-label{font-size:12px;font-weight:700;color:var(--text);margin-bottom:5px}
+.calc-input{width:100%;padding:11px 14px;border:1.5px solid var(--gray2);border-radius:9px;font-family:var(--font-ko);font-size:15px;color:var(--text);outline:none;transition:.2s;background:#fff}
+.calc-input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,0,0,.07)}
+.months-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.month-btn{background:var(--gray);border:1.5px solid var(--gray2);color:var(--muted);padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;font-family:var(--font-ko)}
+.month-btn:hover{border-color:#bbb;color:var(--text)}
+.month-btn.active{background:var(--red);border-color:var(--red);color:#fff}
+.calc-result{background:linear-gradient(135deg,#0f0f0f,#2a0000);border-radius:14px;padding:1.5rem;margin-top:1.2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;text-align:center}
+.calc-result-item .label{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:4px}
+.calc-result-item .val{font-family:var(--font-en);font-size:20px;font-weight:900;color:#fff}
+.calc-result-item .val.accent{color:var(--red)}
+.calc-note{font-size:11px;color:var(--muted);margin-top:10px;text-align:center}
+
+/* ── CATALOG ── */
+.catalog-wrap{display:flex;flex-direction:column;gap:12px}
+.catalog-item{display:flex;align-items:center;gap:14px;background:var(--gray);border-radius:var(--r);padding:1rem 1.2rem;border:1.5px solid transparent;transition:.2s;cursor:pointer}
+.catalog-item:hover{background:#fff;border-color:var(--red);box-shadow:0 4px 16px rgba(220,0,0,.09)}
+.catalog-icon{font-size:28px;width:50px;height:50px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--gray2)}
+.catalog-info{flex:1}
+.catalog-name{font-size:14px;font-weight:700;margin-bottom:2px}
+.catalog-spec{font-size:12px;color:var(--muted)}
+.catalog-price{font-family:var(--font-en);font-size:16px;font-weight:900;color:var(--red);white-space:nowrap}
+.catalog-btn{font-size:12px;color:var(--muted);margin-top:1rem;text-align:center;cursor:pointer;text-decoration:underline}
+
+/* ── FORM ── */
+.form-sec{background:var(--gray);padding:4rem 1.5rem}
+.form-wrap{max-width:640px;margin:0 auto}
+.form-card{background:#fff;border-radius:20px;padding:2rem;box-shadow:0 2px 32px rgba(0,0,0,.07);border:1px solid var(--gray2)}
+.form-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid var(--gray2)}
+.form-hdr-icon{width:44px;height:44px;background:#fff0f0;border-radius:11px;display:flex;align-items:center;justify-content:20px;flex-shrink:0;align-items:center;justify-content:center;font-size:20px}
+.form-hdr h3{font-size:16px;font-weight:700}
+.form-hdr p{font-size:12px;color:var(--muted)}
+.form-group{margin-bottom:1rem}
+label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}
+label .req{color:var(--red)}
+input[type=text],input[type=tel],textarea{width:100%;padding:11px 14px;border:1.5px solid var(--gray2);border-radius:9px;font-family:var(--font-ko);font-size:14px;color:var(--text);background:#fff;outline:none;transition:.2s}
+input:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,0,0,.07)}
+textarea{resize:vertical;min-height:90px}
+.svc-opts{display:flex;flex-direction:column;gap:7px}
+.svc-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--gray2);border-radius:9px;cursor:pointer;transition:.2s}
+.svc-opt:hover{border-color:#bbb}
+.svc-opt.on{border-color:var(--red);background:#fff8f8}
+.svc-opt input{display:none}
+.rdot{width:18px;height:18px;border-radius:50%;border:2px solid var(--gray2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.2s}
+.svc-opt.on .rdot{border-color:var(--red);background:var(--red)}
+.svc-opt.on .rdot::after{content:'';width:6px;height:6px;background:#fff;border-radius:50%}
+.svc-opt-txt{font-size:13px;font-weight:500}
+.svc-opt-txt small{display:block;font-size:11px;color:var(--muted);font-weight:400}
+.svc-opt-ico{margin-left:auto;font-size:18px}
+.submit-btn{width:100%;background:var(--red);color:#fff;border:none;padding:14px;border-radius:11px;font-family:var(--font-ko);font-size:15px;font-weight:700;cursor:pointer;margin-top:1.2rem;transition:.2s;display:flex;align-items:center;justify-content:center;gap:7px}
+.submit-btn:hover{background:var(--red-dark);transform:translateY(-1px)}
+.form-note{text-align:center;font-size:11px;color:var(--muted);margin-top:10px}
+.success-box{display:none;text-align:center;padding:2rem 1rem}
+.success-box .ck{width:64px;height:64px;background:#e8f8e8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 1.2rem}
+.success-box h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.success-box p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ── HOURS ── */
+.hours-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.hours-card{background:var(--gray);border-radius:var(--r);padding:1.2rem;text-align:center;border:1.5px solid var(--gray2)}
+.hours-card.today{background:#fff;border-color:var(--red)}
+.hours-day{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:4px}
+.hours-card.today .hours-day{color:var(--red)}
+.hours-time{font-family:var(--font-en);font-size:15px;font-weight:800;color:var(--text)}
+.hours-card.closed .hours-time{color:var(--muted)}
+.today-badge{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;display:inline-block;margin-top:5px}
+
+/* ── REVIEWS ── */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.review-card{background:#fff;border:1px solid var(--gray2);border-radius:var(--r);padding:1.3rem;transition:.2s}
+.review-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);transform:translateY(-2px)}
+.review-stars{color:var(--red);font-size:13px;margin-bottom:8px}
+.review-text{font-size:13px;color:var(--text);line-height:1.65;margin-bottom:10px}
+.review-author{font-size:11px;color:var(--muted);font-weight:600}
+
+/* ── MAP ── */
+.map-sec{background:var(--black);padding:4rem 1.5rem}
+.map-sec .sec-label{color:#f66}
+.map-sec .sec-title{color:#fff}
+.map-sec .sec-sub{color:rgba(255,255,255,.45)}
+.map-wrap{max-width:860px;margin:2rem auto 0}
+.map-box{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.map-info-bar{background:rgba(255,255,255,.05);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.map-addr{display:flex;align-items:center;gap:12px}
+.map-pin-ico{width:40px;height:40px;background:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.map-addr-text{color:#fff}
+.map-addr-text strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px}
+.map-addr-text span{font-size:12px;color:rgba(255,255,255,.45)}
+.naver-btn{background:#03c75a;color:#fff;text-decoration:none;padding:10px 20px;border-radius:100px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;white-space:nowrap;transition:.2s}
+.naver-btn:hover{background:#00b04e}
+.map-visual{height:260px;background:#12122a;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;position:relative;overflow:hidden}
+.map-visual::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 36px),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 36px)}
+.map-pin-center{display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1}
+.map-pin-dot{width:54px;height:54px;background:var(--red);border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(220,0,0,.5);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(220,0,0,.5)}50%{box-shadow:0 4px 40px rgba(220,0,0,.8)}}
+.map-pin-dot span{transform:rotate(45deg);font-size:22px}
+.map-pin-label{background:rgba(0,0,0,.7);color:#fff;padding:7px 14px;border-radius:100px;font-size:12px;font-weight:600;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1)}
+.map-tap{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);padding:5px 12px;border-radius:100px;font-size:11px;border:1px solid rgba(255,255,255,.1)}
+
+/* ── FLOAT BAR ── */
+.float-bar{position:fixed;bottom:0;left:0;right:0;z-index:300;background:#fff;border-top:1px solid var(--gray2);padding:.9rem 1.5rem;display:flex;gap:10px}
+.float-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:11px;font-size:13px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:var(--font-ko);transition:.2s}
+.float-btn.call{background:var(--red);color:#fff}
+.float-btn.call:hover{background:var(--red-dark)}
+.float-btn.form{background:var(--gray);color:var(--text);border:1.5px solid var(--gray2)}
+.float-btn.form:hover{border-color:var(--red);color:var(--red)}
+.float-btn.tg{background:#229ed9;color:#fff}
+.float-btn.tg:hover{background:#1a8bc4}
+
+/* ── FOOTER ── */
+footer{background:var(--black);border-top:1px solid #1a1a1a;padding:2rem 1.5rem;text-align:center}
+.ft-logo{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:.8rem}
+footer p{font-size:12px;color:rgba(255,255,255,.3);line-height:1.8}
+
+/* ── 5G TARIFF TABLE ── */
+.tariff-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r);border:1px solid var(--gray2)}
+.tariff-table{width:100%;border-collapse:collapse;min-width:560px;background:#fff}
+.tariff-table thead tr{background:linear-gradient(135deg,#0f0f0f,#2a0000)}
+.tariff-table thead th{padding:12px 14px;color:#fff;font-size:12px;font-weight:700;text-align:left;white-space:nowrap}
+.tariff-table tbody tr{border-bottom:1px solid var(--gray2);transition:.2s}
+.tariff-table tbody tr:hover{background:#fff8f8}
+.tariff-table tbody tr:last-child{border-bottom:none}
+.tariff-table tbody td{padding:11px 14px;font-size:13px;color:var(--text)}
+.tariff-table tbody td:last-child{text-align:right;font-family:var(--font-en);font-weight:900;color:var(--red);white-space:nowrap}
+.tariff-table .plan-name{font-weight:700;font-size:14px}
+.tariff-table .plan-data{color:var(--muted);font-size:12px;margin-top:2px}
+.tariff-badge{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:100px;margin-left:6px;vertical-align:middle}
+.tariff-badge.blue{background:#1a73e8}
+.tariff-badge.green{background:#0a8a4c}
+.tariff-section-hdr{background:var(--gray);padding:9px 14px;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gray2)}
+/* ── INTERNET PLANS ── */
+.internet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.internet-card{background:#fff;border:2px solid var(--gray2);border-radius:var(--r);padding:1.5rem;text-align:center;transition:.25s;position:relative}
+.internet-card:hover{border-color:var(--red);box-shadow:0 6px 24px rgba(220,0,0,.09);transform:translateY(-2px)}
+.internet-card.featured{border-color:var(--red)}
+.internet-speed{font-family:var(--font-en);font-size:36px;font-weight:900;color:var(--text);line-height:1}
+.internet-speed small{font-size:14px;font-weight:400;color:var(--muted)}
+.internet-price{font-family:var(--font-en);font-size:24px;font-weight:900;color:var(--red);margin:8px 0 4px}
+.internet-price small{font-size:12px;font-weight:400;color:var(--muted)}
+.internet-note{font-size:11px;color:var(--muted);line-height:1.5}
+.internet-discount{background:#fff0f0;border:1px solid #fcc;border-radius:9px;padding:10px 14px;margin-top:1rem;font-size:12px;color:var(--red);font-weight:600;text-align:center}
+/* ── GENIE TV ── */
+.genie-base{background:linear-gradient(135deg,#0f0f0f,#1c0050);color:#fff;border-radius:var(--r);padding:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem}
+.genie-base-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.genie-base-sub{font-size:12px;color:rgba(255,255,255,.55)}
+.genie-base-features{display:flex;gap:1.5rem;flex-wrap:wrap}
+.genie-feat{text-align:center}
+.genie-feat-n{font-family:var(--font-en);font-size:22px;font-weight:900;color:#fff;display:block;line-height:1}
+.genie-feat-l{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px}
+.genie-plans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:1.5rem}
+.genie-plan{background:#fff;border:1.5px solid var(--gray2);border-radius:12px;padding:1.2rem;transition:.2s}
+.genie-plan:hover{border-color:var(--red);box-shadow:0 4px 16px rgba(220,0,0,.09)}
+.genie-plan-service{font-size:11px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.genie-plan-name{font-size:13px;font-weight:700;margin-bottom:6px;line-height:1.3}
+.genie-plan-orig{font-size:11px;color:var(--muted);text-decoration:line-through}
+.genie-plan-price{font-family:var(--font-en);font-size:20px;font-weight:900;color:var(--red);line-height:1}
+.genie-plan-price small{font-size:11px;font-weight:400;color:var(--muted)}
+.genie-tv-table-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--gray2)}
+.genie-tv-table{width:100%;border-collapse:collapse;background:#fff;min-width:420px}
+.genie-tv-table th{background:linear-gradient(135deg,#0f0f0f,#1c0050);color:#fff;padding:10px 14px;font-size:12px;font-weight:700;text-align:left}
+.genie-tv-table th:last-child{text-align:right}
+.genie-tv-table td{padding:11px 14px;font-size:13px;border-bottom:1px solid var(--gray2)}
+.genie-tv-table tr:last-child td{border-bottom:none}
+.genie-tv-table td:last-child{text-align:right;font-family:var(--font-en);font-weight:900;color:var(--red)}
+/* ── STORE SERVICES ── */
+.store-svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.store-svc-card{background:var(--gray);border-radius:var(--r);padding:1.4rem;border:2px solid transparent;transition:.25s;text-align:center}
+.store-svc-card:hover{background:#fff;border-color:var(--red);box-shadow:0 4px 16px rgba(220,0,0,.09);transform:translateY(-2px)}
+.store-svc-icon{font-size:32px;display:block;margin-bottom:.7rem}
+.store-svc-name{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--text)}
+.store-svc-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.store-svc-free{display:inline-block;background:#e8f8e8;color:#0a8a4c;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-top:6px}
+@media(max-width:640px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-btns{justify-content:center}
+  .hero-desc{max-width:100%}
+  .mgr-card{display:block;max-width:220px;margin:0 auto}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .stat{border-bottom:1px solid var(--gray2)}
+  .calc-row{grid-template-columns:1fr}
+  .map-info-bar{flex-direction:column;align-items:flex-start}
+  .float-bar{gap:7px}
+  .float-btn{font-size:12px;padding:10px 6px}
+  .services-grid{grid-template-columns:1fr}
+  .tariff-grid{grid-template-columns:1fr}
+  .promo-grid{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .internet-grid{grid-template-columns:1fr}
+  .genie-plans-grid{grid-template-columns:repeat(2,1fr)}
+  .store-svc-grid{grid-template-columns:repeat(2,1fr)}
+  .hours-grid{grid-template-columns:repeat(2,1fr)}
+  .sec{padding:2.5rem 1rem}
+  .hero{padding:2.5rem 1rem 2rem}
+  .hero h1{font-size:clamp(32px,8vw,48px)}
+  .mgr-avatar{width:90px;height:90px}
+  .calc-result{grid-template-columns:1fr;gap:.7rem}
+  .hero-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('ko')">한국어</button>
+  <button class="lang-btn" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('ru')">Русский</button>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-kt">KT</div>
+    <div class="logo-sub"><strong>이앤애프</strong><span data-i18n="store">신부문타워점</span></div>
+  </div>
+  <a href="tel:01084508701" class="hdr-call">📞 010-8450-8701</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🇰🇷 <span data-i18n="official_dealer">KT 공식 대리점</span> &nbsp;·&nbsp; <b>이앤애프</b></div>
+      <h1 data-i18n="hero_h1">김<em>탄</em></h1>
+      <div class="hero-name-ko">김탄 · <span data-i18n="role">영업 매니저</span></div>
+      <p class="hero-desc" data-i18n="hero_desc">KT 이앤애프 신부문타워점 담당 매니저입니다.<br>휴대폰 할부 구매, 통신 개통, 요금제 상담까지<br>빠르고 친절하게 도와드립니다!</p>
+      <div class="hero-btns">
+        <a href="#form" class="btn-red" data-i18n="apply_btn">📋 서비스 신청하기</a>
+        <a href="tel:01084508701" class="btn-ghost" data-i18n="call_btn">📞 바로 전화</a>
+      </div>
+    </div>
+    <div class="mgr-card">
+      <div class="mgr-avatar" style="background:none;padding:0;overflow:hidden"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABrqADAAQAAAABAAACKQAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgCKQGuAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAQEBAQEBAgEBAgMCAgIDBAMDAwMEBgQEBAQEBgcGBgYGBgYHBwcHBwcHBwgICAgICAkJCQkJCwsLCwsLCwsLC//bAEMBAgICAwMDBQMDBQsIBggLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLC//dAAQAG//aAAwDAQACEQMRAD8A/v4ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooqvQBYoqv53+f8mq0135Yyd//fFAGjRWN/a9ju8jzk8z+5SNq9jG+JpFi/36ANqiq9EM3m0AWKKKr+d/n/JoAsUVX87/AD/k0f8ALKgCxRWPLeWMP+vkSOj+0rH/AF/2hPL/AN+gDYorOimgmHnQv5n+5ViKUEUAWaKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/0P7+KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooqvQAT9q5XxX4t8P+EbZZtZuVg83Kxp/G5HOFHevzw/bO/4Kjfs7fsk2WpaO+pwax4m04lZtOt5Mm2+TcDM3CqORlMl8ENsKnNfyEfte/wDBwb+1J8Sr+7tPglPJ4Usb0xi11C3kSCVWG8b3ldC7KwYfIFREwM7iAaAP7r9a+KUHh/SX8QyaZPa2aJlrrU5Vso4h0zIZduzHffjFfmh8V/8Agqb+zB8IRK/jP4naXrF7byKrWWiXsd7Om/OMm3LJjjuX/nX+c/8AEj9pj40fFLUbq68V+KNc126mkkncXN/cXCu8p3OzwOxQtn+NwW+Y4PJrxiXxJf8AlW9j5mq+XF/q47Ty/Kji/wC2taAf6F1v/wAHBv7HGlas1r4t8YW93bTTbVW906a0hVckMyXcYkQDGD+9SM5OAOMn7P8AAP8AwVq/Zq+LAa7+E+pwX+mW8ErS3sssLWbNFjKGZJXkWQLklXjXGOvNf5cX/CVa5pt/HfeHZ4bK48uWPzJ5o/Nji/8AaVc8uu6vHqTXl7q0dpq1v9y5tQI7gNggGN0MZib/AG0+YdO9Zgf61HgH/gov+z94iltX1i5l0rTb1SIdQvdi2ZmU4MXmbsBtv7zBx8nJI6V9P3Pxv8L2Nlb+JpJEOi3DBHu0fcsLMnmRlsfwOOj/AHQSOxzX+VF8I/8AgqD8f/CRj8JfEO9tfGllbs6xNrlmLqdEki+ztFKmRHPEEw8ayozJKPMDFq/oV/Yo/wCCrVhFHPD8O7q/ubnStP1S+Gk3lxJqWmXfkRR+bpVz/wAtvsvm/urG68nzoZv9b5sPm+XoB/dhZ31rf2sd/ZuJI5VDoy9GU18wePP2g/DWkW90/hy7tIfsZjSTUr+YR2KZ/j83B8znEfHd6/LfVf8AgpH8PPHX7Pd9a/DzxDFp+m2drpt2uoX44m03UjCVj2pkiVnkNlg/dnDAkhTX8nH/AAUm/wCConhz9rT406h8JPDk9zbfCfwb/o1nYR2f+k3+qWH/AC0il83/AEaL/ll5v72aGFH8mLzZKzA/pF+P3/Bcnwt4K1/U9B+DFhqfxBu9KhlV5rZIoNPEzthPLKyPJONwyX2omOVZhgn8kfiN/wAF1/2kLjxDdWl1FpGhWMcO6eLTp4b+8ulk6oypckRShlZB0MY+/EWBFfzP6v8AHT4grbTaNpmoLZWMwiE0NiZIIx5XOFAlywOBnzTJ03ff+YeH/wBsed+/n1F5P+ukPmxSf5/560Af08eGP+DiD9u/wZPax3Vtpms2NjG5KjT4bGS5ZxhFnkt1dECHnKQLnvnrX174O/4OmfjxayW8vjbwR4Ju4prgK8J1m8066hix12PY3ER5HGJyeRwO38ZUOsQw/v4HSSOL/WfJ/q/+2sVFnr0M1r58/wC6t/8AV+ZaPHLF/wB+qAP9CT4L/wDBzv8AsoeM9Sh0n44+C9V8HwyIgm1CznTVbKNjjPMW2cr16QZ9u9fsB8G/+Cl//BPz4139r4a+EXxk0C/vZJPIhtHu1guJJCMhRDcbJc46Dbz2r/Jj/fwxedY7JPN/5ZwP/rP+uX/Lb/tlVi08WeI5Ck0epzPcJs8mV2Pmrj+6/UfnQB/tEWGs2V9ZC9tp4riP+KWJgyfmDWxX+S/+yb/wU7/as/ZO1iK2+E+pyrCl2Jr7TLm6me0uTtUK3lK4VZCi7d/3gOOnB/q2/ZK/4ObPhHq0Fj4T+PFhe2Or29rJLqttfSQw3cbKu4DTx11A5BBjxDJt5RXI2kA/ryorxT4OfG74afHX4d6b8WPhRrVrrPh3W0SaxvLY/Kyv1yDggg8EEAgjB5r2ODvQBYooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//R/v4ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK5zXvEGk+F9Ln1zW50trO2GZJHoA2pZvKHnE/Jiv5d/wDgqX/wXF8C/CLwdJ4f+BV28trf+Zbx6vaXP2a61CbEg/0LpLHawy/6+6x/0yh/1nmj5N/4LJ/8FzYvDtzrP7OXwUiiuZIt8d1PHcFYbZiCD5/lPidgfla3b93k4kDBWjP8VXj/AMf6/wDEvxrP4l8Wahdapq1y0cDXExVpJmUYRWbACoB91UAVBwABxQB6x8df2p/iV8arxU8QalPaaLYM62NlE+5YXlwZWXGDLcTsA09zKXmlIUO7Kiqvzv8A8SqG/wDt3iNP+uce/wDdR/8AXWX/AF0tZ/2LVde8RvofhWD7Tb2EflxySfuoo7X/AJ6S/wDXaXf/ANdq0NIs7GbzNV0udJI4v3ck8if+iqAOh/t6DzY7ewjm/e/8s408qL/49Va80e+/suQ65IltHL/yzkm/1f8An/rtWxew2Og2Hn309tbW/wDrP37/AOs/7Zf8tf8ArrXn8XjDVLSV7jwiQtxB96eLEUq/Rkw/61oBj3k1hZzSWMF15Uf/AD0khjj/AHX/AE1lrmLzxVY3kX9lXyQ6lb2v7u3kg8y2uY/+eXmf89Yqz9e1jVbz7H9unSL/AFvl/wDxyuevNSvjYW88E83l/wDLvHGnl7PI/wBbWYGxeTf2dF9hnke58r93JB/y1t/+mcv/ANqrY0P4k+I/DWuLqOlXctndbCC8DvEWSQEEZQjt/wChV5fea9fXkUcE87yxxf6vzKsabDNr32PSoI/3kUn7v/rl/wAtf/jv/A6APsCw/a9+LeieFIfC+ha3dWbL5ytHHJIuwv8AP56uhDLscswQEDexcgtzXjFnqP8AxK4/keOP/Vxxxv8AvZP+mdeTaP5+pWsc/mfZreKSX9//ANd/3vl/9NZa6D+2IP8AUWMbxR/6v7/72gD0CbWJ4bqP7dG/2j/lnHs/496z7y7gn8zz0eX/AK7v/wDaqx4ryeGL/VvHb/7nmxSVY/tOxhi8iaN/3v7uOSgDQOsQf6gpNF5X+r+T91/39oms4NS/fzo8Un+rju4/9b/9ti/8jVj3nkfu/PgSTzf+Wm+s/wD4lV5FH+78v/nnJG/7qgD0izvJobW48+RJPK/1kkCeZFcf/GpYf+etE15BrEX26DZ+9/1n/TSuH/tK+82Tz53ivIv+W8b/AOsi/wA/8ta2PtnlS/2pOiS/8tJPL/dRSf8ATSgD0CyvPtn2eDxHI8sf+rjn3/vY/wDpnXrGly67qHgZ/COr+ZqOhGb7REqSbVhvSNu9l/hbbx7ivD5ofsd1JpU7+Z5v7z/rpFP+98yL/wCNV3Hg/wDtWz1mTQ7GT7NrH2eK5jjj/wCPa/tf+mX/AD1l/wD3VaAfd/7JH7dn7Y37CWuxap+zF49nsNNRnS68O6wpuNKuY2bOGgf5A3XbIm10DMEddzZ/vn/4JN/8FvPgN/wUT8PW3wx8bLD4D+NFlEyX/hW6lC/afKwWn05nYtPAQclMtJFghsqFkb/N5/t6x1Kwt/7VjfTdQl/eW88b/uv+uf8A0zl/zLRonjOOw8VabcyahJ4U1LSZ0l03xHZSTQXGlXCnKyI1uDKrKQpDINwPI5p+zYH+yxB3qxX8pv8AwRK/4LcX/wAf9K8Lfspftu65aTeP9ShMfh7xLGyImsujFfsF4saotvqqKoZPlVLlCrJiQjf/AFVed/n/ACayAsUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/9L+/iiiigAooooAKKKKACiiigAooooAKKKKACiivM/ij8V/hz8FvBF98SPijq8Gi6Np0Zae5uDtHoqIvLvI7ELHGgLu5CKCzAEA7LWta0jw/pN1r2v3MVlY2cTz3FzO4jihjiBZ3d2ICqoBJJIAAya/hQ/4LHf8F4ovj/Avwc/Yp1O6tPCLtKjeI4hJazajtLJO1tuCOkGBsMrD5wzFAF2yN8n/APBZr/grf8a/+ChPxdvf2RvAwuvBHwm0W/mtLvT45yL/AFieFWWSbUGjdfLt423Kll853rvkO/akP4AfEjXp/FUv/Eqje2j1nyo7ePZ/x76NB/qv/Rfm0Aef3mpQ6x5d9PP9m0+1kljt/M/8iyf9df8All/12/6515voM2q6ldSeQiW0ksf2mST/AFsVpa/5/wC/01a/xIhm1K/0/wAK6TG8ccX+jW8f/PP/AJ5f9+Ytn/kSsHxNq0N/H/YWixw2unxSf6R/038j91/36h8v/Vf79AFj+0hqOn/8Ir4c86XS5pPMuPn/AHupS/8Axr/P+qrp5fG/9jy250ryb28l/d28kflyRRxf887aL/2rXH6Ppuua9LHodjpSeZL/AMsJE/eyf9NLn/41XcabD/wjf2ix0r7NJJ5cX2i/j/exR/8AbX/lr/0w8n/XUAc9/ZHiua6k1XXIPMuJf3n7x4/3lYOsf8SK1s9Vsf3UfmSyeZA/lSxy/wDPPza19S16+vJZNKsp/wB5L+8jnk8v/MX+f+utZ8x1zTbCP7davJJL5UdxHP8A62SKD/nr/wBtZPNoA4ibXoNRuv8Aiaokcksn7yfZ5fmf9df+WP8A21qtr0M+m6X5E8byf6Z/y0/651sXmj6XrGlya5pUDy/Zf9Z8knmxxf8APSX/AJYy1x8326GLyIH823l/eUAc/N5Hlef5nlf9dK7DwfpvnS6hNPI8flRxW0kcf/LTz5PK8uuP8mCb/X/9s69Qs4f7N8JW5g/1ktxLJHP/AOQov/alAHP3l5BNJ/BFZxfu44/+mX/27/43ViEWNn+4gnf/ALZp5dZ8w/0rz9n/AFzT/nnVmGb93HBBH5vlf8s/3dAHTwwz+V59h+6k/wCmiVYh1H/lhfIkfm/89P8AVSVz8N7ey/uNn2aT/ln5b/5/79V0H/H5a+fs/eRSfvI6ANCXTfscUk/kJc2//LSOf/0XL/8AHf8AljXD/Y4JZpIIHf8A6aRz/wCf/IteoeGNQn0kx3VnPGwhfOXALL77CRuA/KuP8YaPBDqn27Sk+zf8s5LTf/qJf+mX/TL/AJ4f9+qAKEP+u+w30b+ZF+8jjkrQ02WeGX+yp/3skX+r/wCmn/PKue8PX9rqE6aFqLJbgnMN1IcJC/8A00P9z14/Sug1iH97H+7e2kikltpI5E/e/uJP/aPz0AdjPLZS6ZZ6Vq0aSW9/Z+bp8/8Azz8iT/V/9dYf9VPX0B4J8N6V8SPDklh56W3iDS5PMt5/+mv/ACy/7/f5/wBXXytpd2LjS7jSLhN8cUq3kBPYNiK5j/7bREZ/3B617B4V1PVfDevRwb38z/j2jnjT/WRT/vYvK/8ARv8A38rQD2nWLO+vIpPt1r5dxLHF9ogk/wCWn/TSL/7V/cry/XofsdrnzHubf97HHJ/rJbf/AJ6x/wDTWKvb9N8bWPiqwkngghivJfN/tCwkf915v/TL/rt/n/llXz/4q1797ceR/wAfHl/8t0/eyf8AXX/pr/01oA2Php8U9V+Gerb47aLULBmQywSswaOaE74riB43Vo54Hw0b9VbtzX+kn/wQ5/4KyaN+2/8AB22+Cnxd1mO7+JvhWFIXvZAIF8QWQGYr2Bcn59v7u6QciVGcKqSxqP8AL8stY+2RSef+7uIv+Wcn/LT/AJ619g/shftM+O/2X/i7pnxK8B3O2bTbqK72sAQzROG2sDwVbG1h3QkVmB/sjwd6sV82/spftM/Df9sP4AeGv2iPhROLjRfEtqJ1QsGaGQZWSJ8ZG+N1ZGxxkHBIwa+j06UAPooooAKKKKACiiigAooooAKKKKACiiigD//T/v4ooooAKKKKACiiigAooooAKKKKACiimP0oAir+ML/g4X/bu1r4YeMre08Kak/9qeGBdWXhOOMxzQ2HiKePyrnVpIv9bLdWdrcSRWX/ACytJn83/W/uo/7M55Z4YZJoU8x/7lf5KX/BWz9ofXP2jf23/GaSXks+k6BruqWVggu1ngWP7XKxASMeVGxdj5yo8geYu+9txwAfH3wsvLKG18QeI7+R5ZJbeLQbeT/Wf8f0n+lSf9dfKj/8fom8g+I/PvnT7H9n/wDJWCP/AJZf+ORf9/K4/wANXnky2ehj/lreeZ/7S/e16RD5Fn4c1DxVPs8uWP7NHH/01/5a0AeQalqVjFHceMdVRJJLq4l06ODf/wA94/3sn/XKb93/AN915/4bs/8AiVx2P+t+ySRRxySf8vH7v/Wf9sfnq/4whvptet7Gx2fZ7WPy/wB3/wA9f/jtaH7iC1j0ry3js7COW5vP+mkvl/uraL/41/10loAx5vGP2PRrjQ9DkSOzl/4+J4/9bd/9M4v+mX/PeuXM2q69fWelTp/of+s8uN/9X/8AHP8Arr/7SrA1Ka+1jVI9KgkSKTy/3nl/6qOu30ez0rR5pJ50eWOL/Wb/APlpL/yy/wA/9dKAK/8Ax52tvPqqJcyS/wCs8z/lpL/0y/56VX8m+1KX7CbFIv8AppBD/q/+utdD9j1W8/07VX8qOb93+8/dy3H/AG1/5ZRVnaxef6J5Gh6qkXlfu/L/ANb/AN+pf/jtAHPjS/EVncSEXLQT2/8AtNHIP8/hXL6vNPeRSX0/+s8z955aeXWxNez/AGWOed/3kX7v955kdY9lqVj5skE3/HvL+7uP/jlAHL/8ta9A0Gaf93Y+Z+7lrj/sf/LH5JP+udek+G9P+2Sw2MS5N1HJHHu/hkI+Q/nQBna9p3/E0uPI3+X5kv7zZXLw+R+8/ceV+78z79eweMLOy82SDSkmkuJY/Mkkkfzf3X+f/Q68/s7Kxstds/OnSXzZP3kcf/LPz/3Xl/8AkSgDHhnnm/1E/wC8/wCeddT53nf6R8nlyx/vJP8AprBXLw+RZxR2Pmebef6uST/nn/1yrt9Bs/tmlyef/wBdI4/+en/TSgCvNeweVH/au+P/AJ+JIP8AWx/88v8A47Wx42+3favt2qxpLb6pH5kd3B/qpP8AppF/8arP17TfscX/AE0/ex/9dP3nmxf+jKseGfEJ0qdfD8gR7W9b5on4VpG+Qc/lQB5heQf2dL5GqwfbdPl/1ckH+t/6a/8AbX/plLXsJlOreGP7Uhn+2/ZIIopJwn7zyv8AllJJH/yz/wCeX/AK4cWBlFx/ZSfaI/L8u8tJP+WkR/1ckf8A01h/7/V13wr8ia1uP3fmx/Y5bb95/wBdI/K/7a0Ac/o832PWY54P3f8A002V9YQ6P9s8OWdh5kNt5Ufl2/8Ay0iji/1sX/73/ltvr5/s/Dc95FHBA/8ApEX/ADz/AOXj/nl/1ylr0DQft1nLHrmh773yo5ftlhB/rZLX/lr+6/6Y/PL+6rQD1r+yotdafTdVBsdStjidP9VcwXc0f/LSP/pt/wAsJf8AUzf+Qq8d8eaPqst1JY65IkV5a/u/Mkf/AJa/885Zf+WUv/kGavWNS1+ea1t9V0qOG9vLW3/0PzHkj+0Wv/LW283/AJ5f9df+utZnirWfC2saKmsT3iz2+BZvcyn7PcQSEZ+z6lH/AM9f+eN1F5sUvQ80AfKWpm6hzY62ziSH5CjrsdfqDXceFZoJrqP94nmeZ+88z/nl/wBcqsXlnY+JJZND3zeZFJ+78/8Adyx/9M5f/aEtcQxn02/kCGQSRv8A8tIzHIp9x1U1mB/Z5/wa+f8ABQbU/gt8fdS/4JzfEu5jbw54qM1/4duJGx5GrQrvlt1ywAS5i3yjjAkjIALSk1/fHB3r/Gn/AGTvjFH8GPi54Z+M3hlRBrXhXUrPWLXy5fId1tJVkkjDOCg8xFZM4OHZTg4xX+wx8KPiR4b+Mvwy8PfFnwXKLjSfE+m2uqWcqsDut7yNZYzx6qwNAHpFFV6sUAFFFFABRRRQAUUUUAFFFFABRRRQB//U/v4ooooAKKKKACiiigAooooAKKKKACmSfcNPqCb/AFNAHz7+1N8b/Cv7Nv7PfjX49eNplg03wfpNzqkzscZFvGXVB7swUD3Nf49Hi3xb4u+K/i/Wvid48k3a94mu5dT1aTptnnYs5wnHJJP41/off8HPHxr1/wAJ/wDBPWb4U+DUa7fxVrVlp2rRRSMqJbgPdbX2c/O0Kjn5MAg8la/zuby8gs7WT7B/x72Hm+X5n7zzJf8AlrJQB5/Nef2dqln9g/dxxSS12EusLq3gRfCtsu9/tk9yxP8Az0mWOMKP++fzrw+91KaztfPn/wBZ/wAs69Q+HumSx+E7/V8/urFFjd/9udmAT8VDflQBn2f/ABPvFsmqwQeZH9s8vy4/+Wn7v/nrW3qfnWWuXGlTH/j1jusv5f8Ay7QZ82T/AK6TS/uoP+eMSf8ATSu9+D9nBZxah4jnk8qztY5dSvI5P+mEf7r/AMiyeVXh+pc+HLzyP3UmsyfZo/M/5Z2sH+tk/wC20v8A6BQBk+FtFuZDJNciSS8v7iU70T/llBJ+8/8AIv7qD/pt/wBc66+b7Po8Ueqz7Ire183y5JP+Wkv+f/QK6+GzgvNQj8R/6q3ljikk8v8A1v8Azy8v/wBD/wC+5KsQ6D/wmGqfbp7TzdL0v/Vwf6vzJf8AVRR0Aef3mm3us/Z77VUeLzY/Mt4P+Wvlf89Jf+ecVeb6nD5Mv7/Z/wBM0r6I8STTzRSfcuby6k/0iTZ+6j/55RxVj6B8JNV8R3X7iP8Ad/6us6tX2ZpSpVKh83+TfTSYnkeSrEOgX0v7/wAt6/Uj4e/sXy6zYrfX6tGDhU75H/sv613EP7LvnX/2HwdapqVxa+V+8jT91HLP/wA9bn/Uy/8AbGuL67TO/wDs2oflvp3hg3lrL5L7Hh5H+0R/D7V7B4V8Nz6bdWeqTwP5cVxFJH/zyki/5axy/wDPL/lnX6IP+w9I9vdWt1qUS6lbzGKe22/vEgOGSbr91iWGOuVP0qxcfsna/wCH9DutNuV8ySyV0m8lWKPHIoKuDjnkkH021p9YpmX1GpTPznvPDc+pa/bweW/+leVJ5cf+t/f+Z/6J8uvH/Eeg32kqHu4fIi8x0D/38V+gHiL4Xa14F8a2OpWq+Q0kIHzL8/mfN069gK8f+JehRTbNPhi2SW8aAo7YxH0Xry3TB7jHNae1M/ZHxP8AY/tl1H+88r95+8kr1D4ezQ6xdXl95f8Ao8X2WOSP/nnFWfeeG59N0zVJ/Lf/AJZRx/8Afz97Wx8JTB9h1CCeP95dXFrbR/8AbeSSuk5T0D4meHfsek2I8s5t55I3P/TLaPL/AJGvneaLzpZJ5/8AllHLX2h4wmg1iw+3f6yS1t4raST/AJa3Es8kcVfPHinwt/Z3h6XUb1/+Pi/urSNtuNxjkKO//fVaAebG9udI8azXtwn+snuI50/v5JFGj6l5N3HY+Z5n+hxR+Z/z0/eeb+9/7+VX8VwiLU7zDiURT+Vu9TyP5KazwIbTVZBev5sFr+88yP8A59f+WtZgfXHgSGC8ljg8jzJJf3cke/8A1n7v/wC11sa9o99o8v33jji8r95A/lS/v/8AVeVL/wCiKwLMQabYaPq098llcS3Evl3ez91Hf2Pl+b5v/TL/AFctd/4q8U6VDf8A2HxjA9t9qj8uSOP95FHFP/yz/wCmsX/LWCX/AJ4/9c60A4fRoYIrq8guLp/M/dSfa4If9XL/AM9PK/8AR8X/AD2/66RVw+paxbzazcX01jDZa5a2/wBmvII3k+w38U/+qk/65Tf639zWhLqX2OKOe/3y3ml/8tP+WV/Yf88/3X/LWH/yNDXMfEiLTJr6MWN3NE9tHLLZ+enl7IvM/exxSf8APL/plL/7UoA8+16We8u/+W0kkX7vzJP9b5X/AE1/561oabNNqNr/AKdB5scX7v7XGnm+R/0zlrP/ALX1XypIL6N/+eknyf8ALX/npViHWJ4ZY54I7OKSL955kcNZgbGn293bKus+H5lgniyxUjGIx1ff09iK/wBL3/g2I/a38H/G3/gnjYfAZr2NfE3wtuptMuNOaTdONOnlkls51yAWjdWaNcD5PL2/dCs3+bVZzQaxqkeuz74vN/d6hGn+q/66RRf8soq/bb/ggN8bdf8AgP8At62VloJMOq6/YvY2WwxxLe3g2yrpbSyjZHHqDRssbllzcLEv8WVAP9SqrFcv4Y8Q6f4t0C08T6RJvtb6FJoz/sMMj9K6igAooooAKKKKACiiigAooooAKKKKAP/V/v4ooooAKKKKACiiigAooooAKKKKACq9WK89+KXxI8LfB/4ca78UvGs32fSfDtjcajfSf3ILZDJIfwVSaAP4P/8Ag6g+Nd1qX7V2mfA7RpY5107RLK+kAcgW008s67njzhmCJkN6MQMfNn+Rnxnc2cVhHpsBcmL5ET77vX2x+3x+038Sv2pP2p/F3x0+LF3b3Oq+IJIrtYrJ1ktLK2aJDBYRuwG9oUZVkcAbpFYkBtwHwPqU0955k99J5Un/AC0/7YUAcP5M15L9unj/AHcX/PP/AJ6/886+gPCTJc/DGPwrby+ZNqeswyMnYw+UY1Qf7Zkfj2rwe81KD/R4II/Ljtf9X/0z/wDtte0fDrWI7OZdY1H57XRrSZ0Xt50+Iox/38kDf8BoALbWNS03wV4mg00qZ9Vura0DD7yxQsWcf7rOIz/wCsjxLo/nRf2HY/6u1ki063/65Qf89f8AtrXT+EIZvKs9Kn/d/wCmXVzJJ/1w/e/+ja9g0fwT/wAT7T9V1X/j3tbf+1rzzP8AnrP/APbZK0A5fUtN+xS6X4HsX/eeZF/1yroLOy/s61j0rSo/9bHL/rKwLOafUdUkmg/4+PLlk8yRP9XLP5cv/oqu/wBSmghv7jyNn/LK2j/6Z0AWfhl4Gg8T+IVOzzFg+4h+7/vV+m/wW+AlltFy9nvEfK5/v8FT/Wvn/wDZI8Crrl0ts8RV7jy52kb7o5yMH+9la/bjwH4D/cx6VB/z0+zf/Hf3tfOZlif+XZ9TlGG/dnk/gD9n1vF08VuI4l0nTUzcTqeHfrtQ/j1/yPrHTfgnpWmraWdrCbawgGIbaNdigf7o4r6g8L+ErXRNJhsY4vl2/KiDYme7fU139n4J86WSa+kr5+rU9ofSU6R8D+JPgnYw2v2+xtbaxuP+Wck6SSS//uv/AIuuPvPhXrk1r5/2FLLzfNjt4JH/AOWX/POWX/nlX6kTeA9KEUf7iq954J0P7BHB5CRf8s/3la06lSmZVKdOofjd48/Z7n8VWvkTx2cUkUf7uSeH97H/ANNP+mktflh8cPg5rOm3Aurm2t2NugUiPLojyf7Rr+nDxh8PfDvlSedAkv8An/llLX5sftA+DILiwlkFsVVJPMRGTbG2e6kYCD0QcdxXbTxx5tTBe0P5lviR8Pb/AMN2n7+N445Y/wB5Xg+gwz6PY3k8/wC7jsI5ZP8Atr5n7qv1I+PfhK2uNHv7cdba5jUtt9UL9a+N9S8EWItdUsfLTy7q4ijj+f8A7a19JgqntKZ8vjafJULGgzf2xqlnqk8n7uXVLCTy4/8AVSReZ9q/9p1n/G/TIv8AhHEtYk8xbec3e08bclnP/oRrsPhjDBF4Xk1XZ/o9rcSyW8cf+tj/AHfleXR8XPE8eq6jBqpxAbu3tppNn3MiPZ/Su04T4P8AJ/tKwuP7V/d+VHFcxyf89Kz4Zv7Nu7f7cieX+9i/+O/9/opK9Ys/B880Xkf9NLW2j+f915XmSS+XXL6bD/aWl3mleX5vlXH2i3jk/wBb5Xl/6v8A8h1mB1Hg/XoNN0G4+Geuf8e8tx5lnd/+iv8Arl/zyn/6Yv8A9M69AvJr2Xwvb6Vqieb5Ud1HbwSf+Rbb/wBqwf8ATavm/wDf/wDCOXEFx+9t7WSL9/H/AM8p/wDVV7j4V1691jwlHY6r+8uJY4pI5JP+eth/9qoA44Xk9mJP3nm/ZZP3kE7+VL/nyqr+NpvO0Gzv4JPN8r93J5n/ALV/8cr0C98Nwal4j8iePzY4tL/eSf8APSuf8a+Hb/RAujXGFa5aOXY3bzE3Lu98GgDzeHz7O/s9cgjSWSX/AFnmf6qT/MVaOmal/wAI3r0c1lape28UcslvaXf72KeKePzfLl/56xf/AL2s77Z5Wn2dj5f+tklk8z/lrHLB5cVV4Zp/stve+WkUlhH9mj/6aUAeovpljp1xa6t4RuGu9B1eAT2rStho248yB+T88RODye3Oc17/APC3S7a+8YeHLrUb46dbNqAtJryLd9o0+XG6O6iwM+dB/r4MH78Q7A180fDGac6BqHh2xjSSeL/ia2ccn+t82x/dS/8AkKvrD4MzfY7/APsO32fZ7qSK5s5J/wDlpLB+9i/7Zf8AxutAP9Pv/gkt8ftG+On7MVjq+mRGzmw081kCWjs7t5ZEu4FLc7UvEl25GSpUnrX6sp0r+Tb/AINhPjf4o+IGkfFzwX4sae5urO503UFuZC0iytcrMkhklfJeXdCO5Owc9q/rE87/AD/k1mBYooooAKKKKACiiigAooooAKKKKAP/1v7+KKKKACiiigAooooAKKKKACiiigBj9K/AD/g5C+Pdj8Fv+CZ3ibw7dCymbxpNHo7W12fluYH+eVVx/EVBx9K/f9+lfx8/8Hb2sRSfs4+DdAklUSHUkmSJ4PMOwt+82y5/dHKpkfxgf7PAB/ARrPibVNZnkv7+Qz3Fw5aR3/icneTXm97NPLz56V2OsXkNnLbwQbJP+ekkf+qrjryznmlj/wCef/ougDH87zpo7Gx/5a17j4WuILLTZIy65usnn+5DnP8AM15Npum/Y4/t0+zzPMruNH/c2v7j935Unl0AdhoOpz2WvXljep+7tf8A0b5nmy19cXmpT6x4C/tSCPy5NZkispI5P+/tfGGsfufMuJ5PK/tT95X0/wCD5oNeutH8Of8APho+qXv/AFzuvL8qL/0XWtMDP8GaXm5uJPvgCN/94En+RSrGpWc+my/YfM/eS/vPL/67yf8AxqtDwXpsaeJYLQ/u/LfAGdv+sH69a0L399dW995f/H/JLJH/ANcv+WX/AKLrKqa0z9MP2L7KDT9e02S4/wBXK0kCf74TP8q/eD4XeHLfVruG7gBEajDA/wAckn/suP19a/DD9nKxilfRkuT9nSfV7a1kP9yOYncf++Aa/pP+Eug+ddSTQQfZo4v3ccf/AGzjr5PM/jPtsq/hntGj+G/9Fj8//WV0H9mzw+X+783FdBpsPneX5FdhDo/7r7leOeqefzaaPsua2P7H/df6v93XYf2b/wA96IYYJoo5oP8ASY5f9XJHW3sgPB/Emgzyxf6tPL/3K/Nf9oLwwLK2mnRd6SffA/8AQv6V+xGpaP5sXn7PMklj/v8Al18T/GPwv/aFvNHtAP3A7nCV0ezMz+Yf496JBpX9pabOofCbB/20/wAK/P8A1jTbGbXreCeT/R7WTy/v/wCv/d/+0fLr9UP2sfDsuiS3USrlEHmf7rljmvyP1LXoItUs/wDnpLqH2m3/AOeXlf6r/wCLr6TKav7s+Ozul+8LHw91ix0Gw/sKd38uW3tZJPL/AHf72fzIq8f8S5+wWf25Ejt5Y4v9X/zy/wDtMslY/jbUr7TvFFvD/rLOKzlj/wCmX+s82Kuf1LWLHWPCMk/mf6Rpdx5ccf8A06z16x4h9EeG4rH7fHYz2qRRy3lrc/f/AM/5euf0b4OST65P5vyOBtb/AH64/wCHXjS2v/sula5KgurP/UzTHO9MDuf4v5/nX1To+vT3mlx6r5nmSS6fLJ+8/d/5/wDsKAPz+1LQb68utcg8hPMupIvLj/7aSf6qtjQYb6z0vUNL0uPzbiw/0m3k/wCWUfn/AL3/ANp19Uf8IF/YPjL7f5CXNv8AvbmSP/VxRywRyS+ZXl/g+GfQfC8l9rkifbLq3i/d/wDtT/yHQAn9pQ3njzXL6xjT7PFp8v7uRP8All9p/dVkfGO8udP8SvhfKjScOwZshzF0f/PpXP8AhW8nvJfP+eT7VJ+8/wCeslr5kcv/AMR/33R8SJv7e+0X08iSyRebHH8//TT/AFf/AH9k/f0AeL6lFPZ2Hh+xnkf7RFbyySf89f38lEMM9nFcQTx/u5bPzP8Arn59dh4wnt5tYFhYxLHHYRxW5yfnaWJAJc/9tA1c/N/x6x/9NY/+/n+fMSswF8G6n/YPiux1psmKK6BkQHG+Puv4ivp+zhvvAesyWM//ADC5IvL/AOuUFzJF5f8A36kr5fs9N82/8iD/AFnmeXX0xeazBrGvW89jvijl822kjk/66ebQB/Z7/wAGweq6MPi18RJHluF1KeCzgaD/AJdXtnXfHJ0/16SJKn3sBG4GWOP7S6/gu/4NvtSu/hT+3tq/w28RrLFda3pFxYFEKtGt7orYnEuSCuPOYIRkbiV6sM/3o0AEHerFV4O9WKACiiigAooooAKKKKACiiigD//X/v4ooooAKKKKACiiigAooooAKKKKAK9fyO/8HbHgzWLj9lLwr8QrV5Ps1lr1lYSpEilNt2twx85jyFzGuzHV8Zr+uKvws/4OLPgvF8Wv+CV/jrUgzLc+DJrHxBbhQN0htJ0V157eRJLn257UAf5aWsaPP/o99B+8jik/efJVfUvP839xH5Xmxy/vJP8Anl5lfSHiTwfBpmi+dYyf62OWSOTf/rP3dfM/iTUrH7XJfQ/u44v9X/0zi/z5dAHD3gEMdnB/yzij8uug86aK1kg/5aeZVnxr4cFpe/aYm+Qu64/ujtVa8vPOtbeef91HL/rP+2FAFi81KfUpbf8A55xRxW0de8eA/FX9g2FxcQfu7i/s7qyjkr5nsx51/H8/7vzK6iGWc2tvBPJ9mj8z/WR0AffGsXljpviP+3LH91HdWcV75cf/ACz/AOmdaE2m+doOn/vPNuNL0+1jk/7+V832fxIn1iXT7G/j8r/R/Lk8uvSfhl4w/tiXUIJ5P3n9n/ZpP+/n7qg0P2n/AGXNBgvPCVxqvl/6RYaxYXNv5n+f+eW+v6QPhiIPKfH/AC1klkr+b/8AYYu/7b8Naboscn765ulnYf8ATvCq7v1ev6MPg9MZvDlnP/0zr4rM/wCIfoGXfwz6o8N/ufL/AO/f7uu5ihHlR/u64bR5v3VdxDNBFF/BXNSO6qaH2P8A6Z+XVj+zTN5mP+/n/PSq8P779xB+8roYfIvIv+ev/LSuimctU56803zov3G//tp+7r5f+J3hvzrCSeffL/0zkr7Avf30v7/Z/wB914v8QtNg1HS5III0j82u72aOc/lv/b58MwW2rasiA7v7JeR+3ET/AP2Qr+Y/xdq02neIvsO5c2kgk3+5Ik/rX9dH7fXh6HVUuo0batzY3EAf+7IcMPz2V/JR8UdJih8eLaSKd2pJjyQuNv7vywc/hmvSy792eHndP/l4ct4/BW++2hvkuFXenuC+K8nim8m6/f8A+rr1C8s77UtLksZ5PNuLWT7T5/8Az0/5ZS14/eQ+T5n/ADz/APRdeseBUOoEsH9n/v8A/npXqPgPxhfaDLbzz33m28MkX7jfXh1n/psXkeX5v/tStDzr7yv9B/5a/wCrj30GR98TeO8Wun33l+bJ9n/0eT/yF/6Kr5P1zxre3+r3flnKSziXa3Yhdny/hWhqeparFYefYz/u7CT93/23r5/mvJobvz6PagfUHgO8gmtf7Khkf/llHHJJ/qv+essn/XL7legXnhWx03R7fVb1H8y6j/d/8s/Li/56S/8APL+OuP8AgDLpUMWof2p/pP7v7F5f/TL/AJa+V/12l8uKvaPEks+u+XP5jxW/7228yT/nl5n73/0XWgHyfr2mz3l1H9h/eXF1+7jjj/5Z/wD2qGKjQtCl8T6iIrVGVZJDArK3cDd/KvYdR06e78MXhsI3trTVPtUdx8n7yOK3j/7+/wCq/wDIz16/4V8N2Pg7RfD/AIqnj+zR/wBl3WrXHyeZFH58f+ix/wDXX7kVAHyvoGjeTdapPP8AuvKjijkj/wC2n+rr1jw3BBeapJ5Ef/H1Z/8AXX/Xyf8Ao3/prXMXmm6ro8euWGqp/wATC68qyuI/+ms/72WvWPh7DBZf8Vj5n7yWP7Tb/wDPKT/ll/2yl/8AtlAH9Yv/AAbZaBc+JP21fEXii1E81rp2i6tdCWUjbH9subZFVh/ffaSn+yjelf3NV/KL/wAGx3gfwxbaH8VfGmmxRvdWE+k6G12q4MzxwG4kBk/5aKouI9n9ws/96v6uoO9ZgWKKKKACiiigAooooAKKKKACiiigD//Q/v4ooooAKKKKACiiigAooooAKKKKACvJvjf8LPDvxv8AhB4m+D/i2LztL8Tabc6ZcpxzFcoY2HOeoY16zVegD/Gv/al0Txb+z98Sdf8Agz41tm0/UvBV9Lpl8ikN5Lxt8jAqTlXUq6H+JGU96+H4Zp/smqaV5aR/av3ln/0zuoJP/RX/ACyr+rj/AIOqf2YLX4aftqN8bfBvhuW2sfGuiwzaxqkUm+OfUg3kwBo8AR+WsKrn+PdnqDX8x+g6bpXiTw5cT2MaW1xF5XmR/wCtik/5ZfaYv+mX/PegDPvNY/tK1jvr6DzI/s8VleR/885YK831iHyopIIZ/NjikrsJpoIftEE8bxf8s/3f/ouuH1KGab+DzZP+mdAFeH9zL5//ACziqxeXn+gW8E//AD0iqv8AY54Yv3/+s/5aeZSzXnnRfv4If++KAO302886WP8A56RebJXceFdauINSaGHrEzxxn/rrxXl9nef6Vb+fsijl/dyeX+6roNNivvNjuN6RSf8ATR6zA/ow/wCCXC3f/CPSajMryMljJDH83HLJI4/RDX9LHwzKWc0lirf6pIuv+ymz2/uiv5//APgll8Pb6H4ZWPiSe3kVL1JI1SYEPsVyHeMEDaCQAf7+0HoBX9AHgjz/ADbO+/56yeXH/wBM/Pr47Mv94Z+k5b/u9M+qNNH+rBkrsLPP/HxvSOOKuP0eznmi/wCutdxZ6dP/AMsET/WfvK4aZ1mx/rj/ANs/M/ef6qtizh87y/P/AOWtENnP/sV0Gm6b5P7+eTzI5f8Ann/y0r0sNSMKhX/s2CWKO4nk/wC+P/atch4q03zovImj+0x/8869X+x/uv3/AP208uuX16z86KTEn7z/AJ57PLirtOI/Df8AbE+H15r9hqUsabzCpeFl7RxZcr+pr+N/9sf4eah4G8Qw+KLJDFaLfT6VMxGMmFzLFIc8/vbeSJsexr/Qw+I3wvbxD9uihiV3SRJCo9kxX80//BQH9jPStN0bxBq2uRvY+G9Z+y22oXf/AEDLqDzPsN7/ANM4vKke1n/54/JRSxPs6hlicN7eh7M/mX1iaGG1t/FUDv8AZ7/zY7z/AKYXUH7qWP8A7bReXLXiGvWc9nf/APPXzf8AlpH/AMtK9P8AGFt44+EPiG++H3jWBgy3HmMzAhHeMEJMo+5yrfXnB5yK4fV/+Jla/boJP3f/AEzfzPL/AOuX/TKvbpHx1T/n3UOH87yZf+mldBZ3sE0v33i/56Rx/wDLT/trXQf2PpWoxSfYXTzP+Wf/AC08z/ppF/yxqf8A4Q+/ml/0CB/+WUfmf6uKP/2tXScp6DDo8+vWF5/ZUjySRW9rJ+8T97JF5nlfuv8A2vXiFnps2oxf6Dv8z/ln/wBdYP8AlnX0/wCA5rG8ij0O+jvIryKSWyk8z91FJaz/APLTzf8Anr5vl/8AfdcPrHgmCz1nUINVj+zSS/8ALOf935F1/qov9V/qv/a1ZmtX+GcP8Pdegs/Dmqef/wAe8UlhJJ/38/8AtdfaOvfb4dBknnkSSzit5ftE8f8Azy8z/V/9MvO/9p18fXlnfa9fSWOqyebcX8n7v9z9mln/AOnmWL/2r/zx8yvrjw3eQax8PvFFjrl0n+lR+ZZx7PMln+wxxfvIov8AptWlUKZx+g+PLGaLR/Dmqxp5l1b3/wBo+T/VyzySSy/9svuRV3GveNrHUdZ0/Q59ltp+lyRSf89P9F8v/Rf+uvnV8v3mmzza9Z6rBG/2PzJY45I/3kX/AEy/e1Xl1K+F/H58f+ts7W2uPLT/AJawUe1Mj6A8befqXhi813zPLuNU1D/Wf9d/9bJ/3631o+FdQm8Z+PtN+EPh+SPT7HxDfWtgxlOI1t4CG3tj5yEwZDjPG7HHFcdr3jbSrzS7Oxvtn+ix+ZH5f/Lv/wBPP/TTzvn/AHX/ADxSvuD/AIJN/sMeLf25v2u4/hhpsV4tp5LyTahaAOtrG7KZJpWJACJGWC/MN0pRBywIAP79P+Dfj4XN4B/4J92vjV3SeDx9r2oeILS4Eex5rJvLtbaRkBOzzYbZJlXc2BJ1PU/uJB3rjvh34B8L/C7wFo/w28E2yWej6DY2+n2MCDAjtrZBHGo/3VUCu2TpQA+iiigAooooAKKKKACiiigAooooA//R/v4ooooAKKKKACiiigAooooAKKKKACq8/arFMk+4aAP5t/8Ag6Q+EN38Sv8Agl/feI9GhLXPhrXdNu5ZlfYq200ht3WTjlC8yNjuyrX+bHo9rqngXV5LLUkZFmTy5P8AbjNf6sv/AAXltYNQ/wCCRnxtt5mdCdGgZHRWYhhd2+Pu/lzwO/Ff5VU15NaeZAdnly/8s/8AWxSf9cqAOO1jTfO8yf8A1n/LTzI38quPvYYPN++8kkVe8eD/AAB4u8d291qXh/TGltYHSCaVfurPKQFRB1ZjkcAHGR6ivWJf2PPiVqMCussLs2whNrDYP9rj+Wayq4mnA6aWGqT/AIZ8PzfZ5rX7RB+7ki/1kf8Az0/6aVz/APrpfIG//tnX2RJ+xh8e7m8W10PTI9Qhb/ltFIEiT/eebyhXceBP2PB5pvfijqHkRAyLDFbL883o2SOPp/Kn9YgH1aofA9lDPN5f/TWvvj9lT9nLxd8XfFdraabp7mJyiPMy7UX8a9g8PfseeGNJ1eHUpNQYCTqXXc23/ZXs3uciv1Y+A/iqD4S6NZz6VYpbW9rH/o893cxx/wDbSWX/ANpRf6msqlU1w1L/AJ+H7Qfs2fAq1+GngXTfDEbFlskRfJU8n+6W/wDiK/QDQfDcH2CSeDZ5lfif4b/be8K6D5cF9rlnbeV/y0jm82X/AK5/6r/yL/y2r7B8Df8ABQX4aWaxyalfkwH71zLFIo/RDXi1MtPpKeZH636Z4ag837legWegw/6/y/3ktfF/gD9rf4T+M7aCTRrwM0v8JZc/l1r6g0j4naHKY4PP/ef8865vZ04HpfWfaHsH9g/6L9xPL/8AIX/2qrEOkf8ALfH/AH8rGsvGEEsX3/3fmVoxa9B/sSf9NK7P3ZzfvAmtMxf5/d1nzaP/ANNK6CKaCaTH+trQOp2MMXkT7K0/dmXvnkF54Vh+1Y2J5csfmf8Afj/95Xj/AMQvgZoPi9ZI5rb/AEhv3DMn3pYu8cufkeNh8jIwIINfUF5qVjN9o8iT/lp5nmSVyw+I2jWdxJHqvlWzA4/fNgY/velR7KmP2tQ/mH/bD/4N/dC+MfmXvwv1MaE0jj7LaiAC3QeiKu3YoHoDjsMcV/P/APF//gil+3X+zXrjy6l4XuvEWkxsSl7oZ+08A4+aJf3o69SmP6/6EHiH9qX4T2F20k2pxpIh8nBV1C/8Cxj9a+R/iB/wUS/Zos0k0208SwfaolJe22yMy4OCPkB+b2zXpU6vszzcRTpz/iH+eRqGh6d4MuB/wmukS6Zd5xtmsZIG/wCBCRUNc/8A8JV4c/0j5Ib6OX/v7X9y/wAT/wBqj4EfE+w/4nkmm3sl1/o1vHdpJ9mn8/8A5Z+b5U/lf9tf+/tfk/8AH74EfsTePNek1X/hEk0nUJfKk8yBPKin/wCevlRf8ta6faI8erhj+a+8+I2ovb/YvDEKW8ezY6IgCflWP5P9pWHkeI3mkvIv9X5aeZ5n/wBtr9ePF/7IPwLIWfwxI9pM3IkYl0X/AGWXP6givnfxj+x5q+hIy6ZCJ4myFaGfbKOflDBgqHI6uh/Adj2iM/q1Q/P+8hgs7CQarPN/08fa/wB5cyf9M/8ArlRo82q2ev8A9uz+d9si/wCWf+qlj/z/AOia9R1v4aa/okkt0mkTvNEAd6tvGAPm6V59FZ315F5Fj+6t/wDnp5P7qStP4hn7OpTDTYp4br/QZP3fl/u5I/3UUcX/AF1rj9NmvtYHkT7/APll5n/fz91XUf8ACK+I9e8vyJ0lj/1knkJJ/wCipa6jw38Pb6G6jng/1nmS/uI/9b/01/65f9df+WNBkc/N4bhvLW48jfHJ+6to5I/3n/PX/wAi1/cZ/wAGlPwRisNA+I3xqh0+NHW5j8P/AGjy5FeJEVbgxxyB/KZW3KZE2F1dY3JCsuf469N0fSvt9vPDAksdrJFJcSR/6r/rnX+ht/wbP/CPXvhp+wRNrurQi1i8Ta1cahDAFBxGwCxyBx95ZYljYemcc0Af0VVYqvB3qxQAUUUUAFFFFABRRRQAUUUUAFFFFAH/0v7+KKKKACiiigAooooAKKKKACiiigAooqvP2oA8S/aK+F2n/GP4D+Lvhdf2cV+uuaTd2kUE/wDq2lliZY93sHIJ9q/xtfFXhvVPB/iTVPCuuW72t5pN5cWN5BOhjkjuLdzHIpU4PDKR+Ff6937W37c/wH/Yv0G11j4x3V15l6HaG00+2ku7hkjxuby4wW2jI5x3r/KY/aju/BfjP9p7x14m+G11JfaB4i8R6pd2FzcK8c81vc3bSrJIj5Ku4bcwPQkis/aU/wCGdEadS3tEfqh+xh8DtIsPgn4Vt7u2ImeWTUXRvutccqsj46/u8bD2GCOSa/QjSPh1JBE8u395I/XPyKPyqx8K/CtjoOl2elQf6uK3ikr6gs9HHlR/PXxOJq+0qH6BgaXJTPj/AMc/DS9ex/s7TbNZ3fqX+Yt+NfN8v7F/jXVb6a8kuZDNcDcC3ys3/AckfrX7EWej2Plfv0/d16h4d0rTbSLyoolT++o+Xd+taYbE1IGVXDU5n4n+G/2Fdd061/4nn9pW3lfu5I/s3lRf9tZZfPm/78wxUa5+wv8AHZr1tS0a0tns5N2V+3KznH3doKALn3Ir+gizs7GGXz/sv7v/AH5I67D/AIRXw5rH+vtPMru/tKoZ/wBkUz+V/wAUfsv+J/DFudU8XaRrUTOdmVCzrj+9sU5x+VebxeA77R4vsPh2x1KO3ik8ySTZJbRSS/8AXL/VeV/22ir+vCLwVoktr5CQpLH9zbIu/wDmK4fVvgtoy2ryWMXyp9zexfbXRSzc5quS0z+afwr/AMJV4V1SPVb7SraSzl83+0J9kn2mPz/+eUv+uiih/wCeU3m1+mHwB+OXirwrayQarfPqWn2v7ySTf5nkWv8A7V/z+9r7A1j4M+FZopLGfToZY/8ApnXH6P8AB/w5oN//AKDB5f7vy/L2Vz4nG/8APw6cNltQ+yPhz4/1PVdFMxdj5b7EG759lfSGg+KvtkUc0EiSeV/sV+eFnN/YP/Hk/wDo/wDy0r6P+HuvT/YLeE/6uKPy446836yd1OkfWFlr0/m1YvNYn839/wD6v/pp/wDqrzfR5p5q6DUpv9F/1f7vy60p1QqUjH8R+IobRgZ97Dtt/ir4f+J3jDVdYuvIvpP3flyySR7/AN15X/tX/wCPeXXuHjDUp7y68iBH/df7deMalZ/bOJ0/1snmUUsb7MzqYb2h+X3xg0fxV9l1DxX4jea5kv5Jfs9pB/o0vlQf6qPzf9VbRf8ALXyofOmr44h+EnxNs/s8EEH2a3/1lxYWlt9isYP+uv8Ar5v33/bWbzv+Wtfu+vgDTb+9W8vFMk1vjYzk/Jj+7XUWHw00a9iEM8S+SG6/c3P/AJ969enjTzamUn8r/ir9m/4jTXUk/hW0mjkuo/8AR7uC2ktrb/rn/wAtvN86vQPAf7N/7Rn9jSaFrmm3ktnYeV/pf2aS28v/AL++f5Vf14aF8N/CJtnlNnGeMO7Ab2rPvPDelaDFJpVjv8v/AFfl7/3Un/bKtamOMsNlFM/m3079kjx5ZwtJqGnyWasOJo5Y5UCf7UYxk/SQfSs/Uf2TvE1ioiLJcabIwZfLDMYX/j27wufUdPwr+iHUtNt/N8++gtvM/wCemyuGvNNshFJ9+L/gdcP9onpf2dTP599H/Zc1yz177drcf23S5ZP3k+zzfM/7a/8APX/rr/rq8H+PH/BOjRrS4fxP8PG8hZGDNHbHYg/Cv6MNS8K2P2qS+g/5a/6yuH1/w3BeWskM/wDrJY6zqY2p/ED6jT/hn8g+sfsu/Fvwr4j+3QWNh4k0/wD5aeZ/oN9HL/11/wDRFef/ABK8AeMtM8Ow6hd+F9W0aw3R+dc3SLJGzN281AIz/wABNf1MePPg/pV55l9Yx+XJX5//ALRvw606w+AnjJntkSG1T7QgC7Qvl98D2Y124bNqlT93UPJxuSU4U/aUz8H7yaxh0a3g8h4pP9ZH8/73/rpFX+tL+wV4Eh+H/wCx18NdDa0t7KUeG9LaaO1/1e820ecfjX+WV+ydoGneLfiJ4V0jxNLDbabpdxDq961xH50UtpYzRmWIxHiUyo3liLq5baO9f6eX7JP7dPwt/aE1SX4ceHtB1DwrNYw79OstQSGMz2cW1QY1hkdVCAqNmRgEYyAce08RThP2R808POcPaQP0Gg71YqvB3qxWpzBRRRQAUUUUAFFFFABRRRQAUUUUAf/T/v4ooooAKKKKACiiigAooooAKKKKACqz/wCtqzVeftQB/M5/wWqtLu//AGgfDWmjG288NMke7+FhPNu/TbX8KXx68AJ8NP2gF8MOp8m31JGj3437ZGUjdjjoa/uc/wCC72rT6Z8UPBuqWYVZtJ0a4nEjfwiSZQPz8s/lX8jf7efh6TW/HXhn4zRxSRrq1kl2xYY2yoyhoiuBjy1K89HJOM4NfL06n+31KZ9tPDc+U4eofuh4Js/Juv8AtpX0RZQ+bXh/g+X/AEqSc/vI5ZK+kNHh82KvJqnsU/gLHk+TF51Fn4wgs5fIrZ1KEGw87/W18PfE7xt4j0HU5LHSrV7mT/pnWJ0U6R+gGm+NrKGKSe+nSOP/AJaeY9cvqv7V/wAHvCVxJp0mtJczRkqYbJXuNpH/AFyDCv51/wBpf45fE3QYv9Oe2+0S/wCrt538z/7TXEfBD9nL9qX9re4tPDE/iG40bTdSvY7Q2kJ+yRqnMkj+mQh7jksPWvTw2BqVzmxuZewP6X4v27vgJYIZLu41BUP9+GNf/atdzon7cP7OHiG1aO08QrFjqXUqv5kCv4/v2/8A9jXwJ+zl+1bY/C/WUu4PCum2NlNdX8gZ571JMrLcIuQo/eKwCA4G3rgivjewT9hyw/Zy1rTtAtvFafHCbxaq6TcwyraaLZeGlClpH48x53+ZAnyhXYOWKAq3p/2T7P8A5eHgf21Uqf8ALs/v4fx74d16zjvdDljureUfu7mBw6P9GBINZ800F7/01jr8P/2Ev2Tv2kPF37L2i/tE/AvxZdWHiBo7o3em6p+/07VTBNIIlymHjyqrk/Mcnjb1r9EP2fvjZJ8Y9Cv0u9Ml0bxBoc5s9W06dt7WVwM8hxw8b4JjcDa4GR0IHLiadSme3l2Np1z6QvIYLz9xOldx4Jm+xy+RBXD+TPDH/q/KrQ0HUvK1SOCCvmqv8Q98+6PB8M95FVjxhN9jik/9F1X8B3nkxR1j/EjWPO8z95mOu/2v7g8n2X7w8H1i8xL+/rkJtYgh/wBRSald+dLJBB/rK831KaaGLyIEf/pp5aVyno+yO4vNeghi8+D/AMh1j/8AC1PCvhv/AEjxHqVnYx/9N3r4P+Jfjn4r+OfHX/Ckv2fbVbvXkmSHUtUuebPSl3fMGxkvPgEFMHYeoOG2/mB/wUr/AGZPiN8BtH8DXHxa8W6x9n8T6xL/AG5qUDyW8UdhBHH+8iii/e+b+8r3MNgqlT94eTmWZU6H7v8A5eH9G9t+3b+zf4YBs7vxCJ5v7kMbN/6GBXL6r+3b8B9WV9S067vlt8ZeRrSR1/KES1/CjdaF+xX/AMM6eLpnvPEuqfGm48VQR+HYVDJpFt4aiUNLdzyuWE08rF0CIY3R1RsMm7P6Tf8ABOr/AIJ56/8AtHfCLxl418F6zqHh7VvCGpLbw6jbSlFYSw7ywYAndA+0+WAvmCTHmR7dx9Krlv8Ay79oeBSzup/E9mf002f7TPwn8WzNDout2s8hGRGX8qQj/ckw36VWvPiFpXm/uHr+Xeb4nftUfCvxb/wh/wAabWw1u3tY/M/tKSH91J/9t/8AI1fpR8OfFXjyfTVvV0+PyTyrQyM0bj1TOePxr5/E4apQPqMFiKdc/Wiz8SQ6x/1zrQms/OtfPrxf4MTarqUUf26OvqC8s/JirEKlI8P1iHyYpIK+B/2utI874D+OPJjSWSXS5f3clfoB4kh/e+R/yzr89/24Ll9K/Zi+JWpIysU0WZQFGTl1KDjHckD8a6sF/EOHG/wz8qP2APgS3xG+MzXUcTiCxdLiC5I3QG4RkOw/hk/hX9a37M+vx+Av2zvhzoummQfaHmtJxj7iy20vyv8AQ/rX4s/8ElPD0mifBmXxBd25OpSPthLLncOm3d/Fznj+D8a/QD4c3XjXwx+0A3ijXWjN1pF9b6wqsu3/AEbzcEYPQNhk/MVtjcT/ALX7Q1ynLufLalOn/If2Hwd6sVmWl7De2sd9bnzI5E8xKtwd6+wPzIsUUUUAFFFFABRRRQAUUUUAFFFFAH//1P7+KKKKACiiigAooooAKKKKACiiigAqvViq8HegD+Uz/gqfe6f8Tv2tL7S5m+12WkQ21mwHYRp5rL/33I1fh1+294PsfFWg3EG9PLi0PVPM/wCmd15f+i/+RfL/AO+K/X/9rCWeX9orx7dzfe/tq+x9PNavxQ/amv2v/D19o1jgiSN43VRl38zjCD/PFfA+1/2v2h+yUsD7TLKdP+4fpR8Ppf7Q8NaNqojx52n2srj/AK6xqf619UeG4Z5oo8f8ta+SPhDP/aPgrw7P5nmeZpNhztx/ywSvsfwrF53l+e9aYn+IeRh/4bPWIdN+2WvkV4N8SPhl/aMVxPB/y1/2K+mdHiPlf9tK6G80c3h+5XKdtM/HbxV+yX4c8SXX/E1gSX/ppIldB4D+DPxb+Eus2+ueAHS++yx/u4508ry4v+uv+u/7ZV+lGpeCfOHnwR1y83hvxHZS+fYvWtKpUpmn8Q/Of9tv4ZRftk+DtNtPi/otx4Z8VeHkkj03X9NeORWgk+9DPA7rvgJ5GPnQ8r8pYN+c/wAMv+CVms+JLxdS+JfiKObR1uojJDoenraXkydW/eSFwmen3X+tf0QS2fiqb+/JJ/z0qxZ+D/EWpeX57zf9916VPMqlT+Icf9k4eH8M0NB+JHxN8E/D7R/hJ8JfBXhjwb4f0azi063tLuaS9l+ywR/9MvIrwf8A4ZF+OFn8eNP/AGmvCsmj22ofaJY9YsLDzPKv9Lnj8qW282WX/pn5v/XavrjQvBdvZ/6+ESZ7Oof+de4aRaedN5/lpH/00/56f89a1qe/T/eVDKlTp0P93pnj+sWcFnpf+r/65/JXjFnN/wAVZH5FfS/xC/fWnkQf8sv3dfPFnpvk69XzeJ/iHr4f4D6/0HUpz9n+f93XL+NtS+2eYP8AlpLXQ6PCPsseY/8AlnXn/iTz4ZZK09kB5to/77VIzPR458JeMvEHh/UNH+HdxFaatd28kVrczAmOGRxgOQOTsPOO/StCzs/9Kj8ivpjQ9Ihv9N+1W/LlPn/2TWuGp+0/dmVSryH5b/DH4P8Ax3/Zj0u3sfB19o8lxL/pNxJd2H724l/5a/vfN/7a1X/bA03Vf2zPgPefB344eDoYpLC4+26PruhXn720uvL/AOfaX/Wxf8sp/wDntX6EeMPBOuSiT7D/AN+68Pls7HTpfI1WB7byv+Wkde3TxFSn/wAvDhqYKhX/AHns/wB4fzXp/wAEe/F19o80154l0mC7V4pGNlp0ijafvLl5FIf/AGBuT/aNfrx8H/hX8aP2dfgFp/7MvwP0620jwva+bcahrUnmXOp6nfz/APH1Jc/88v8A2jsr7ws7yf8A5cNVmiolh1W8/cT3TyUVMb/z7M6eW0/afvD8t9V/Y88P3R+2+J3bUJk6Y+T/ABr0DwZ8HG0RvsumkpD/AHP4a/QiH4ez3kvnzJ/38rY0f4cCGXz9nmV5FWrUPXPHvhv4PvrP/Xxp5les6xZn7JJXoA0eCzix5fl1zOv/APHpWdMyqny94km/0/yP+eVfm9+31GLn9ljxlo5bH9orZWCL7y3UKf1r9MPFVn+9r87/ANuewup/gnY6NatKsmr+ItNsP3A3y/6QzcqmQZDgcICCxxjkCvWwNL94eJmP8M+gP+CZ/gO1tvgxot08sarZWqeZhv8AXTyMxf8AU19weNPD2nSeKku9m8SQSRlv+ugx/LNeP/Dn4Hx/BaytfD9onkSQQRQSqG4aSNeT26nJ/GvoiaGeX7HcTp/y0rycT+8qH2OCw3sKZ+8P7N3iJ/FfwG8Ja9cArM+lWqyAjHzxxhW/8eBr2uMcN718s/sWNn9m7w0v/TO4/wDSiSvq3J259eK++ofw4H4jioclepDzZLRRRWpgFFFFABRRRQAUUUUAFFFFAH//1f7+KKKKACiiigAooooAKKKKACiiigAqvP2qxVeftQB/I1+2roU+m/tG/EjS0Xa41Frhec/8fKCb/wBqV+Aniqb+0fiDcaHrkfmebJ5fl1/VL/wUm8FNof7Vd1r88Y8nW9JtbhCOu+MvCw/75jX8zX4ZfHf9nKx1a9PxD0eSSF7djOQq53+tfA46nyYiofuHD2NpzwdL2h9A/DGG+s9B0+x1WNPtEVvFHJX2P4P/AOPWPz/+WX+skr5H8E+KtK8bS/8ACVaV/wAe9/J9p8uvrnwTMfKrSofOU/4nsz6H0GHyo/P/AOWn+r+/XpFnZ/6L+/2eZXD6DxF/z1r1nTbPzrWsTppmd/Y/nf8ALOq8vhuD+5XpFnZwQ2uII/LjrRm03zaDY8n/AOEat/7n+fzrXh0Gx/d/u67iGz/e/wCnVsRaOYZf+mdbUwOHh8NwebVi90f7HFJP/wAtK9Qh03/nh+6/66Vy+uUVKpjTPn/xJDBDayV4dB/x/GvefHk37qSvD4R511mvNO4+oPDfnzWtn/y1rn/iRZz2d15Fdx4D02CaK38//tpWf8VIoP7Qk8j/AFf/ACzrtf8ADF7X94eAad/x9V9P/D39z+4r5os/9aa+h/B81RhvjM6nv0z1jUdBgvP4K4e88K2Pm/v4/wDv4lfQNnDBNYefD/10rGvdN/6Z17R5FOqePw+A/Cs0sf8AoMP/AHxWhZ/D3w5/r4YEr0D+zfJ/1FbFlZwRD9xs/wDiKDX2jPJ7zwT5PEEf7yuXm0eeyik/d19ISxQfvP8A2pXnGsQiGsqlI0w1Q8G1iz/e+TBXk/iSH/RZIP8Av3X0BrEPnRSGvB/GA8mLNcXszpqVT5o8SfvpZJ/Mr5e8b+DtQ+IHx8+Fng6ymEEX/CQHWnMg4c6Rby3Made8ojr6g1KH91JAK8/8E3lj4c+NP/CxtV/5lzR7/wCz+Yn+rln8uL/7VXdT9yh7Q8qr79SnTPu/45+LNDvtNsPGl1MBfaiN11GvZwAK8wh1jzdH0+ef91+88z/tlXD6j4VvteGn+I/Fc7y2dr/yw/5ZR113hfQH+IXxG07wbp5AjvbiOxUk44c5cj/dQM34V5lT2lSofY+1p0MGfvn+zPoFx4Y+BXhfSr7HmLp0Uz47GceYR+bGvesfJWfZWdvZwpaWyCOKNPLRK1OvJr7unT5Ich+GVKnPNzFooorQgKKKKACiiigAooooAKKKKAP/1v7+KKKKACiiigAooooAKKKKACiiigApj9KfRQB+T/8AwU7+FZ1XwVoHxYsIg8uhTta3Zxz9mvMLnPtKsaj/AHq/HfWNA0q90aTSr6P93LH5clf1QfFHwJpfxQ8A6t4C1jH2fVbWSBiRnbvBG4e4zX8s3iyXU/DWq3vhLxBC1vqukzG1ukb+Fx1r5jO6fJP2p93wvifaUPq/8h8keEPA0fwt1a7020c+Tczeeif3K+sPBN5OK+f9em87VI5/9b5teweD7z97XmUf4FM9Kp/HqH2R4Pm86veNNHmxV8v+D7w+bHBX0RoE3/LDNSbnf6d/qq6mGHzovInrn7P97FXUWdZgHkz+b5//ACzrYs7P/YqvZzf8966mHyP3Y8v/AJZ1tTKqFaaH/cry/XK9gm/1Un3K8H+JGpQaPYXF9O/lRxR/vKyxIYY+d/G155sskFcBpsP+lc1fvBPeRfbr7915v/LOl07/AI+q4juPr74bxf6LH59ZHxUi/wBLkrqPhLDB/o9j5nl+bJ+7qv8AHWy/s3Uo7fbh5E37927d/hivS9l+49ocvtP9o9mfJ/nfva9o8E6j/wB/K8X8mea6krqLK8m0G6t77/l3l/1lcJ1H3h4Vm821/wCmcv7yuovLL1/ex1w/hW9h+wRz/J5deked+6/f19Jhqn7s+eq/xDn5rP8AeYnqv5P/AKL/ANXWxN5HlVjy/wCq/f8A7ygZj3t7P/y3kT/2lXD6xeeT5k09dRezeT+/n/eV5xqU3neZXFVO6kctrF55MUlfNHi/UvOikgr1/wAYXnlRfuK+b/Et4ZfM+eoKPL9Sm/1k9cv8M9Bh8U/EMWF9/wAe/mC4dR6w8p+proLyXyrW4/56V3H7Omj/ALrVNc/56yeXXbiP4B5+G/eYs+qNYi0r+wZNKgg/0f8A1dei/wDBPHwE2t/F7U/Gt0o+y+GoPs8HIyLm7ByemfljyD7OK8T17xHY6Po1x59fsF+yp8LU+FPwd03SruLZqd8v2+/3YyLicAlDgDPljbHnuFz3oy2nz1DTiDEuhhPZ/wDPw+lYO9WKYnSn19Ofm4UUUUAFFFFABRRRQAUUUUAFFFFAH//X/v4ooooAKKKKACiiigAooooAKKKKACiiigBmQV5r8+P2wf2GfCv7R0kXjDw5croHi+0jaNL1ULR3EZ6RzoDhh/dfBdO2Vyp/QggAVXkjVhxWVSnCcOSob4fETozVSnufyMfE/wDZc/aX+EbXN38SvCEkOmacrTPq1jIlxZGNTgncCsqD3kjQfpXAeFbzyb//ANqV/XJ8VvBVp8SPhjr3gO+VXj1ixuLNt4yMTIUJ7etfx5+G4J7K68if/j4ik8uT/pnLBXg47A06FP8Adn1eCzapiqnPVPsDw3efvY56+iNBvD5UdfJ/hub/AFea940DUvKirwj3j6Q0e89a7izm/dV4vo+pdzXpFnN+6oNqZ3EM0GPIroLOYeV/rK4eGauo02WgKlI6j/llXxv+0DqsQ1LTdGH3JnJdP+uf/wCuvrC8vP8AlhBXwx+0/pfiCdrTxT4fh+0Saa+fJ/vRkfP/ACH4VVU0wNL94ctqV5YxWsc88ieXWPZ6lbw3ckH/AC0ir4v+ONnaftG/Da++GugavdaFfXvyzXFuzQTqn8WOMcjjnIINfnb+z/4B/bH/AGK/Go8O65rI+IXw2us7LG+ufM1LTf8AppbXEvT/AK5S8e3rlSpe0O2r+7P6YvBPjyfTvLzJ/qqseNviF/wkl158/wDyyr4X8N/Fqx1Gwjv9CuvtMcv+rqx4p+I8lnYeals93eStsgtY2CPM56DJyF+po/eez9mZ+yp/xD6Y03UoLy6/cfvf+uaV3M01leWHkfJ+9jr+dS9/4JsftaftN/EuT4yftg/EF7W3jwdF8P8Ahi5nsrGwjGehxkDB/wBZ/rifwx+uXwQ0Txd4L0Ox+Gt7fXeu31svkpe3bmWd07b3JJOBxyScVpVpezClU9ofqB8MZp4fCVvDPv8AMr1Cz1Lya8X8Hz/Y9Ljsf+eVdxFef88K7vank1aX7w7Cab/V1j3k37qq815P5PElYF5ef9NP3dae1D2bE1K886vJtYvIIovv10OpalPNXk+vXnnVze0NaRx/iTUoJvMr5v8AFV5/rM16x4kvPSvn/wASXk/m0UwqmP53nS8bI44pK+vfgD+zf+0D8Q/CDP4E0+DTdKuZnJ1DVJGjRl5+4iBnb0zt2++RXy14G8Kz+NfFWneCowfM1O8t7T5OuyZwufwzX9Xmi6PYaBpVtomloI7a0ijghQdFSMAKPyFfQUsNTrw/eHyOJzGphalqR8OfAv8AYg8OfDzWLbxp8QtTk8SazbhWhDKI7SCRed8aDJ3e7swHUAHBH3yQAMioMJ61Y428mvSp04U1yQPDxOLrYiftK71JaKKK0OcKKKKACiiigAooooAKKKKACiiigD//0P7+KKKKACiiigAooooAKKKKACiiigAooooAKKKKAK33hxX8n/7Uvglvhn+1Z4u8MxReTC1817CAcjZe4m/TzMfhX9XrHK1/Pz/wVY8DpoHx10Hx7axGNdZ0o28knYyWkhJ/8dlX8q4cxp3pnr5RV5MQfFOg3le4aPeebF+4r5n0G8r2jR9S/e+RXyJ93SPoDQbz/V5r1DTbz/ppXz/pt5/00r0fTdS839/WFQ6KZ7DDqXeuxs9S8qKvH9NvD5vNdfZzVl7U6jsJrzzov39cfqUMGpRfv/3lWJrys+aagVOp7M8f8afC7wx4mkN3qVsrun3Zf468f1L4P6VNFJBP/q/Lr6gmmrn7yugPrNSofn/efsu33hu6k1XwddPbeb/rIK94+F3wKstIvl8QeJ5f7Qvkxsx9xa+mJtOgzH89V9HxZy+RXp/u4HN7WpULE2jQTS/9M66HQNB0rR/3FjGlVvtlaEM1cVSqa+1Ooim8mWugivP+W4rh/O/z/k1Y87yqxIOovNY7wVy+pax+6/1by1nzal/37rl7zUfOi8iq9qT7MsaleedL/wBM/wDnpXl+sXn72T95XQXmpfuq8v1i886TPmVRRz/iS8g/eV4Pr03my/fr0jX7v/lh/wA9a8nvIZ5rqT/prXXSODEn2f8AsBeDj4q/aN03McjW2kRS38hU4C7RtTn/AK6Ov5V/RQc44r8f/wDglx4Sy/i3x5MfnHkWEY28D/lpKM4/651+vycLmvqMNS/dn5/jqvPXbLdFFFdJxBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//0f7+KKKKACiiigAooooAKKKKACiiigAooooAKKKKAImGAAK/Kj/grH4M/tb4IaT47ztbw/qSeZkceTdqYjzjvL5VfqwCdpNfP/7UHw3/AOFwfADxV8P0P76+sJDb8ZzcQ/vIfw8xFrOpDnhY1w9T2c1M/lb0G8r1jTZa+b/Cup+TLH5yfvP+ede8abeQV8TUP0PDVT2DTdR86KvQLPUv3UdeH6beV6Bpsw8rmuaoelTPadNvBNXbw3kPlV4fpt5XoMN6fsvn+Z5VZUjWqa95r0FnxPJWP/wk8P8Az0r8p/21f2t9b+CGkDxRZ2El3ZRzpBMV+Z8HP3VT6dzXwPpH/BXfwF4jtv7N0/UQs/3ZEaORWX3BdAD+Brq9kGGp89Q/pI1Lxtoem+X9uuP3n/POuPm+KmlTf8eP73yv9ZX8/wDaft26brl3gXiuPRj8/wDKvaPB/wC1FY69FJB9r/1taUvZnv08oP3Q0f4j+Edc8uCeV4LqT5V3L8n5/wD6qz9T+IHhLRpFFkXu52PXb8jfn/hX5L2fxy/si68+xuv+/j0RfG+4hka7kuVDucsdvb+7/nNdPtKYf2J/y8P1Zh+J3hy8l/1jxebXXw69BNF58D+ZHX4r6v8AtUfYpJJ98P8A00krz+L9vnRvDA8kahGf4tmV/Kh+z/5dnFictqUz98P+ErsP79bEOsQS9JK/nQ8Rf8FZvAFtq9rpiLKzXD+WWkjmiTf67jHnHvgiv1//AGe/ipfeNrD/AImsflSf6ysqlI8Op+7PrC8vP3VcPeal50v7itDWLwQn/rrXAXl55MVcJ1UhNY1L/nvXn95eHyvPrQ1K886WuH1LUu8FdBlUOf1i886vN/O/0r/broNe1KCGKTH+srl/Bvhu9+IPjfTPCGnbvO1e7gtEKjoZnCjv6mu/DUv3h5ONq+zpn9Gn7A/gAeDP2b9Eu5Vzda3v1GdsYBE5/dHp/wA8RHX3CgyuKwvD2g2XhnQbLw7pwxb2EEdvGD/zziUKP0Fb5+UV9bc/P6lTndxaKKKDMKKKKACiiigAooooAKKKKACiiigAooooA//S/v4ooooAKKKKACiiigAooooAKKKKACiiigAooooAKr1Ypj9KAP5EP2zfh5N8Ev2ofE3hOGAW9jf3B1KxCg4Nvd/Ox5/6a+Yv0FcDoOv+bX6+/wDBYj4FN4g+Hmk/tA6JCWuPDbfY9R25ObOdhsY9RiOU4A4/1pPavwq8K67/AMsK+SzanyVD7bKMT7SmfVGnXn/LevSNHvP3teD6BqRmlr1CyvPJ6V5B9BTPYLKbyf8Arn/y0rqPJ+2WskH/ACzrzfTZp5vL8969Q0HyIf3BrM2PIPHfwb8I+ItNme7tkabZsjkkXfivy21j4D6H4O164sb7TbaW38z9358Mcnl/9cq/eC8soLy0k8+vmf4keA7HWP8AXx/vK7qZ2YLG1KB8L6R8H/AOpWMct9plncRxdEkt432/mKsWX7MHwE1t5ba88NWjMTndADDz/wBsyte0f8I3/Y/7gx/u67DR7zSrOX9/YpLH/rJJI/3XmVsfW4LG+0/h1D5/uv2HPggk6x6bFq1oDhXS21FlH/j2+uPv/wBhf4XW16sksurMn+1qEw3f987SPwIr9MLP4g+DpdGksdL077NceX9m8yuo/wCFheHIdG+w2Gh/6Z5f+skf/Vy/89K6Pq8DX+2q9P8A5dn4/wCofs3fATSFjS78L293NEQwa633Az9JSwrj4PhT8N4Jnbw94X0y2uiNjmG2jj4/AV+gHiTQL7WLWSGfyYvNrQ8MeBrSe9kvLhFk8x8s/wDHS9kcONzc8f8Agx+yzpvifUR4j8T2azwqfkhaL5G/Wv0A8K+A9D8E2FvY6VAkcdr/AKv5K7jwTo8Gm2EcEP8Aq62Nemg8qs6lSmfHVKtSdT2lQ8/1i8/e/frz/WL39z/rP3dbGvTeT5k9eYalqXnV5gzO1K8rh9SvP9ZitDUryvN7zUq6qZy1TH168r7u/wCCY/wp/wCFhfH5fHdxFu0/wrbyTYdSVNxODHGPT7u9h7qPx/NLUtSnvLvyYP3sksnl+XX9Qn/BPv4K23wc/Z10uS5i26l4gH9p3TuMP++AMank9Iwv45r38tpHzWd4nkp+yPuODvViq8HerFe2fJBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB/9P+/iiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA4zxz4M8PfEPwdqXgbxVAtzpurW8lpdRN0eOUFWH4gmv4sfj78JNf/Zo+NWs/CrXmMyae5NvM3/L1byE7Hx7/AKHI7V/borEpur+bf/gtdpyj41+EtTI+WXQpIi2P+eM7Mfy80fnXnZlS56Z62UVeTEKB+cnhvXfO8v8AeV7xoOpfbPeSvg/R9Y/se68ib91JX0x4D8VQTSxwT18ZVp+zPu6dU+uNH/c+XPXpNnqXkiOvJtG1Kxmi/cf6z/pnXYWc3nf6mszppntGm6j50VUNe02DUv8ArpXLabNPCa7CGYzfuKDY+d/Eng+ebzPPrwfxJo/iPRx/xKt9ffE2m/bP9fvrHvPh7BqUX+of/rpJXTTpe0F7T2Z+b9n8Qvipo91JBPBDL5v/AC0kruNH8VfFTWP388/lf9M9lfWE3wrgll8/yEqxZ/Deezl87yH8uumpSD61UPD9H0jXNSkj+3b5a+mPB/hWCz8uf/V/8ArqfDeg/wBmxfv4/wDppXT3vkQxR+R+6rEPaizal9ji/cV59rGv1X1jWDCP9ZXm+pXk837+ucZoaxrH7qSvJ9S1L97JXT3n+qFeUeJLz7HL+4k/dxU6ZmZ+vax+68nf+7rxfXte8mLyIJKseKvEv7rHmV4feeJIPt8c8/7395+7jr0sNSPHxOJ9mfT/AMCvBl144+IeieEEIW68QX9vaQuTjy4pHHmP/wAATc2Pav7INPsLHSrCHTNPiEUNugREHRVHAFfy6/8ABMjQpPFH7V3h/U9Uy7WNtdXi+g8uMxfzlFf1Mx/dNfS4P+GfHZr/ABB0HerFFFdh5gUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/9T+/iiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAqzdRX4Af8Fp9NSfxT4FuF++9rfJ/49DX9Aw+9X4U/wDBZWzC33w21cdN+owfpBXFmH+71D08p/3umfzUeKry40eXj/llXUeCfiFBDJH58nlV1HjbQYJpZP3fmRy18j+JNB1Xw3dfbtK/1f8Azzr5L2vtP4h9j7NH6seCfiRBeRf6DJ/4/X1RoOvQS+WP+Wdfg/4J+Kl9oN1xJ+8r9CPhj8crHUrWP50rKpSOmnVP0hs/I/5YV19nNB5sfkV4P4b8VQXlr+4kSu4s9Y8mSub2R2+0PonTbOCa1/1ddPDo8E3/ANrry/QfEv8Aq69Y03UoJq9LDHNUqmfDoMEstaH9j/uvO/55f6vy60P7S0o/67Z5f/LT56r3mvQGP/2pXUZ+0Zj3kNjDF+//APQK8v8AEl5BCf3FdhrGsedXj+salAZv39cNSqdNM5e8/e9a5+9/c/8ALStC8vMf9c68n8X+K4NGi86eTy65vZs0qVSv4w8SQaba/wCsr5H8efE//WY/7aVw/wATvjB5PmeRJ+7r4f8AEnjzVdev/IsK7aeGPNqYn2h7Rr3xI8268mCTzZP+WccddR4E8NarqV/9t1X/AFn/ADzrj/hL8K768lj1zVY/Mk/6aV9weFfB5s4vPnrWpif+XdMKWG/5eVD9OP8Agkf4fguPjrrWsHrY6LIE/wC2ksVf0OR96/Dj/glHaeR8TPF2f+gdbf8AobV+48fevo8u/gHx2df73ULlFFFdx5AUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf//V/v4ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAK8/avw2/wCCzl2P7P8AhzY/x+dqL/8AjsNfuTX8+/8AwWJ1Y3PxT8G+GDJ/x7abPeYx2uJNnX/tjXnZj/u9Q9PKf97pn473kMGo2v7+vL9f8HedayfJ5tewfY/Oqx9jz5n/ADz/APRdfEe1Pv8A2R+e/jD4eiH/AE6CvP8ATde1bwff+fB+6r9CPFXhWC9Mn7uvm/xJ4D83zP3fm1006oeyPSfhL+0t/ZsUcF9PX3/4V+M1jrFp+4nSSSvxH8S/DHzpfP0p3trj/pnWPpXxB+KPw5uUGoQfb4E/iX5H/Otf4hyn9GGj/EKCaL9zP5Ve0aD4886LyJ5P3lfzz+Gf2vrK4EcN1P5E/wDdmXaK940H9rSCL9/BPDJ/10ej2Ye1P3Im8VQTS/6/yqr/APCVQTReQJPNjr8d5v2xoJv40k/65vWfN+11+68iedI/+ub1p7MPan60ax480r/UQT15vrHjzSjFJPvr8p9Y/aosYYv+PtIo/wDpo9fPHi39tvR0j+waNJLqk4PKW3zD/vr/AOtT9lUD2p+sHjb42QaPayT70jr81vi7+0peatdPZWUuMf7X3q+T9Q8VfF74r3A+1uNPtR95Eb5v+++P89q9Q8E/A2D/AF+z/wAcpfww9nUqHHxf8JV8Qr/+OXza+oPAnwZ8qW3PkebJXrHgD4XWkfl+Snlp3b+9X2R4V8KQWcsfyfvKKlU1p0jj/C3gP7HaxwQR16wdHghtf9XXoGm6P+6km/5aVz+pxeTF9nrhLP0X/wCCWcK/8J942kP8FrYj/wAemr9qIetfif8A8Es5s/EfxlB/05Wn/octfthD1r7fL/8AdoHwWbf73ULNFFFdp5gUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf//W/v4ooooAKKKKACiiigAooooAKKKKACiiigAooooAKzr6/tdLtZL++kWKCJS7u5wqqO9VtT1Sx0nT5tX1W4S2t7dC7yyNsREA5ZicAAe9f513/Bdv/gvf4h/a41HWf2Tf2TtTk034PWhay1bWLVv3/icsFWRUlViF07JZDtH+krk7mibawB+mH/BSn/g648HfCTxLdfC7/gn5oNl4zu7Jp4b7xNq7MukrKpZALOOFhJd8jd5m+KPoU81Gr5i+An7Sfx6/a8+Bvgn9oH9pXWh4h8VeItNae4uRDFbx+WtxKI1SKALGuFwDhQfYdB/Hv8Cvgt4n/al+Mdj8IPDFz/Z1vOhutQ1AwvNHpWmwkG4upUjBby4lO5jx6ZyRX9pHw78M+F/D/hXRfCXgjTP7H0nS7G3s7WyB3eTHCoQfoN+Tyd1eJn9T9x7M+gyCn+/9oegabD53SOtj+x/3VaFnDXUWdnBN/r6+OPtDyeXSPtv/AF0i/wBZXm+v+FfNik8jmSvqibQYJov9X+8rj9S0L/WefHQdB8X3mg/890/7Z1zF54PsdS/18dfTGveGgJZBsrhxpvky4/5Z0HOfJ3iT4G6Vr0X3E8yX/Yr5w8Sfs66rZ3/kaVJNbf8AXN6/U+Gzg/1+zzfK/wCef/LSvSIvh7BrEUc8CfuzWlPE1CqmGp1D8Px8IviVYqTbXk4X0C43frViL4P/ABGm8v7Rqt5LH/0zev2h1L4V+TDkwP5fmf3JKzv+FV+bF/0z/wCemyun6yZfVj8j9B/Zp+1y+fqvnS/9d3r6J8NfAfS9B/1//kOvt+LwHZf3/L/66VZs/CljLdR+R+9rP6zUNaWGpng3hv4ew/ZY7H7Inly/7FfRHhXwH50X7+vSNB8N2NnLxH5slesaPoM8ssdZGxQ8K+GoPKj8j/V16/pug/6yYxpXQ6boMFnF5EFdPDZwQxeRQc5z81nBDF5Fef6//wBMK9Ymh87zJ/L/AOmdeX+Iv+WlHtQKXwk+PPiD9mnxNP8AFPRp3kgtEiS+tQkfl30f/PvJLLLBDbRebJ5v2r/llsx+9Ff0YfA/9pz4IftC+FNI8U/C7xDa6gus2ou4IC3lXBTo+YnCyAoflbK8H6jP8tmvi3ntJbG/jSWO4BgkRxlGSTg/pX5QfH74S3viqXVPhl4dvptN8eRW8WteE/F+rX97FLHqkFz/AMe0VzFL/o3naXHBYf8ALL/UJLX1OS4mn7P6ufIZ1gv+Yg/0b6l8xf8AP/6q/wA6j/gnj/wcIftffsz+P7Hw1+1Zq178SvASTPaatbXjrNrWnNGwRpYLhhunCY3GKdsvwEkUA5/0CPhF8WPhz8dfhtovxf8AhNq1vrPh3xBax3dje2rhopopRuVgR6g19HVpezPmj1KiiiswCiiigAooooAKKKKACiiigAooooAKKKKAP//X/v4ooooAKKKKACiiigAooooAKKr0UAWKZ5i/5/8A1Vg694i0DwlpM2veKb6302xtxmSe6lWKJB7u5AH4mvyM/aN/4L0/8Etv2Zr+98P+KPibaa9rWnXL2c+l+HY21S4jniRmeOQwgxQsu0oRNInz/LkYbAB+xnnf5/ya5Xxn4t8J/D/wtf8AjjxtqFvpekaZA9xdXVy4jghijGWZ2OAAAMkngCv42/2hv+DufQBpt9p37Jnwou5bzyYnsdU8WzJHAr/8txLaWsxcgdEYXKk9Soxg/wAknx8/aw/aH/a8+JsnxX/ak8X6n4uvXlmNrbXM5FnZxzyGUx29uMRxIC3RFXPfJ5rpp4WoZ+0R/Ud/wcIf8FsfBXxo+Hlt+xZ+xZ4kt9Z8N+IbWK88Xa/pz7lms5RvjsLeVGAxLkNdEDGwCE7g8qr/ABJXWkeIfiD4ttfC3hi2a4ub24itIUTndLO4RF/EkD8a9g1LUp9S8ybf+8l/eV94/sU/BZ9V+IMt1p1obu60i1jaFop0gntLi8ljtob+IP8AeGnzSx3Uo2P+6ib5e4zxtX2f7umdOGpc/wC8P0Q/Yo/ZM8H/ALO3wlsvDm+z1bxh4njtdV8UXdvcx3Mtpazx/wDIJ8uH/V/6VH+/i/2K/VfR7P8AdR/89K4fw34Jg0e7vPInS5kury6uZLuObzIruWeT97cxS+VB5sU3+t/4HXuGm6aBFzXwGZY329Q+6y3DewphZxfvY816BpsMHlZrHs7Pzv4K6izigrzT1Sx5Pk+ZB5dUJtNg1Liu3+x/bP8AUVn/ANm/Y5vP+fy6APH9f8N/8t4K8X1jQP8AWeRX2BqVn51r+/ry/UtBg83z6zOg+Z/7Hnhuv3Ef7yvePhvNBZ/uJ/8AVyyfvPMrl9Y0Hyf9R/yyrP03WL7R7v8A+OUqpofYF54VsLy1jnndJf8Ann8/lVw+saDY2Ykhn3/9dJH/ANZWRoHxO0r7B5F9Inly/wDLOdK37PWINYlk+wJ+7/6Zp5Va+0Rj7M83m8KwTS+fP+7/AOulWIfB8H9yvabLQZ/Kj8/ZF5v/AC0rf/4RvSoYvIMf/bOSg2PL9N0cTfv/APlnXpGg2fkyxwQf9/K0IdH/ANXXoGg6bP8A8sP9X/z0oMyxZ2flRZ31Y+yed/2yroJrOCGL7PBWfNDWhznH6l+5lzBXm+vRedXqGsQ/uv3H7z/ppXD3kNZgfP8A4wsx5UdfJ/x/8C+Hdb8MNq3ifQ18S2tgsrXOjTXb2UWpWk8Zjlg82P5o5fuyQTc+XKisBgk19weJNN86KSvB/iTpXkeBNU1CV5PLtoDcTGJ/Lk8mL5pdjfwnYG5ropVfZ1DCrT9pT9mfyQftS/8ACS+Ff2jmGv2P2ddcsLadLrekhvbiFBHK8hiiigE24DzViXDMfMP+sFfuL/wRT/4LD3P7B3i+b4RfGwz3/wAKvEDNMywruk0a8kJPnRqBlo5GyJYxjk70+cMsnxz/AMFJvAeh2nwq8J6rYwPFJo155cfnpH9qjin8z93c+V+5luvK8vz5Yf8AXf62vynh1KezP7j/AL+V+nZdV9vT9nUPzvG0uSp+7P8AYo+EXxq+E3x68HWnxB+DXiHT/E2i3qLJDd6fOk8TAjPDISO/rXqFf4//AMIv2k/i98C9di8a/BfxRqnhTUoSC0ul3clqzsM8P5TLuXn7r8e3Sv2e/Zo/4OTv2+vgXr+nP8XL21+K3hhZj9ts72GKx1BY5CMCK5giAGMHmWKX0GOtVUwrRxe0R/oxed/n/JqxX83X7M//AAcy/sI/F3Tba1+NceofDXV7m5FukV1G99ZlJP8AVuLqGMBFx99pkiRP7zL81fv34B+Lvwq+KcVxP8MPEul+IktdnnPpl3FdiPzASu4xMwGQCRmuapTcNzQ9KoqvR53+f8moAsUUzzF/z/8Aqp9ABRRRQAUUUUAFFFFAH//Q/v4ooqv53+f8mgCxRVfzv8/5NH+toAm2LVfzF9K+Xv2gv21f2Tv2Vbb7X+0d8QNC8IM8QmjttRvI47qZCcZigz5suD2jRj7civ59v2nv+DrP9jn4eST6L+zF4U1r4lX8ZmjS5cf2Pp3mICFO+YGdlJH/AD78jpwc1SpTYH9VleTfF346/Bb4B+H/APhLvjb4r0nwppuNputYu4rKL/vqVlGfxr/N/wD2o/8Ag4w/4KfftGNc6b4Z8U2Pwx0V0WFrXwla+XcvtJO9ry4aeZX6fNbtDj9R+LHxF+Jfjz4u+Lbvx98VNd1DxNrd04efUdUuJLu4kx8o3SSFmOAAoyTgAdq2WGM/aI/0DP2q/wDg6O/YW+DxOjfs46Zqnxd1Jw486yT+ztOhkXoss9yolbP3gYreVT0yOcfzwftF/wDBzT/wUt+M97ew/Ca70j4YaRJcyTW8el2aXl6tq8YRYZp7wTI7bgX8yKGBs9gOK/namvZ/J/f7/M/5af5/8hUs3nzf6/8A7af5/wDIVdX1amZe1PZ/jR+0l+0D+0ZqJ1f49+Pdf8cXflxxBtb1Ca7jWOHcyqqOxReWZuEGc814P50EMUcFjGkcf+rjjjo/74qv/wAsq2GEv/Hr5P8Ayzlk/ef9NK0Jpv3VUP8Alrb42eZ+9qeb/lnPQBsQYmi8mv3g/wCCVP8AwjupeMtY8c+RqUWoaXZy+Xd/2bH9htLr7FJ9l8rV/wDlxv5vMeL7L5P+mQ/8tYq/B/R7zybvz4P+WX/POv2Q/wCCOGoaPp/x88TeH7qSOG81PwzqUUMssFwWS3jRTJG08TbEimAEXlyQOryvGdyFRu4Mypfu/aHbgqn7z2Z/QBoOgwQiOCCP93FH5ccdekQ6Z/ywpfCsIl8yu/Gm+T/10r8qP0c5eGzqxZQzRS1sfY6PJ4/6Z0G1I2bP/VfuK18f7FV7OzroIbOD/X1mUZ/9jwXkX7j/AFleb69oM8Msn7uvaLOGeGL/AFflUXtn50UkNB0HzPeab53lweWn/TOuX1Lwf9sP3K+oJfDcEsvn7P3n+5/rKz5vDc/+o8v93/38pVSadU+Z9H8BwQ3VfRHhXR/Jlj8+T/Vf8s62NN8Nweb/APG67izs/scXkfP5f/TOs6QVKpnzfuYo/J2eZF/zzrP8r/trXUTWk83l3Hz/ALqtDTdBg8r9+7/9dP8A41WpRy9lZzy/9NP+elekQwzmKPFVx+5i/wBBj/6510Gm6bPND/HFWhznPzQz+b/rKz7z9z5legzab+68jY9ctrFn+6oA4DUofO/1Fc9eRedL/wBNK7D/AD+7rP8AJ/d/coMzy/UrPH7jy/3kteP+PdGnvfA+t2UEfmPJp9yn5xmvpC9s/wDlvXjHj+Ef8IrrcR/ef6DcfIY/tHVD/wAsv+Wn+5/F071oZn833/BSHxhoevfC/wAL/wBh3cNzb6pJ5lvJB/y08iSSKX/llDD/AK2OT91FD+5/5bfvfNr8b7yaeGKvtj9uH4w2vxX8TeD7S11NdUi8P6Q8Nwy6hdapNDcG4n+WW5uBEpfyfK+SOFTCAIZHkeNnb4QvP9aK/VsFS9nTPzjE1faE/wBs/wBX57/9c/MqxFL9sjuLeb/V+XWPViGb/Vz13HEaNnrE58u+8z95Xf8Agz4p/EL4aSXEvwz17VPDEl1H5VwdGvZ9PM0YO/EhhePeARwDkCvF4ZvJ0vz/ADP3fmfu5KsedPDL+/8A+WVZmh+/HwD/AODiv/gpv8Fby6j1rxXZ+PLOeGGCG28T2aTi28oH545bY29w0j5y7TyybvTOCP3M/Z//AODsv4Q65LNa/tKfDXUtBCWtuLWbQbiPUfPu+BcGRJfsvkpzuQAyHHBIPJ/hDmmn/wCej/8AbOj7ZmWP/lpWHsqYH+t7+zl/wU8/YN/axur3T/gZ8StJ1Se1u7WyVLl2sJLi4vVBiSCK7EMkxYnb8iH5/l68V991/iv2d5PbahBqsWTcQvmCRD5UsX/XKQDMX/AMV+m/7Kn/AAV8/b3/AGPJNOsPhf8AEC9v9G0+S4kj0jXGbUNPkkuwd7SFysrZYmQYkGx9zD7zbuf6sB/q0wd6m2LX8dn7JP8AwdWeBNUt7Pwr+2L4FutPuobK2hfW/DrC7jvL9pCsrtaSiI20CoVf5Zrh/vABuM/0j/s4ft+/sb/tdWsc/wCzz8Q9J8QXE009vFZrL5F9IbXHmMLWby7jyxkfOYwpzwTxWNWlOG5ofZ1FV6PO/wA/5NQBYopnmL/n/wDVT6AP/9H+/D/W18s/tG/ttfsm/sk6LLrX7R/xA0XwikKK4gvbpRdSKxx+6t1LTTH/AGY0Y+1f58f7Wv8Awca/8FIv2lbe40bwZr1l8NtCmhaCaz8M24E00bnIMl5cmeVJB2e3aE1+EOsa1qOv6jJ4n8V3l1rGpScyXt/M9zcOf9qSQlz+JNdlPCtmftEf3J/tYf8AB198MPD02p+E/wBibwPN4nv7SZEg1zxKfsekzp1dlijcXJHZA/lHucY2t/PH+0Z/wXP/AOCnv7RkK6Tr3xOufDVirSN9m8KRf2Wu2XGUaaLE7pxwrysPXJ5r8cJdSE0v+s8yoJZp/wDnn/10/wDjdbeypwM7mvqOsajrF9/aWuSz3tx/y0muJDPI31dySfzNZ8t56fuv+en+f/IVV/38MUfzp+9/5ab/APv7Wf50H/XL/lp5f/oqtgLE3nzS/f8A3kX/AJDpf+uP/kT/AMhVnfufLqzD580f/XX/ANr0AT/9N4H/AHf+fKqvN/07/wCs/wCWf+f+utWP+nj/AL9/+0qrzTfuv3GzzP8APlUAQf8ALX/0X/6K/wDi6vwwmaXH/LOoD+6l/cbJaT/W+ZB/2z/9pUAE3n/ZY5p/3fkyVoT9qrwzedLJB/yzlos5iYvIn/650AWIZvLr7A/ZJ/aBuv2YPjrpPxtttPbWbWyhubDUrGO4e1aeyu7eSBvnTP3PMDhSCHKhW4JNfIEMI/1FdRpupf6uCD/llWn8T92B/cP8FPGGleK9EsNe0S5S7stQt4rm3mHR4plDow+oIr6Q/wCWVfyj/wDBPr9uBPgTfD4U/EmZV8K3Uxktb+QndpVxgko5JwYJM57bHGejMw/qI8MeJ9O1u3SSOUMlwu5GU/eWvy3MstqYSfsz9DwONp16ftDqKJh5X8Ga0PK/7a1XvYcxf89f/jVeSdtOqbGj+R5X+r/d11FnZ+d/10rh9HvIIZf469Y0HyJoqzOgsQ6bx/q3om00f7ddhDZwSxffo+xzj9+P/Ib0G3tDj/sc/m/6urH9j5ik8+P/AFv/AD0rqP7NxF+4o8meKX/Vp/3xWns0Z+1OPh0f/nhG/l1sf2DN+7/56f8AfuughtP+eEf/AI/WhNCPKx/zy/550ezQe1MiGzgh/f8A/LSL/lp/raSazA/1+/y66n/XRf6x5ans7Oej2aJM+z02CaX/AJ610H9med5Y+f8A7ZvWhDZweV+/kf8A7Z/8tKszQwQxY8utPZEe0Zy2pHyv7n/bOvN9Xm/1k8FdxrEtcP5Pmy8UCOX/AH8tE1nXcQ6P/rP3fm1j3kPk/uK1p0h+0Z5/qVnX5r/8FB/2j/D/AOzX8BdWvtSl83V9bgksNJskO17m4cfKfUIhKl3A4BAHzMoP0x+2T+1X8L/2R/hZc/ET4iXIaZYpFsdPifE+o3AAxAnBO3JXe+0hAQcElVb+I/8AaN/aH+KH7T/xNm+LHxTuVlnclLWyUnyLK3BJCJwu4jPL7QXPOAMAfQZTlPt6ntKn8M8TMsy9hT9nT/iHkE2p31xdnVLmc3E8pd5Hfqzmsbzv+mf/ANrovJp/N/561nw/8tK+/PiTQqveY8qSf/pnRDN5Mv7iq+fPuvI/1scVAC/6mKOH/lpU8M3+rggfzf8AP7qs+abzj5//ADy8qT/47WhND5MvkQbJfK/d/u6zAPN/5YCRPL/9F0Qj/lgI6rmHzpf+mcv7ujzoPN/f/wCr/wBZQBoGb/WefVjzhF/H5slZEPn/APPPzZIv+Wn/AFwqfj/lh/rKANiG8/5YwV2Gh+Kte0HUl1nw7eXGn3f3EurOd7e4XzOMpJGVdTjuCPrXn/8Ay188fu/+WdEN5+6/z/21oA/oH/Y8/wCDgD/goN+zDeWui+IPESfEbwzBNZxTaf4ijD3MVlDnzUt7iIxussikZluPtGCudpyc/wBR37MH/By1+wD8btNWD41yXXws1SK1uLu7OqMLjTo0il2xxx3cYV5JZIyrhRAvO5FLNt3f5wUV7PDN/wC1K2LPX57OXzt/7v8A56b6xqYamB/sjfDr4vfC/wCMGkjWfhb4i07xDamOGVn0+5juAizoJI93lltpZCGAPOCD3r0rzv8AP+TX+Ox8Jf2gPix8FNSa9+EviXVvCjzzQyzNpV7LZea9u++PzPJZN4U8gPkV+8H7O/8Awcwft/fCHw5eaT8QItI+I811OZkvNch+zzQg/wACLaG3Tb9VJ965XhmHtEf/0v5L/tn7zyP9X/z0jkqv9s879/5f+f8AllVebz4ZZId6f88//jtV/tn/AC3H/XSSvYOcsf8ALX9x/wBc6DL/AMtp/wDrpVfnyvI/6Z+XR/y2+5x5lAB5P/Lv/wBs6POnh/f/APbSq8Jn8r/pp5fmVZ8r/wBGeXQAnv8A9s//AI7RNDkxn/lp/rKPKg8r/tn5n/f+rPk58vP/AE1/8gUAJ53P/TSjr/n/AJ4URQ+V0/6ZVXx537igAhz5sf8A37ohm8ny5/L/AOeXmf8Ao2jpF58H/TWSrP7geZmT95+9/wDjVACQ4hMc9E3+tjvvL/6ZyUv7gy+R/rf3n/LOp4byCGWSeBP9b/rK0AsUed5Mvn/6qoJs2cuPM/0eX/yHV8fvov3H+s/1cf8A11oA2NN1if8Ad5/651+lH7IX7f8A4y/Z4uofDPiZZ9d8I7sR2yndc2RyOYC7L8vH3HOzJJG0ksfy387yf+ulbHnfuv33+rrmxOGp16fs6hphsRUoVPaUz+7n4IfHzwH8avANr48+HmpxazYygKZovvI5GdrqcFTz0IB79CK93m8iaLEFfwP/AAu+MXxL+DHiy38efDbxDe6Fq1uyMZYZCIp/L/hnQHbIh7owKnuDX7sfs8f8FttEaKHw/wDtPeHG08xr++1zQx5iMEU/NJZ7AVZ2HJRyOeEA4HxGY8OV6f7zD++fW4LO6FT+J7h+/EH+h/6j95XpHhXUv3XkV8n/AAh/af8A2f8A4+Wa3Xwh8aaPrL7lQ2i3KRXgdgGC/Z5Csu7Bz9zpz0r6Q0cT2V1J58bxx+Z/37r5yrTqU/4h9JSq+0/hn0Bo9dR5Pm1yGg/66vT9Nh/df/HKyEY8Om+TFVeaz48jy/8AW13H2PzuNlV/7Ngmi+5+7rT2Q/aM4+Gz8mL/AJ6/9dKsw2XnV0/2PyZvIpYYfJl8gV006RlVMf7H+9/561fhs/8Alh/6LrRhhP8AywjetCGHyv8AplT9kZ+0RWhP+3WfqX+p/wDjddBDDXP6xmWWpCmef3nnzS/weZ/6Lqhpum/vf39b/wBj87/UxvL/ANc68f8Ai7+0T8BP2ZvDzeLvj34w0zwpCuzbFezA3MwkztMduu6WT7pzsRsY5p06XtDSpVPcPscENr+/r8p/+Chn/BSn4GfsSaW3hqRh4i8dTwu9noFs/wA4fHyveNhvIjycjcuXwQgO1mX8l/24f+DgjxB4zguvhr+xHpl34Z024VFbxdqisuqv8udtnAuwW+G3De/mOy4KrE9fzgarquo63f3Wu6/c3F9eXD75p53M8sz7uS7uSWJ7kkmvqctyD2n7zEHzmNzv/l3hz1D4+/tA/Fn9o34kzfFH4zao+s6tcJsji2lILZB/DAhJCjue7nkkkk14vNNNCf8AQZP+29E1553+gwbP+u9Z3/TDZ+7l/wC/tfW06Xs/3Z8t7T2gTTeV+4gjeKT/AJ50S/8ATf8A7+VB5P8Ay38xP+ukdJ/qYf3H/LX/AFf+f+eVMAmm8mLyII/3ktHnQWcX7j97+78ySj/Vf6h08zy/MkkoPn/8t9n7rzY5KALH+q/8ix0Q+QJfPgk/d/8A2ujr/r/+uf8A5DqvD/38/wBVWgB5w8vz/wDrlSzQ/uv+ev8AraTP7rE/7urH/LT/ALaVmAed/q8x/u6sQzfuv38lV/OEMP8A11jioX/lp/21oAsdv9X+8/1dHnf8t/8AppUEX/TxViL/AJaQeX5v7vy/3lAE/wDr/wDpnVjzf3v/AJEqv/018z/lp5lEP7r/ALZSUAaEWf8A95/zyq7BcXCMY7YuJR0b1j7Vlw+R+7g/7Z1ae3mkQW0Mn+roA//T/kQm8/P/AFyj/wDIs9T+dmWQ/wCs/wCWdEMPnS/9tKrw/wDLO+n/AOmslewc5Y86eWX+D/WeZR5P/LDzP+WdV/8All9n/wCmdEMP73/tpFHQBY8n99/208uiabzov3//ADzlkqv/AMD/AOeslWP9TF5A/wCecUdAFjyYP+W/+r8yKOiGGf8A7+x/+j6Wab/lvB/q/wB7J5lVv9T/ANsqANC8l82X/v7L/wC0qz5vI/1/mf8APWrEP+tjgn/1f7qq/k/6L/36oABD+9/fR+VJ+6jo/cS+X5P/AC18r/yPR5vk/v8A/rrR5Pkyf9NP/tdAFiH/AI+o/I/e0Wf/AC7/ALt/L8uKT/yHRCZ/NjFu/wDny6MT/wCog/1f/wBroA0IpvJijgn/AHtv/q/L/wCektE0E2mmOC+3yx+X/mOoPOnMXn/88vN/9p1PDNB+88+T/R/3sdaAWfNn87/pp/7VqtND5MnnQf6v/wBpVn/6n/U/vI/L/wC2sdWPOg8n9x/mKCgCvNeQQ+Z+8/5Z+X/3/rQ/tKfzfI8z/VXHmfvP9bUEN5B+7H/bSTzKzv8AUyxz+X/qo/MrMDQS8dLyHVMFZ0R50dD5bp33qRX1T4A/bb/az+Dlkum/Dz4l6/pcNrY29nEjXzzRxQFmfYqyb1Ub2JwAODj7pIPyN5M832ixgfzPNji8uOvSPhj4bvvGGvXFjYeTbSS6hFZRzunmRW/7uSW6ufK/6YxR/uIv+ezpWNSnTn/ENKVWpT/hn7IfDr/grl/wU/8ADyWupQ3Nlr2nve/a1h1TT4dt1b7tjwloHhdUA+4QQ4PV2Hy19U/C7/g43+M3gy4h0L9oj4W6fq81tasLqbS55NL1Gec4CyeRcF0VOqlBubneGPC1+F/xH+B2neF/h/ffGHUvC97qGiWM0H2q6uZFmuE+1vsjZy/zSAkqDKqlCSORmtCfw5oeqf2f4B8c6x/xSd/JFbWeuu322Xw7LP8A8tPN/wBd9h/1fn2v/PH97F5dcWIymh/z7Omlm1f/AJ+H9hHwt/4OBv8Agnl8QLhLPxhc654Hd5LGGObVNPDQStdqC2GtmmWOOGQlHeUooA3Z25K/s/oPiHwl4r0iHxV4L1Ow1zTL0ZgvtNuY7yzmHqksRZGHuCa/y3/Gfh7xL8NPHPiL4YePIG0/XvDt/LYalCrYK3EDFGwf4l3A4I4KNkHGK/q//wCDaTxxJ/wrv4xfCTbcbNO1LSdYhVWP2aOO8hmgk4zw7tCv4LXi5lklOFP2lM+gy3Nqlep7Oof00+T/AJ/yKx5of3v7j93WxD5P7yuY17WINNi/fyJXzVOke2fL37UH7ef7Jn7GEGkx/tE+KBp+pauyNa6XZW73eovbuzK0xgjBCQIVI3uRuIITcwK18TeIP+C/n/BN3RZ1ttN1PxLqinUJ7BpbbRmG1IE3/a1MkqK1tI3yJkrODy0KgZr+cD/guR4/TW/+Ckur6jazAqnh3RLRmVgf+WLOe396Y/p+P5AXniSeaKPyP3Xmx/8ALN6+twWS0KmHp1Kh83iM2qQqVKdM/rX+IH/BzD4XtbIn4P8AwjuvOfTZAra/qCr5OpiZdhcW5JnszBnOw28hk4wE+Y/LHjv/AIOQ/wBq3WLiZ/APgnwjoVr9u82Nrlbi7l8jySrxMUmgQ/vcSBwgIHyc/eP82802JvPn/wBZ5cVY/wDaUEMv8f8ArP8AlnXb/ZGEh/y7OH+1sR/z8P0v+KP/AAVS/b/+LbQp4n+K2rQIsdpuh0mRdLgL2LiWN8WuxQxdVLkAb9q79wVcfB+o6zdajq0mv69cz6nfSlzJc3Mj3E5LMWOZJCXPJPU1w8N553+g/wDPL93Vgef+7/8AZK7qdOnD+GcVWpUqfxDoJdSEsv8A11qv9snmPn/9tP8A97WP5WP3/wDrPK/d1oQxQRS+fP8AvP8AlnXUZFj/AJZeROn/AEz/ANyWiHz5pfP2J/8AHKDN/rPtEnm0RQ/bIvOgfyrf/npQBXl8+aX/AEH95JF/2yio/wCWfk2//LWSL95Vj/Xf6BBs8v8A1dHneTFJ5H/LX/WeX/zyoArzQ/uv+mn72q5hPm/89a0LyIYzBv8A+WslV/K/1nkf9/KDMTnzP3//AEyqCH/VY3/vPLqx/qZc/wDXKq//ACyoNCw3b/trVj/nnmP/AJaReZRN/rv+/tL+58r/AL9UGYnk/uv+2dWPO/e/wf6yq7dv+2tWP/RVBoV+sX/POTy6sTf6z/gdH/LKjMPr/wAtP7//ANatDMP3E3/furMP2jzJPJpKdL/q5P8ArnWZoTed/wCQpKQ/6g/J/GaXzoJftE/yf8sqD5G+XH9/+CtAP//U/kXsvP8A9H8j/prJVfzv3X/bvViH/ln/AMsv9Hl/eVXm/fReR/0zi/1lewc5YNn+9k8+T/lpFHR+4x5//XX/AFdH/LX9x/q/tFV5pv3Uf/PPy5aAD995f/bOiH/W+f8A9NKP+WskH/XKrEP7n/v5LQBX/fw2sf8A1zqxF/rqr/66L9x/zzio/wCvigDQ/wCek8Cf89asQ+T5sf3/APWRf+i6z5v+Wlx5n7zy5f3dE3+tk/55+ZL5f/fugAm/cxf9s4o6sed+9k+RJP8AWyf+Q6P+ef8Az08yL93VfPf/AJ6xyyfcoAWaaCKT/wBqf9s6T9/+7/ef88v3n/bOj+L/ALaf+06IZvJijP8A0zikjoAJpv8ARf8Apn/9rrYmA8qQ+Yn/AC1rHhh8k+RPJ/10o/cTRf8AbOX/ANF0AbEMXk3Xnw/6NJ5nl/8AkOs+88iaL+C2k8v/AFn+t8yrPk+dLny/+WkVVulhGPL/AOXf/v5+8oAsTQzw+ZPOn7vzPLkkjrP/ANdF/BF5snmSVofv4Zf+JVIkUn2j93HRDDn/AF0DxyQ/8tI/3n/kKgDIvf8ATPLgvv8Aj4urj/Wf9Mv+elfSH7KHi7RNCXxz4C1uB5dT1iO18R+H5I082WeXSpJftVvF/wBNb2wuJ/8AvivBobOeby/tH+kyRRy+X5b/APf2ufv7V5HtrqSKezntUDQzRb45IZI/uPu6pggYxjnpzQaH7Vjwvoeo+Go/2pv2X9Ys/wDhYdhof9nSWGpeXc6H4h0v/lrbyRy/8tf+Wv8Arv4K+B7nS/BQ8G3XhvwvpyW+qeK54p9TSD/j2jvp4/Kljto/+WcX7ySvDLP4zeI7OW4/tzSkvri6j8y4u9Nuf7NluJf+elzbfv4ZZf8Apr5NZ+sfEnXNSluJ/B2jJ4f/ANH/ANfJN9tl/wBX/wAsvN/1XnUvanN7M2Pi54/f4l/Hvxl8Q7uXzJNSnRXYHIcWkSQqw9isa1/Rx/wbN36P+0L8XtGkmKTP4R02ZkXO2TyL9VB/4AJm/wC+q/l/0ezsbK1j8jZL5VvF/wBdZK/qB/4NmNDd/wBoT4xeIJANtv4V063O3Of9Jv3kPf8A6Yr26Zrzcy/3Ooetl38emf2ERQ+dHXzd8eNSn0fRrieCRI/3dfUNl/qeE8uvm79orTZ5vCVwLGNJZPLr4Y+zP89f/gojrcviH9tXx1fXW7dFfW8Ab2jtohXwveWf7qMTb/L/AOecf/LSvun/AIKC6J/Yv7ZfjKGYBxfvb3Y2f9NLaIf+y18bf6nzJ/8AVSSx/wDLOvvsD/ApnxOM/j1CvF++tY/3flSRR1Z/sifzf38f7zy/+WdTzS/vZPIk/wCmkdHnTyy5t98sf+s/d13HKZ97D5Ev+s/1sn7z/ppVfyYP3n7v/lnWx5M5l/gj/wCuj0TWc0Uvn32yKTy/3fl/vaAK83keb+4j/wCudQf639xB+8/651PD5HlfuEe58qOrM0M80v7/APdeV+7/AHdAGd5UEPl+f+9/6Z/8so6sy+feD9/+8pPJ/wAx1YME3+o/7+UAV/O/ex+fs/1lH7iL/lp/20jqx50E0sn/AF0/5Z1n+fB5uZ5P3f8ArK0APO/57/8AfyOrH+u8vt+8l8uj/npP/wBM/wDlm/8A00omh8mWTz40/wCWtABF5J/ff6v/AK6UufJi/cf886TyYP8Anm//ACy/eR1B/wAss+Yn+roAn/10v+r/AOWlHk+n/TKj/lrHOOKWH/VefP8A884qAE871/6a1Y87/lv/AMtPMio86CaX/v7Vde//AGyoAs8wxeRs/wBVHLU8vkfvIIP+mVV4fJ/9G0L3/wC2VBmWIvIo/wCWP3OfLpfO8qXz5/8AprSeT+6/7Z/u6ACb/XSf89P3VWbfmeTD0kP779xP/wA9Kr+dH/y1j+fv/nFBof/V/kXh87yv3/8Az70sEsH7z/tlSTQ/uv8At3pbzz5vM8//AFnmRV7Bzk/7j7V/HL+8lrH/AOWf/bOrHnQf9s/Mlo+qf8s4qAD/AJbfc48yj995X/bOX/V1Y8k+b5//AE0lo/11rJ+8/wCeX7ySgA/5a/8AbT79Vz0j/wCuf/tSrHlfu/3H/TWiH/Wx/wDLL95FQAZ/1lvB/rP3v/oyiaaDzbj/ALa1Xi8+WL/P/PSrHnf8fH7tP9XL/wCjKADzYPNk8j/npVeaH93n/pn/AHKsf6mWT/plJLR/rv8AyF+8oAIcfas+X/y0/wDadV4ceVH5/wDzzio/1Mvn+X5v7yWT7lEsP7uSec/vPs9AGhN5E0v7j955Xm/wf9taIc3l1/B/zy/65/6yq83+t/55SSyS/wCr/wCudWPJ8668/wAvy/N/550AaGmzfvY5/wDlp5lrJ5cn/LT93VfrYR/u/wDl3l8uST/lpSxeT/6KqtD/AMs/+enlyx/u0oA0JpoDLJPP/wA9IpKIZvsf2eCCR/MikljkjrP8n91JPB/rIo4v4Ksf6T/5ErQA/wBdFH+7fy5Y5Y6LL9zF59jO8Xmx/wCrqx9szdR+Q/8Aqv8AyHVeGb/j3g/1tvFHLHWYBNZ/bLXyb57aWOWOL/WJ/q4qJtHsfMk8jTnto4o/+Wb+X5f/AO+o86ea18+eNJI/s/l+XH/yzolhnm+0TeQ//Hn5n/XT/wC1UGhXi03S/NkmgSb/AK5yPX6o/wDBLL9v/wCK/wCw38Yl8M/DfTLLXdA+IOraTp2vadqETC8MYmaKNredHBSSP7Q5UNlHJw46Mv5nSzTzRXEG/wA393FH+8/5Z19kfsF/DbxB8Z/22vhb4E8OttefxNp927sCwhg0+VbqdmAB6RQsfw9TWOIpU/Z/vDTDe09p+7P9KiaH+zdUuLHzPN+yySx+Zsryj4naPBrHhu4g8xLaOWP95Xr8N5/bstxqvl/ZriWTzJI64j4haDPr3hLVLGD/AJa28sdfnlU+7pH+aN+258adD+Ov7TGreO/B8C6XptoWsINxDNcx2kjqs7AZwZFwcZ4XAPIr5Xs7OCGKPyI7m58r/V+Z+6ir3j9o34Va5+zl+0B4q+EGtL++8PalI1sdhHnWUrb4H57tEyk/WvFxqXkj/pnFJX3+C9n7On7M+FxPtPaVPaFiyin83/QY4baOL/ngn/LKjyfO/cef+7i82T95WP5s81rHBPJ/qvNjkk30TQzzReR8/wDq4vLkrqMjQ8mCGX9//wBc46rzXkEX/Hin/fyoJrPyZfIn/wCen9+p5ofOik/d+bJ5dAFj7b53mQeZ+7l/551Xm/fS1B5PP7+P93Vjyf8AnhH+88ugCt/qf+Wf/LT/AJaPS+T537jy/wB5LU83/H1J/wAs/J/efvKr4/dZg/d0AWJpfJl8+CNPLlqv/wBMP+WnmeXR/rv3ECf89f3dHnQGH7RBsi/eVoARRf8ALb/Wf6qjyf3X/f395HVmH/W/9NKrTTf+RaAK+P3n3E/1kX7uOjz/AN1/rP8Aln/7UrQ87975Hl/u5ZIvL/791X/1MUf3P3sdBmH/ADzn+T/WUssPk/8Afuk/8hfvKP3/AP5Di8ugCx+4/ef9dJetV/8AllViGKfzY/8ArpLUHBi/f/8APOKSg0J5YfJ6f9Nf9X/yzquvf/tlVj/U/wCo/wCekv8ArKB/wP8A5ZUGYh+//wBtJaX/AJZf8846IZvNH082rP8Ayy/cUAB8+WX7P5f/AC0qCSa6+ym3jbapkLhfTNTfv5pf9XRC8zDy4e1Bof/W/kPn/wCPWTyP9Z5dLL5HmSeT/wA9IqT/AFXMGzzPLiqx/qZfP/6eK9g5yv8A6mX/AK5ebVjyf+XiD/pl5dV/9TFn/rrViHyIZZP+2VABDD/y3g/6ayVo+VBZy+R5n/LSL93/ANs6xprz/QJIP+nfy/8ArnWj53+lfv4/L8qSWT/rn+7oArfv5bWSeH/n3/8AalWP3EN1/B5fmS/+i6rw/vpY4PM/55UsUPnRSY/55yyeZWgCQ/ufL/65xUeT+6knH/PP/wBqVY8rybr9/s/dSRR/f/6Z0f6m1j8+Ty/3cX/oyswLH7iX/UR+bJ/pX/ouoIYZ5ov3yeV5UlrU83Evk/P+9kuqrQ+RDL/q/wB5LJa/x1oBA3b/ALa1Xm/1f/AK0IZv3XOz/Vy+ZR/z0z/y18r/ALZ1mAQzAyxz9P8ASKrwzf6v935vmx/6uP8A79VZ8n97/rE/4+KSEQeVHP5by/u/M/d/8s/3lAB53ky/boY38uL/AFfyf9NI60Zvt3neRBI//L15f/tWs6H9za+RcSf8s5Y/8/8AfutD7ZBeS+fBGn724l/ef9s60Az/ADf9Akh8z/W28VWJf+Wk/mJ5kskX7yrHnT/ZZMSfu/scUf36ry8+Z/y1/wBVQBYlmsPNkxv8v7R/1y/dUsM0H/Lff/rJf9X/AM8qnl/c/aIIH8395FHJHsqvOYftXn70l/0iX95soAr/AGODzY/kf/Vyxyf8s6JoYPK8+CTypPs8X/XKq8MP7r/tnL5flpWxN5ENpHOI3l82OL/V1maCZgml8j5Iv9Ii8vzK/oC/4NyNE07W/wBunxNrzxrLc6d4JuZLUn+CWS5gVv8Ax0mvwGE0P2qSb/lnLJX9CH/Btg7wftqeKkgT9zP4NulkftmO8tNv51zY7+BUOrB/x6Z/bhptn/otWJrP/WQTx1Y02EeVzViaKfrXxFQ+wpfvD+B//g4g+Hem+FP289I1zTYgzavoMMswJOAY5ZU/ko/L2r8J5rOeGKPz9n/Hv/q/+uElf0gf8HLZI/bL+HuE+f8A4Rl8/Lx/r2r+cibz/sv/AGzl/wDRn+sr7LLv93pnyWZfx6gnk+ddP5CJ/rJZP+ucVWLyGeH/AKaR+XFJ/wCRKPOg+3/uNkv+kSyeXGn/AEzqv53lWvH/ADzi/wBZXccRoTGCG6k8/wD1fmS/u/8AplWf5P737nlfu/3lWPJn82OCBP8AlpUHnfuv4/L8ugCeGaYSyT7E/wBZ5n7uoPO/0XyP+/dJDDB5v79P+2dEv2H95bz7/wDV/wDLSgAmmg+1Y/5d5ZKPOg82P/rpFVeaH/lvsSTzv+WlH+nQy/v/APtp89aAHmwfZf4/9XR5whtfI8x/9XL/APaqsf8AL1/q/NqvNN+68gyfu/LoAsXn7mX+Py/M8uP/AJ61X87/AJYT1of8tfP+SX95WfmDyv8Av7/0zoAsww+TJmCPzf3n/LP/AK51Wz5MUfn/AOr8uL95/wBMqXzW/wDInr/9ak/5Zx/7lBmWP9dL58H/AD0lkqv+/wD+/scVWP8AVeZ/10l8uq/sY/8Aln+8SgCx/rv4/wDlpVfzvOl/7Zxfu6sH91L5/wAn/LXy5Kr983Cf8s4v3n/POgAm/c/uPMT/AJa0Z/1g/wCWcvlUd5PP/wBX+9qx5QEsZvv3X7yLzKAK/wDz0gEn/LP/AJaVYh/e+Z9/y/Mqt/y4ef8AJ/q6s/8ATf8A6aUGhY/cf9cpP3sn/bWrNnNOJpLjbux8m7Z1xWd/yy/cf886PO9/MoMz/9f+QeH/AFf8H+rrQm/fXX7iP/lp/wAs6r+T5MUn/LX/AFv/AKMqyP8AWyeT/wA9K9g5ytN+6tY/+udWIZriG6/1f/LT/v5+7qvNDPNF+/8A+WscVE00/m/6z/nrQAp/49Y4IP8AnnFSTef5Uk//AC0/eyVYhm/1cEOzzP3VQeT+6kt5/wDVyx/+j5KAJ+sn/bT/ANER1Xz+7jzJ/wAs4qsf89J/+Wf72iKz87y/+mskUdAFmaH97+4T/lpL+8kohz/y3/eeVHFHH/0zpD/yz8j/AJ5y0f8ALX/tpFH5daAWIpv9ZP8A9daghh826jg8z/lpFSfuJuv7r/j6oh/1sfkSf88qAAw+VFn/AKZy+ZVjzoJov9X5Un7qq8M3P7iN/M8uWl87yYuP+ecVACfuJpcb/Kj+0f8AkKq5/wBVH5//AC1t5Y/uVrzXnm3X7+P/AJePM/d1BN9hEVv9zzJY5fMj/wCedAFebyIbr7dD/q4pP+Wn/bOrEP7n7PB5fmfvIv8AV/8AXOSq83njzJ4I/wDnlH5mz/nvHRDN/wAt/L/dxeV+7/z/ANdKzAIfPlsPI+T91b1oTfvoZIPk/wCWUn36of8ALr+/j/1tvLV8XkM0sn/XOKOgCxL/AKqSfy/+WkX+s/1Uf7uq/nfvfuf6P9o8zy9lV5f3Xmf9dKseT537/wBbjy60Ar+d+6j+fzf3cv8Aq6swy/uv3En/ACz8v7nlVWhm8qL+Dy/Ll/1lH7+KKS3n2f8AHv8A3/8AyJWZobH2ycX/AJ/yeZLeeZ+7Sv34/wCDa+/t5P28dW04nm48E6uE3Hb/AKu6tG6fxdPwr8B/J8mL/tpFX7of8G6moXdn/wAFLrW0jVHW68I+JYJgQWZUKwSrgjp80ar0/iz2Nc2O/gVDXDfHTP70NN/fdKnvP9UKz7P/AFRpdem8qwuJ/wDpnXxB9ufwj/8ABwp4nn8S/t8aLpso8uPTfDKH/e8yaavwH8n/AFf/AC082OKOPy/+m9fsB/wXL1a6v/8AgoPq1zdHcsGg2aRdMKZDIx/Rgfxr8j5oYIYv38f+qji/eR19ll3+70z5DMv49QrnEMsggj/5aS/6yrHkiaLz/wDlp5cUfmVYP2GHy4Pn8vzJfMqvNMPJ8mePzJPs/l+Z/wC1K7jiK/kzwy/9tP7/AP0zqv8A6i18/Z+7lj/5Z1YhhHm/c/eeZ5n7uib/AFP/AE08uLzPMrQCv5P/AH35lHneTF9//wC2VPNNB5v8cf8A7Tqj/qfMgrMBP383+v8A3n/tSq8WZopPP/7afPRN++i8/wD65f6urHmzzf8Afv8Ad+ZQAf67/Ub/APtnViGb/lgar+d/pXvVjP8Ayw/1sn7qOStAD/U/6R/5DqvN/q/+AVseT50vnwf6v97WeMQ+XPs/1UcVBmL+/wDtXn/9NKrQ/wCq8j/pnFVn9/0/5af6ymw/8s/PT95+6oNCCbP/ACw3/wDLXy6r/wCu8z7kf7utDzoP3nn/APTWgf8APxBv8ugCDrL+4d/+WtJ/zz/5ZfvIqP8ApjD/ANNf3dWPO/e/uJHl/eRUGZX87zf/ACLViWb/AErH/PX95/5DqD/tn5n7uk87yf3/AJn/AC0/d0AEPMMf/XOLy460POEX7/8A66/u40qh+48r/tnFVjjy/wBx/wBNaAK0vnzReR/0zipt+YZVJnbYm87F9BVr9x/6KqpJNwM/3n/mKzND/9D+QebEPmfu3/5a1oTTfbP+WaRR+ZL/AOi6r/66XyLfZ+9/+N0edP5X+r/z5dewc4ohnhlj/wC3X+Okl/dWuJ/9X5cslEMv72P/AKayRUh8ia1j+fzJPL/1f/bSgDR8k+b/AKF+9j8z93/37qvD/wBc/wDn1/7Z1YvPtHm+R8n+suv9W9EP+tjA2f6yL/V/9MI60Ar/AOpik/5Zfu5f/RlaHnTi68/y/wB59oi/8gR1n/66L7PPI/8Aq/3f/TP95VjzoPtUk88flyeZL/q6ACeyht7WMw3SXBlhEh2fwH+6fcUQ/vpf3CJ/rKrw/wDTCPzY/s/l1sQy+dfxz7PN824/1dAGOYf3Uk/lp/q5a0ZuP+2MkX7zZWd537uOD/nlH/38qyf+PqSCD/VyyRUAJ50/lR/9tased+6k/efu/Li/1j1nw+ePL/56Sxy/vKsCaAeZ9/zPLij+5QBsfv8AzY4J9n/H5/frP8qeb/Xonl+XLH5n/LWSiWGxmuv+mf2jy6LOX97Hn97/AK3/AFlAFeX995Zn/wBX/otV/J86KTyP+efmf88v8/6utCH91a/uEeWTy4pI6r3kMH7yxg/1fmf+1P8A7ZWYC/8ALb9x/wA9JaSy/wBVJlP+WcUn/XSq9nD50sf/AE1ki/8ARdWLP915Y/6Z/wDbWg0D995smf8AWVY/111/zy/ef8s6gmmg/eQQb/8Aj3/eVPd3n226uP8AlrH5kUn/ADzoAIf31rHB8kUf72OtCaaeH/R4d8nlW/l/9c6LOGCaWPz3eP8AeSx0QxeTFH5EHlebp8sdAFjzvO/cb0/dSRSf9c6/bD/g3nt7t/8AgqPouxzBDH4Z8QOV9V+yNX4nmHyfLh8xP3tvFJHJv/1dfsD/AMEE9VvdK/4KufDWz0Zo3bV7XXLA/aG2BhJYTnj1b5eBWWJpc9OoaYb+If6DFn/rTWd4wvPJ0aT/AK516Rp3w38VTfwQ/wDfdWNe+EPiLUtLkgmnhjj/ANyvlv7Or/8APs+h/tHDn+bf/wAFlnkuf+CiOvXUjKipoumoSCWz8jN/Nifxr8t/3EMskHyf6uLy49n/AC1r9cP+C6PhVPh7/wAFPvGXhjSmknFvoukl3l+80klqpO3/AGBnivyQ8rEX8Ev+jxSR19ThqXs6dOmeJiavPUqVBIZp/NjngeH/AFkv+seq+f3XkCP/AFtv+78z/nlVib/pv/z0rP8AJnmPnQP/AK3/AJ51qcpY879753/PKTzI/L/1VV/J/wCWH/PX93+8qxN+5/1+z97/AM86X9xDd4g31oBjfv4Yvv8A/wAaoP8AyzgD/wDXSiEwQ+Z9z97ViaHzf4KzAr+dPD/B/wBM/wB2n72rEPHlwf63zfK/7Z0QzeV+4/55Sf8AtOrHlT/6P58f/PLzI5HrQCv53k/v/M82T97VnyZ/K8jzP9V5X8FVsz+X5Gz/AJZy/wDoyrP+u/g8uP8AdUAJDDBNF/39ohhg83P/AC0/dfu/+elV+0kH/PKP/V0ed5Uv8cf7z95QBX/cTeZ5H/POWrP7jypP+ukX7ykm8+b9x/rf3f7ugyzebnzElk8yL+CgCv8AuP3kHl/89f8AV0S/vpZPI2fvZIqsf6mwjE/+r8urE3/H1JDBsl/0j/2nQBn/APLLyIP+udWIpYP+W+z/AFlV/wDlj/39olm/e/v4/N/eRUGYeb3g/wCefmVY8keb+/8A+mtV/wDXRcJ/yz/5aUSzf6ucR/8APWgCx5P72P8Ad+b/AKqq83+t/wC/v+sqv/17/wDTKrH/ACy6f89f46ALHnfvf+mnmVZg3icbT5jbBmq00s/7vz/+en/tOq+fM96AP//R/kPivP3v7j/rn/5Doh8/p8kX/tP93RN/yzqvF/yz/wC2Vewc5Yh/54T/APPSL/0XVeGH91HB/wAs5fKqxpH/AB+2f/XxF/6LpbL/AI9Y/wDtl/6KoAT9xNHJ/wA9PLlqx/y18/8A6af3P+mdQXn3E/65y1PN/wAhCP8Az/yzoAP+WX+rST93F/q6sfv5v+uf72q93/x7Sf8AXSKs+4/5h/8A10uqANmH/Vef8nmeXF/rKTmGL7/7zzJaz4P+Wf8A1zroZv8AWvWgFab/AI8I7fy08v7PF/H/AMsvMqxND51//rP+Xiq8v+r/AO3f/wBqV1N5/wAf0f8A1+f+06AOOmhn+yx3B/55y/x0TdP3Ejy+VHF/BViD/j0k/wCve6/9GVoWf+pvP+ucVAEEsM/m/wCr/wCXj935iVnRefDLH5/+rikl/wBXXQXf/uQl/wDaVT6l/wAfMf8A10uqAOYzP9l/56/6P/mOq95N5Mkk4/5a+bVib/kD3H/XnUEv+pj/AM/8s6zASGbHl/8APPzP9XVizvPsflzz/wDLLzanvOt5/wBc/wD2pHSw/wCrk/6+Jf8A0ZQaB532yXyPLSKSWPy/L2VZ5+y3H7z/AFtvFVbUf+P/AP4BL/6Mqho3+qk/686ANebyPt/nwRp/x8RSUTeR/wBdI/Mljk/6Z0Xn/ICs/wDrna/+jJKyYf8AkNf9tJaAOmhm86GT5/8AW2/+s31+iH/BKLxbqfgH/gp58AvE9lcxJ53jWzsZmBH+r1FWtHU5B/hmOPfH0r88NM/5Bcf/AF0lr6P/AGN/+Tyvg7/2P3hr/wBL4KAP9eDyhZ3XkVX16bydLkPyVPdf8fz/APXSsjxV/wAg2T/rnLWQH+Y//wAF59bOqf8ABWH4jS/KRaWuk2m5P+mdjCf/AGavyH/10R+fy/N/2/Kr9U/+C1H/AClC+MX/AF+6d/6b7avy81P/AFf/AG5xf+jJa6QM/wAn/WfZ5P8AlpF+8rPlhg8rE8Cf8tY67Gz/ANVJ/wBef/xyuGt/+PC7/wCucv8A7TrMCxLNBLF588f/AC0/7a0eTB+8x53/ACyol/11bOo/67VP+viKgDlpvOh/f7PN/wCAUsNlP+8/dv5dWIf+PmP/AK6f+1KnP/Htcf8AXn/7c0AV/sf/AB8Q/wDLSLzf4P8AnhR/qbvyPM/d/uqB/rpP+virFn/rJP8AfrQA/wCWXnwP+78uWjzoJZPPgjeOTzP+ulEv/Hpcf9c5f/RlY6/8tP8Ar4loA0JovOi/cbP3UfmffrRmhgh/65xSS/u6SX/jw/7Z1pQ/8fdAGLzDL+4d/wD45VeYYl8iCT/Vf6uuhvP+Pr/t3irG/wCef/b3QAD/AF3H/LW38uOOq/SXz59nlyyfu/8AppVDSP8AkFvW/D/qZP8AtlWYGP8Av/ssf/TK3qwft0Uv+ofzPtH9z97/AKus2b/j0rT/AOYhcf8AXxWgGd/zzx+8/wDalWP9V/5F/wBZWzD1k/697X/0ZTdf/wCPWX/rnLQZmT5Pknzp082OLyqred/ov/XLzasT/wCs/wC2kf8A6Lqxo/8Ax4T/AO5df+jKAE82CaT9x/z0/d+Z/wAs6rRqjiO1ZdixxjC+lRQ9f+2f/tOrMH/Hj/wM0Af/2Q==" style="width:100%;height:100%;object-fit:cover;border-radius:50%;object-position:center 20%"></div>
+      <div class="mgr-name" data-i18n="mgr_name">김탄</div>
+      <div class="mgr-name-ko" data-i18n="mgr_name_sub">MA VLADIMIR</div>
+      <div class="mgr-role" data-i18n="role_badge">영업 매니저 · Sales Manager</div>
+      <div class="mgr-phone">010-8450-8701</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-n">500+</span><span class="stat-l" data-i18n="stat1">상담 고객</span></div>
+  <div class="stat"><span class="stat-n">98%</span><span class="stat-l" data-i18n="stat2">만족도</span></div>
+  <div class="stat"><span class="stat-n">3년+</span><span class="stat-l" data-i18n="stat3">경력</span></div>
+  <div class="stat"><span class="stat-n" data-i18n="stat4n">당일</span><span class="stat-l" data-i18n="stat4">개통 가능</span></div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="sec-label">SERVICES</div>
+  <h2 class="sec-title" data-i18n="svc_title">제공 서비스</h2>
+  <p class="sec-sub" data-i18n="svc_sub">아래 서비스를 클릭하면 신청서로 바로 이동합니다.</p>
+  <div class="services-grid">
+    <div class="svc-card hot" onclick="pickSvc(0)">
+      <div class="svc-hot-badge" data-i18n="popular">🔥 인기</div>
+      <span class="svc-icon">📱</span>
+      <div class="svc-tag">Service 01</div>
+      <div class="svc-name" data-i18n="s1">휴대폰 할부 구매</div>
+      <div class="svc-desc" data-i18n="s1d">최신 스마트폰을 월 할부로. 아이폰·갤럭시·기타 기종 상담 가능.</div>
+    </div>
+    <div class="svc-card" onclick="pickSvc(1)">
+      <span class="svc-icon">📶</span>
+      <div class="svc-tag">Service 02</div>
+      <div class="svc-name" data-i18n="s2">모바일 통신 개통</div>
+      <div class="svc-desc" data-i18n="s2d">KT 신규 개통 및 번호 이동. 당일 처리 가능.</div>
+    </div>
+    <div class="svc-card" onclick="pickSvc(2)">
+      <span class="svc-icon">💡</span>
+      <div class="svc-tag">Service 03</div>
+      <div class="svc-name" data-i18n="s3">요금제 패키지 상담</div>
+      <div class="svc-desc" data-i18n="s3d">내게 맞는 최적 요금제. 가족 결합·무제한 등.</div>
+    </div>
+    <div class="svc-card" onclick="pickSvc(3)">
+      <span class="svc-icon">📺</span>
+      <div class="svc-tag">Service 04</div>
+      <div class="svc-name" data-i18n="s4">인터넷 + TV 결합</div>
+      <div class="svc-desc" data-i18n="s4d">KT 인터넷과 IPTV를 결합하여 더 저렴하게.</div>
+    </div>
+    <div class="svc-card" onclick="pickSvc(4)">
+      <span class="svc-icon">🔄</span>
+      <div class="svc-tag">Service 05</div>
+      <div class="svc-name" data-i18n="s5">기기 변경</div>
+      <div class="svc-desc" data-i18n="s5d">기존 번호 유지하며 새 기기로 변경.</div>
+    </div>
+    <div class="svc-card" onclick="pickSvc(5)">
+      <span class="svc-icon">🏢</span>
+      <div class="svc-tag">Service 06</div>
+      <div class="svc-name" data-i18n="s6">법인폰 상담</div>
+      <div class="svc-desc" data-i18n="s6d">사업자·법인 전용 요금제 및 기기 대량 구매 상담.</div>
+    </div>
+    <div class="svc-card" onclick="document.getElementById('store-svc').scrollIntoView({behavior:'smooth'})">
+      <span class="svc-icon">🛡️</span>
+      <div class="svc-tag">Service 07</div>
+      <div class="svc-name">매장 무료 서비스</div>
+      <div class="svc-desc">보호 필름·케이스 교체, 앱 설치, 불필요 앱 정리 무료!</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMOS -->
+<section class="sec" id="promos">
+
+<!-- ── KT 5G 초이스 FULL TABLE ── -->
+<section style="background:var(--gray);padding:4rem 1.5rem" id="plans5g">
+  <div style="max-width:860px;margin:0 auto">
+    <div class="sec-label">KT 5G 초이스</div>
+    <h2 class="sec-title">KT 5G 요금제 전체 목록</h2>
+    <p class="sec-sub">모든 요금제 · 부가세 포함 · 공시지원금 적용 시 추가 할인 가능</p>
+
+    <div class="tariff-table-wrap" style="margin-bottom:1.5rem">
+      <table class="tariff-table">
+        <thead>
+          <tr>
+            <th>요금제</th>
+            <th>데이터</th>
+            <th>혜택</th>
+            <th>월정액</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" class="tariff-section-hdr">초이스 프리미엄 / 스페셜 / 베이직</td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">초이스 프리미엄 <span class="tariff-badge">추천</span></div></td>
+            <td>무제한 (최대 380Mbps)</td>
+            <td>스마트기기 · 멤버십VVIP · 단말보험</td>
+            <td><strong>65,000원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">초이스 스페셜</div></td>
+            <td>무제한 ∞</td>
+            <td>데이터쉐어링 · 단말보험 (최대 4,500원)</td>
+            <td><strong>55,000원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">초이스 베이직</div></td>
+            <td>무제한 (최대 100Mbps)</td>
+            <td>데이터쉐어링 · 멤버십VIP</td>
+            <td><strong>45,000원</strong></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="tariff-section-hdr">스페셜 / 베이직</td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">스페셜 <span class="tariff-badge">인기</span></div></td>
+            <td>무제한</td>
+            <td>스마트기기/데이터쉐어링 · 멤버십VVIP</td>
+            <td><strong>50,000원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">베이직</div></td>
+            <td>무제한</td>
+            <td>멤버십VIP</td>
+            <td><strong>40,000원</strong></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="tariff-section-hdr">심플 (대용량)</td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">심플 110GB</div><div class="plan-data">다 쓰면 최대 5Mbps로 계속 사용</div></td>
+            <td>110GB</td>
+            <td>—</td>
+            <td><strong>46,250원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">심플 90GB</div><div class="plan-data">다 쓰면 최대 1Mbps로 계속 사용</div></td>
+            <td>90GB</td>
+            <td>—</td>
+            <td><strong>44,750원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">심플 70GB</div><div class="plan-data">다 쓰면 최대 1Mbps로 계속 사용</div></td>
+            <td>70GB</td>
+            <td>—</td>
+            <td><strong>43,250원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">심플 50GB</div><div class="plan-data">다 쓰면 최대 1Mbps로 계속 사용</div></td>
+            <td>50GB</td>
+            <td>—</td>
+            <td><strong>41,750원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">심플 30GB</div><div class="plan-data">다 쓰면 최대 1Mbps로 계속 사용</div></td>
+            <td>30GB</td>
+            <td>—</td>
+            <td><strong>40,250원</strong></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="tariff-section-hdr">슬림 (소용량)</td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">슬림 21GB</div><div class="plan-data">다 쓰면 최대 1Mbps로 계속 사용</div></td>
+            <td>21GB</td>
+            <td>—</td>
+            <td><strong>38,000원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">슬림 14GB</div><div class="plan-data">다 쓰면 최대 1Mbps로 계속 사용</div></td>
+            <td>14GB</td>
+            <td>—</td>
+            <td><strong>35,750원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">슬림 10GB</div><div class="plan-data">다 쓰면 최대 400Kbps로 계속 사용</div></td>
+            <td>10GB</td>
+            <td>—</td>
+            <td><strong>34,200원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">슬림 7GB</div><div class="plan-data">다 쓰면 최대 400Kbps로 계속 사용</div></td>
+            <td>7GB</td>
+            <td>—</td>
+            <td><strong>30,450원</strong></td>
+          </tr>
+          <tr>
+            <td><div class="plan-name">슬림 4GB</div><div class="plan-data">다 쓰면 최대 400Kbps로 계속 사용</div></td>
+            <td>4GB</td>
+            <td>—</td>
+            <td><strong>24,450원</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 01 혜택 초이스 -->
+    <div class="sec-label" style="margin-top:2rem">STEP 01 — 혜택 초이스</div>
+    <h3 style="font-family:var(--font-en);font-size:18px;font-weight:800;margin-bottom:.5rem">원하는 혜택을 골라보세요</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">초이스 프리미엄 / 스페셜 요금제 이용 시 아래 혜택 중 1개 선택 가능</p>
+    <div class="tariff-table-wrap">
+      <table class="tariff-table">
+        <thead><tr><th>서비스</th><th>옵션</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td><strong>TVING</strong></td><td>프리미엄 (13,900원) / 스탠다드 (9,900원)</td><td>티빙 전용</td></tr>
+          <tr><td><strong>genie (지니뮤직)</strong></td><td>스탠다드 (13,500원) / 기본 (9,500원)</td><td>음악 · 라디오 포함</td></tr>
+          <tr><td><strong>NETFLIX</strong></td><td>유니버스 프리미엄 (14,900원)</td><td>Netflix 공식 팩</td></tr>
+          <tr><td><strong>Disney+</strong></td><td>스탠다드 (9,900원)</td><td>—</td></tr>
+          <tr><td><strong>Weverse</strong></td><td>멤버십 서비스 최대 40개 디바이스</td><td>팬덤 서비스</td></tr>
+          <tr><td><strong>SAMSUNG</strong></td><td>365 플래너 · 삼성 기기 구매 할인</td><td>갤럭시 전용</td></tr>
+          <tr><td><strong>밀리의서재</strong></td><td>전자책 (11,900원)</td><td>독서 서비스</td></tr>
+          <tr><td><strong>Blice</strong></td><td>웹소설 · 웹툰 블라이스 실버</td><td>콘텐츠 서비스</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTERNET ── -->
+<section class="sec" id="internet">
+  <div class="sec-label">INTERNET</div>
+  <h2 class="sec-title">KT 인터넷 요금제</h2>
+  <p class="sec-sub">광랜 · 안정적인 속도 · 월정액</p>
+  <div class="internet-grid">
+    <div class="internet-card">
+      <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">500MB</div>
+      <div class="internet-speed">500<small>MB</small></div>
+      <div class="internet-price">33,000<small>원/월</small></div>
+      <div class="internet-note">가정용 기본 인터넷<br>일반 가족 사용에 충분</div>
+    </div>
+    <div class="internet-card featured">
+      <div style="background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;display:inline-block;margin-bottom:8px">🏆 추천</div>
+      <div class="internet-speed">1<small>GB</small></div>
+      <div class="internet-price">38,500<small>원/월</small></div>
+      <div class="internet-note">기가 인터넷<br>스트리밍·게이밍 최적화</div>
+    </div>
+  </div>
+  <div class="internet-discount">
+    🎁 휴대폰 구매 또는 번호 이동 시 <strong>월 5,500원 할인</strong> 적용!
+  </div>
+</section>
+
+<!-- ── GENIE TV ── -->
+<section style="background:var(--gray);padding:4rem 1.5rem" id="genietv">
+  <div style="max-width:860px;margin:0 auto">
+    <div class="sec-label">GENIE TV 초이스</div>
+    <h2 class="sec-title">지니 TV 요금제</h2>
+    <p class="sec-sub">266개 채널 · 30만편 VOD · KT알파쇼핑 5% 상시 할인</p>
+
+    <!-- Base info -->
+    <div class="genie-base">
+      <div>
+        <div class="genie-base-title">📺 TV 에센스 혜택기본</div>
+        <div class="genie-base-sub">월 16,500원 기본 포함</div>
+      </div>
+      <div class="genie-base-features">
+        <div class="genie-feat"><span class="genie-feat-n">266개</span><span class="genie-feat-l">TV 채널<br>(UHD 6개)</span></div>
+        <div class="genie-feat"><span class="genie-feat-n">30만편</span><span class="genie-feat-l">VOD</span></div>
+        <div class="genie-feat"><span class="genie-feat-n">5%</span><span class="genie-feat-l">KT알파<br>쇼핑 할인</span></div>
+      </div>
+    </div>
+
+    <!-- TV Choice Plans -->
+    <p style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.8rem">TV 초이스 프리미엄 (3년, 인터넷 결합)</p>
+    <div class="genie-plans-grid">
+      <div class="genie-plan">
+        <div class="genie-plan-service">NETFLIX</div>
+        <div class="genie-plan-name">넷플릭스 프리미엄<br>(17,000원)</div>
+        <div class="genie-plan-orig">월 33,500원</div>
+        <div class="genie-plan-price">31,300<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">NETFLIX</div>
+        <div class="genie-plan-name">넷플릭스 스탠다드<br>(13,500원)</div>
+        <div class="genie-plan-orig">월 30,000원</div>
+        <div class="genie-plan-price">27,800<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">TVING</div>
+        <div class="genie-plan-name">티빙 프리미엄<br>(17,000원)</div>
+        <div class="genie-plan-orig">월 33,500원</div>
+        <div class="genie-plan-price">28,300<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">TVING</div>
+        <div class="genie-plan-name">티빙 스탠다드<br>(13,500원)</div>
+        <div class="genie-plan-orig">월 30,000원</div>
+        <div class="genie-plan-price">25,300<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">Disney+</div>
+        <div class="genie-plan-name">디즈니+ 초이스<br>(9,900원)</div>
+        <div class="genie-plan-orig">월 26,400원</div>
+        <div class="genie-plan-price">25,300<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">디지털홍보TV</div>
+        <div class="genie-plan-name">매장 내 디지털<br>홍보 TV (22,000원)</div>
+        <div class="genie-plan-orig">월 38,500원</div>
+        <div class="genie-plan-price">25,300<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">프라임 슈퍼팩</div>
+        <div class="genie-plan-name">프라임 슈퍼팩<br>(11,000원)</div>
+        <div class="genie-plan-orig">월 27,500원</div>
+        <div class="genie-plan-price">25,300<small>원/월</small></div>
+      </div>
+    </div>
+
+    <p style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.8rem;margin-top:1.2rem">TV 초이스 스페셜 / 플러스</p>
+    <div class="genie-plans-grid">
+      <div class="genie-plan">
+        <div class="genie-plan-service">프라임 키즈랜드</div>
+        <div class="genie-plan-name">프라임 키즈랜드팩<br>(10,890원)</div>
+        <div class="genie-plan-orig">월 27,390원</div>
+        <div class="genie-plan-price">20,900<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">genie 음악</div>
+        <div class="genie-plan-name">지니 뮤직 멀티<br>디바이스 (8,400원)</div>
+        <div class="genie-plan-orig">월 24,900원</div>
+        <div class="genie-plan-price">20,900<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">TV VOD 쿠폰</div>
+        <div class="genie-plan-name">TV VOD 쿠폰<br>1만원</div>
+        <div class="genie-plan-orig">월 27,500원</div>
+        <div class="genie-plan-price">20,900<small>원/월</small></div>
+      </div>
+      <div class="genie-plan">
+        <div class="genie-plan-service">TV VOD 쿠폰 플러스</div>
+        <div class="genie-plan-name">TV VOD 쿠폰<br>5천원</div>
+        <div class="genie-plan-orig">월 22,000원</div>
+        <div class="genie-plan-price">18,700<small>원/월</small></div>
+      </div>
+    </div>
+
+    <!-- Genie TV base plan table -->
+    <p style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.8rem;margin-top:1.5rem">지니 TV 기본 요금제 비교</p>
+    <div class="genie-tv-table-wrap">
+      <table class="genie-tv-table">
+        <thead>
+          <tr><th>요금제</th><th>채널 수</th><th>UHD</th><th>VOD</th><th>이용료</th><th style="text-align:right">부가혜택</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>지니TV 에센스</strong></td>
+            <td>266개</td><td>6개</td><td>30만편</td>
+            <td style="font-family:var(--font-en);font-weight:900;color:var(--red)">16,500원</td>
+            <td style="text-align:right;font-size:12px">KT알파쇼핑 5% 할인</td>
+          </tr>
+          <tr>
+            <td><strong>지니TV 라이트</strong></td>
+            <td>240개</td><td>3개</td><td>30만편</td>
+            <td style="font-family:var(--font-en);font-weight:900;color:var(--red)">13,200원</td>
+            <td style="text-align:right;font-size:12px">—</td>
+          </tr>
+          <tr>
+            <td><strong>지니TV 베이직</strong></td>
+            <td>236개</td><td>3개</td><td>30만편</td>
+            <td style="font-family:var(--font-en);font-weight:900;color:var(--red)">12,100원</td>
+            <td style="text-align:right;font-size:12px">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── STORE SERVICES ── -->
+<section class="sec" id="store-svc">
+  <div class="sec-label">STORE SERVICES</div>
+  <h2 class="sec-title">매장 서비스</h2>
+  <p class="sec-sub">휴대폰과 관련된 모든 것을 도와드립니다</p>
+  <div class="store-svc-grid">
+    <div class="store-svc-card">
+      <span class="store-svc-icon">📱</span>
+      <div class="store-svc-name">앱 등록 도움</div>
+      <div class="store-svc-desc">원하는 앱 설치 및 계정 등록을 도와드립니다.</div>
+      <span class="store-svc-free">✓ 무료</span>
+    </div>
+    <div class="store-svc-card">
+      <span class="store-svc-icon">🔍</span>
+      <div class="store-svc-name">불필요 앱 정리</div>
+      <div class="store-svc-desc">폰에 쌓인 불필요한 앱을 점검하고 정리해 드립니다.</div>
+      <span class="store-svc-free">✓ 무료</span>
+    </div>
+    <div class="store-svc-card">
+      <span class="store-svc-icon">🛡️</span>
+      <div class="store-svc-name">보호 필름 교체</div>
+      <div class="store-svc-desc">강화유리 보호 필름 무료 교체 서비스.</div>
+      <span class="store-svc-free">✓ 무료</span>
+    </div>
+    <div class="store-svc-card">
+      <span class="store-svc-icon">🎒</span>
+      <div class="store-svc-name">케이스 교체</div>
+      <div class="store-svc-desc">케이스 무료 교체. 다양한 컬러·스타일 선택 가능.</div>
+      <span class="store-svc-free">✓ 무료</span>
+    </div>
+    <div class="store-svc-card">
+      <span class="store-svc-icon">🔄</span>
+      <div class="store-svc-name">데이터 이전</div>
+      <div class="store-svc-desc">기기 변경 시 연락처·사진·앱 데이터 이전 지원.</div>
+      <span class="store-svc-free">✓ 무료</span>
+    </div>
+    <div class="store-svc-card">
+      <span class="store-svc-icon">💬</span>
+      <div class="store-svc-name">러시아어 상담</div>
+      <div class="store-svc-desc">러시아어로 모든 서비스 상담 가능합니다.</div>
+      <span class="store-svc-free">✓ 무료</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROMOS -->
+<section class="sec" id="promos">
+  <div class="sec-label">PROMOTIONS</div>
+  <h2 class="sec-title" data-i18n="promo_title">진행 중인 이벤트</h2>
+  <p class="sec-sub" data-i18n="promo_sub">현재 진행 중인 특별 혜택입니다.</p>
+  <div class="promo-grid">
+    <div class="promo-card">
+      <div class="promo-tag" data-i18n="pr1tag">🎁 구매 혜택</div>
+      <div class="promo-title" data-i18n="pr1title">아이폰 17 구매 시<br>AirPods 증정</div>
+      <div class="promo-desc" data-i18n="pr1desc">iPhone 17 구매 고객께 AirPods를 무료로 드립니다.</div>
+      <div class="promo-until" data-i18n="pr1until">~2025.07.31 까지</div>
+      <div class="promo-icon">🎧</div>
+    </div>
+    <div class="promo-card">
+      <div class="promo-tag" data-i18n="pr3tag">👨‍👩‍👧 가족 결합</div>
+      <div class="promo-title" data-i18n="pr3title">가족 결합 최대<br>월 요금 50% 절약</div>
+      <div class="promo-desc" data-i18n="pr3desc">2회선 이상 가족 결합 시 최대 27,500원 할인 자동 적용.</div>
+      <div class="promo-until" data-i18n="pr3until">상시 진행</div>
+      <div class="promo-icon">👨‍👩‍👧</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section style="background:var(--gray);padding:4rem 1.5rem">
+  <div style="max-width:860px;margin:0 auto">
+    <div class="sec-label">HOURS</div>
+    <h2 class="sec-title" data-i18n="hrs_title">영업 시간</h2>
+    <p class="sec-sub" data-i18n="hrs_sub">방문 전 꼭 확인해 주세요.</p>
+    <div class="hours-grid" id="hoursGrid"></div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-sec" id="form">
+  <div class="form-wrap">
+    <div style="text-align:center;margin-bottom:1.8rem">
+      <div class="sec-label" style="display:inline-block">APPLY</div>
+      <h2 class="sec-title" data-i18n="form_title">서비스 신청</h2>
+      <p style="color:var(--muted);font-size:14px" data-i18n="form_sub">작성하시면 담당 매니저가 빠르게 연락드립니다.</p>
+    </div>
+    <div class="form-card">
+      <div class="form-hdr">
+        <div class="form-hdr-icon">📋</div>
+        <div>
+          <h3 data-i18n="form_h3">신청서 작성</h3>
+          <p data-i18n="form_req_note"><span style="color:var(--red)">*</span> 표시는 필수 항목입니다.</p>
+        </div>
+      </div>
+      <div id="formBody">
+        <div class="form-group">
+          <label data-i18n="f_name">고객 이름 <span class="req">*</span></label>
+          <input type="text" id="fName" data-i18n-ph="f_name_ph">
+        </div>
+        <div class="form-group">
+          <label data-i18n="f_phone">전화번호 <span class="req">*</span></label>
+          <input type="tel" id="fPhone" placeholder="010-0000-0000" oninput="fmtPhone(this)">
+        </div>
+        <div class="form-group">
+          <label data-i18n="f_svc">관심 서비스 <span class="req">*</span></label>
+          <div class="svc-opts">
+            <label class="svc-opt" id="o1" onclick="chkSvc(0,'o1')"><input type="radio" name="svc"><div class="rdot"></div><div class="svc-opt-txt"><span data-i18n="s1">휴대폰 할부 구매</span><small data-i18n="s1d_s">최신 기종 월 할부 상담</small></div><div class="svc-opt-ico">📱</div></label>
+            <label class="svc-opt" id="o2" onclick="chkSvc(1,'o2')"><input type="radio" name="svc"><div class="rdot"></div><div class="svc-opt-txt"><span data-i18n="s2">모바일 통신 개통</span><small data-i18n="s2d_s">KT 신규 개통·번호 이동</small></div><div class="svc-opt-ico">📶</div></label>
+            <label class="svc-opt" id="o3" onclick="chkSvc(2,'o3')"><input type="radio" name="svc"><div class="rdot"></div><div class="svc-opt-txt"><span data-i18n="s3">요금제 패키지 상담</span><small data-i18n="s3d_s">최적 요금제 찾기</small></div><div class="svc-opt-ico">💡</div></label>
+            <label class="svc-opt" id="o4" onclick="chkSvc(3,'o4')"><input type="radio" name="svc"><div class="rdot"></div><div class="svc-opt-txt"><span data-i18n="s4">인터넷 + TV 결합</span><small data-i18n="s4d_s">결합 할인 상담</small></div><div class="svc-opt-ico">📺</div></label>
+            <label class="svc-opt" id="o5" onclick="chkSvc(4,'o5')"><input type="radio" name="svc"><div class="rdot"></div><div class="svc-opt-txt"><span data-i18n="s5">기기 변경</span><small data-i18n="s5d_s">번호 유지 기기 변경</small></div><div class="svc-opt-ico">🔄</div></label>
+            <label class="svc-opt" id="o6" onclick="chkSvc(5,'o6')"><input type="radio" name="svc"><div class="rdot"></div><div class="svc-opt-txt"><span data-i18n="s6">법인폰 상담</span><small data-i18n="s6d_s">사업자·법인 전용</small></div><div class="svc-opt-ico">🏢</div></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="f_msg">추가 문의사항 <span style="color:var(--muted);font-weight:400" data-i18n="optional">(선택)</span></label>
+          <textarea id="fMsg" data-i18n-ph="f_msg_ph"></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitForm()" data-i18n="submit_btn">📨 신청서 제출하기</button>
+        <p class="form-note" data-i18n="form_note_txt">📬 담당 매니저 김탄에게 즉시 전달됩니다.</p>
+      </div>
+      <div class="success-box" id="successBox">
+        <div class="ck">✅</div>
+        <h3 data-i18n="success_h">신청 완료!</h3>
+        <p data-i18n="success_p">감사합니다! 담당 매니저 김탄이 빠르게 연락드리겠습니다. 🙏</p>
+        <a href="tel:01084508701" class="btn-red" style="margin-top:1.2rem;display:inline-block" data-i18n="call_now_btn">📞 바로 전화 연결</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec">
+  <div class="sec-label">REVIEWS</div>
+  <h2 class="sec-title" data-i18n="rev_title">고객 후기</h2>
+  <p class="sec-sub" data-i18n="rev_sub">실제 고객분들의 생생한 후기입니다.</p>
+  <div class="reviews-grid">
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">매니저님이 친절하게 요금제 설명해 주셔서 딱 맞는 플랜 찾았어요. 개통도 30분 만에 끝났습니다!</div><div class="review-author">김*영 고객님</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">Владимир помог мне оформить корейский номер за 40 минут. Всё объяснил на русском, никакого стресса. Очень рекомендую!</div><div class="review-author">Андрей К.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">할부 계산부터 개통까지 원스톱으로 해결! 다음에도 꼭 여기서 할 거예요. 정말 빠르고 친절해요.</div><div class="review-author">박*준 고객님</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">Купил iPhone 15 Pro в рассрочку — менеджер всё рассчитал, объяснил условия и помог выбрать тариф. Лучший сервис в Чонане!</div><div class="review-author">Александр М.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">인터넷이랑 TV 결합으로 매달 15,000원 절약 중입니다. 처음엔 몰랐는데 알려주셔서 감사해요!</div><div class="review-author">이*수 고객님</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">Как иностранец я боялся, что будет сложно. Но Владимир всё сделал быстро и без лишних вопросов. Номер подключили в тот же день!</div><div class="review-author">Вячеслав Т.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">가족 4명 결합 요금제로 바꿨는데 한 달에 3만원 넘게 절약됐어요. 상담 받길 정말 잘했습니다!</div><div class="review-author">최*호 고객님</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">Оформил корпоративный тариф для своей команды. Очень выгодные условия, всё прозрачно. Буду обращаться постоянно.</div><div class="review-author">Владимир С.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">Перешёл с другого оператора на KT — менеджер сохранил номер и подобрал тариф дешевле предыдущего. Очень доволен!</div><div class="review-author">Дмитрий П.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">Подключила интернет и ТВ в пакете. Скидка получилась хорошая, а качество связи отличное. Спасибо Владимиру за помощь!</div><div class="review-author">Наталья Ф.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">Менеджер Владимир — настоящий профессионал. Помог разобраться с безлимитным тарифом и даже подсказал про скрытые акции!</div><div class="review-author">Сергей Р.</div></div>
+    <div class="review-card"><div class="review-stars">★★★★☆</div><div class="review-text">Первый раз оформляла корейскую SIM-карту — думала, будет очень сложно. Оказалось всё быстро и просто. Рекомендую этот магазин!</div><div class="review-author">Екатерина Л.</div></div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-sec">
+  <div style="max-width:860px;margin:0 auto">
+    <div class="sec-label">LOCATION</div>
+    <h2 class="sec-title" data-i18n="map_title">매장 위치</h2>
+    <p class="sec-sub" data-i18n="map_sub">충남 천안시에서 방문하실 수 있습니다.</p>
+  </div>
+  <div class="map-wrap">
+    <div class="map-box">
+      <div class="map-info-bar">
+        <div class="map-addr">
+          <div class="map-pin-ico">📍</div>
+          <div class="map-addr-text">
+            <strong>KT 이앤애프 신부문타워점</strong>
+            <span data-i18n="addr">충남 천안시 동남구 만남로 52 1층</span>
+          </div>
+        </div>
+        <a href="https://naver.me/FcuYT7kL" target="_blank" class="naver-btn" data-i18n="naver_btn">🗺️ 네이버 지도로 보기</a>
+      </div>
+      <a href="https://naver.me/FcuYT7kL" target="_blank" class="map-visual">
+        <div class="map-pin-center">
+          <div class="map-pin-dot"><span>📍</span></div>
+          <div class="map-pin-label">KT 이앤애프 신부문타워점</div>
+        </div>
+        <div class="map-tap" data-i18n="map_tap">탭하면 네이버 지도로 이동합니다</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">
+    <div class="logo-kt" style="font-size:15px;padding:2px 10px">KT</div>
+    <span style="color:rgba(255,255,255,.3);font-size:13px">이앤애프 신부문타워점</span>
+  </div>
+  <p data-i18n="footer_txt">담당자: 김탄 · 영업 매니저<br>📞 010-8450-8701 · 충남 천안시 동남구 만남로 52 1층<br>© 2025 KT 이앤애프. All rights reserved.</p>
+</footer>
+
+<!-- FLOATING BAR -->
+<div class="float-bar">
+  <a href="tel:01084508701" class="float-btn call" data-i18n="fb_call">📞 전화 상담</a>
+  <a href="#form" class="float-btn form" data-i18n="fb_form">📋 신청서 작성</a>
+  <a href="https://open.kakao.com/me/김탄" target="_blank" class="float-btn tg" style="background:#FAE100;color:#3A1D1D" data-i18n="fb_tg">💬 카카오톡</a>
+</div>
+
+<script>
+// ══════════════════════════════════════
+//  TRANSLATIONS
+// ══════════════════════════════════════
+const T = {
+  ko: {
+    store:'신부문타워점', official_dealer:'KT 공식 대리점', role:'영업 매니저',
+    mgr_name:'김탄', mgr_name_sub:'MA VLADIMIR',
+    hero_h1:'김<em>탄</em>',
+    hero_desc:'KT 이앤애프 신부문타워점 담당 매니저입니다.<br>휴대폰 할부 구매, 통신 개통, 요금제 상담까지<br>빠르고 친절하게 도와드립니다!',
+    apply_btn:'📋 서비스 신청하기', call_btn:'📞 바로 전화', role_badge:'영업 매니저 · Sales Manager',
+    stat1:'상담 고객', stat2:'만족도', stat3:'경력', stat4n:'당일', stat4:'개통 가능',
+    svc_title:'제공 서비스', svc_sub:'아래 서비스를 클릭하면 신청서로 바로 이동합니다.', popular:'🔥 인기',
+    s1:'휴대폰 할부 구매', s1d:'최신 스마트폰을 월 할부로. 아이폰·갤럭시·기타 기종 상담 가능.',
+    s2:'모바일 통신 개통', s2d:'KT 신규 개통 및 번호 이동. 당일 처리 가능.',
+    s3:'요금제 패키지 상담', s3d:'내게 맞는 최적 요금제. 가족 결합·무제한 등.',
+    s4:'인터넷 + TV 결합', s4d:'KT 인터넷과 IPTV를 결합하여 더 저렴하게.',
+    s5:'기기 변경', s5d:'기존 번호 유지하며 새 기기로 변경.',
+    s6:'법인폰 상담', s6d:'사업자·법인 전용 요금제 및 기기 대량 구매 상담.',
+    tar_title:'인기 요금제', tar_sub:'아래는 대표 요금제입니다. 자세한 상담은 문의주세요.',
+    per_month:'원/월', recommended:'🏆 추천',
+    t1:'베이직', t1p1:'데이터 5GB', t1p2:'기본 통화·문자 무제한',
+    t2:'스탠다드', t2p1:'데이터 무제한', t2p2:'통화·문자 무제한',
+    t3:'프리미엄', t3p1:'5G 데이터 무제한', t3p2:'통화·문자 무제한', t3p3:'가족 결합 할인',
+    promo_title:'진행 중인 이벤트', promo_sub:'현재 진행 중인 특별 혜택입니다.',
+    pr1tag:'🎁 구매 혜택', pr1title:'아이폰 17 구매 시<br>AirPods 증정', pr1desc:'iPhone 17 구매 고객께 AirPods를 무료로 드립니다.', pr1until:'~2025.07.31 까지',
+    pr3tag:'👨‍👩‍👧 가족 결합', pr3title:'가족 결합 최대<br>월 요금 50% 절약', pr3desc:'2회선 이상 가족 결합 시 최대 27,500원 할인 자동 적용.', pr3until:'상시 진행',
+    calc_title:'할부 계산기', calc_sub:'기기 가격과 기간을 입력하면 월 납부금을 계산해 드립니다.',
+    calc_price:'기기 가격 (원)', calc_down:'선납금 (원, 선택)', calc_period:'할부 기간',
+    m12:'12개월', m24:'24개월', m36:'36개월', m48:'48개월', months_unit:'개월',
+    r_monthly:'월 납부금', r_total:'총 납부금', r_period:'할부 기간',
+    calc_note:'※ 실제 할부금은 신용 조건 및 요금제에 따라 다를 수 있습니다.',
+    cat_title:'인기 기기 목록', cat_sub:'현재 재고 및 가격은 매니저에게 문의해 주세요.',
+    spec1:'자연 티타늄 · 256GB · 6.7"', spec2:'핑크·블랙·그린 · 128GB · 6.1"',
+    spec3:'티타늄 블랙 · 256GB · S Pen 포함', spec4:'어썸 네이비 · 128GB · 6.6"',
+    pdf_btn:'📄 전체 카탈로그 PDF 다운로드 →', pdf_alert:'PDF 카탈로그 준비 중입니다. 매니저에게 직접 문의해 주세요!',
+    hrs_title:'영업 시간', hrs_sub:'방문 전 꼭 확인해 주세요.',
+    days:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
+    closed_txt:'휴무', today_txt:'오늘',
+    form_title:'서비스 신청', form_sub:'작성하시면 담당 매니저가 빠르게 연락드립니다.',
+    form_h3:'신청서 작성', form_req_note:'<span style="color:var(--red)">*</span> 표시는 필수 항목입니다.',
+    f_name:'고객 이름 <span class="req">*</span>', f_name_ph:'이름을 입력해 주세요',
+    f_phone:'전화번호 <span class="req">*</span>', f_svc:'관심 서비스 <span class="req">*</span>',
+    f_msg:'추가 문의사항', optional:'(선택)', f_msg_ph:'궁금하신 점을 자유롭게 적어주세요.',
+    s1d_s:'최신 기종 월 할부 상담', s2d_s:'KT 신규 개통·번호 이동',
+    s3d_s:'최적 요금제 찾기', s4d_s:'결합 할인 상담',
+    s5d_s:'번호 유지 기기 변경', s6d_s:'사업자·법인 전용',
+    submit_btn:'📨 신청서 제출하기', form_note_txt:'📬 담당 매니저 김탄에게 즉시 전달됩니다.',
+    success_h:'신청 완료!', success_p:'감사합니다! 담당 매니저 김탄이 빠르게 연락드리겠습니다. 🙏',
+    call_now_btn:'📞 바로 전화 연결',
+    rev_title:'고객 후기', rev_sub:'실제 고객분들의 생생한 후기입니다.',
+    map_title:'매장 위치', map_sub:'충남 천안시에서 방문하실 수 있습니다.',
+    addr:'충남 천안시 동남구 만남로 52 1층', naver_btn:'🗺️ 네이버 지도로 보기', map_tap:'탭하면 네이버 지도로 이동합니다',
+    footer_txt:'담당자: 김탄 · 영업 매니저<br>📞 010-8450-8701 · 충남 천안시 동남구 만남로 52 1층<br>© 2025 KT 이앤애프. All rights reserved.',
+    fb_call:'📞 전화 상담', fb_form:'📋 신청서 작성', fb_tg:'💬 카카오톡',
+    alert_name:'이름을 입력해 주세요.', alert_phone:'전화번호를 입력해 주세요.', alert_svc:'관심 서비스를 선택해 주세요.',
+    svc_keys:['휴대폰 할부 구매','모바일 통신 개통','요금제 패키지 상담','인터넷 + TV 결합','기기 변경','법인폰 상담'],
+  },
+  en: {
+    store:'Sinbumun Tower Branch', official_dealer:'KT Official Dealer', role:'Sales Manager',
+    mgr_name:'MA VLADIMIR', mgr_name_sub:'김탄',
+    hero_h1:'MA <em>VLADIMIR</em>',
+    hero_desc:'Your KT sales manager at E&F Sinbumun Tower.<br>Installment phones, SIM activation, plan consultation —<br>fast and friendly service!',
+    apply_btn:'📋 Apply Now', call_btn:'📞 Call Now', role_badge:'Sales Manager · 영업 매니저',
+    stat1:'Clients Served', stat2:'Satisfaction', stat3:'Experience', stat4n:'Same Day', stat4:'Activation',
+    svc_title:'Our Services', svc_sub:'Click any service to jump to the application form.', popular:'🔥 Popular',
+    s1:'Phone Installment', s1d:'Get the latest smartphone on monthly installments. iPhone, Galaxy & more.',
+    s2:'Mobile SIM Activation', s2d:'New KT SIM or number transfer. Same-day processing available.',
+    s3:'Plan Consultation', s3d:'Find the best tariff for you. Unlimited, family bundle & more.',
+    s4:'Internet + TV Bundle', s4d:'Combine KT internet and IPTV for a better deal.',
+    s5:'Device Change', s5d:'Switch to a new device while keeping your current number.',
+    s6:'Corporate Phone', s6d:'Business & corporate plans and bulk device purchases.',
+    tar_title:'Popular Plans', tar_sub:'Sample plans below. Contact us for a personalized quote.',
+    per_month:'₩/mo', recommended:'🏆 Recommended',
+    t1:'Basic', t1p1:'5GB Data', t1p2:'Unlimited calls & SMS',
+    t2:'Standard', t2p1:'Unlimited Data', t2p2:'Unlimited calls & SMS',
+    t3:'Premium', t3p1:'5G Unlimited Data', t3p2:'Unlimited calls & SMS', t3p3:'Family bundle discount',
+    promo_title:'Current Promotions', promo_sub:'Special offers available now.',
+    pr1tag:'🎁 Purchase Bonus', pr1title:'Buy iPhone 17 —<br>Get AirPods Free', pr1desc:'Free AirPods with purchase of iPhone 17.', pr1until:'Until 2025.07.31',
+    pr3tag:'👨‍👩‍👧 Family Bundle', pr3title:'Save Up to<br>50% on Monthly Fee', pr3desc:'Automatic discount up to ₩27,500 when combining 2+ lines.', pr3until:'Ongoing',
+    calc_title:'Installment Calculator', calc_sub:'Enter the device price and term to see your monthly payment.',
+    calc_price:'Device Price (₩)', calc_down:'Down Payment (₩, optional)', calc_period:'Installment Term',
+    m12:'12 months', m24:'24 months', m36:'36 months', m48:'48 months', months_unit:' mo',
+    r_monthly:'Monthly', r_total:'Total', r_period:'Term',
+    calc_note:'※ Actual installment may vary based on credit and plan conditions.',
+    cat_title:'Popular Devices', cat_sub:'Contact the manager for current stock and pricing.',
+    spec1:'Natural Titanium · 256GB · 6.7"', spec2:'Pink·Black·Green · 128GB · 6.1"',
+    spec3:'Titanium Black · 256GB · with S Pen', spec4:'Awesome Navy · 128GB · 6.6"',
+    pdf_btn:'📄 Download Full Catalog PDF →', pdf_alert:'PDF catalog coming soon. Please contact the manager directly!',
+    hrs_title:'Business Hours', hrs_sub:'Please check before visiting.',
+    days:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    closed_txt:'Closed', today_txt:'Today',
+    form_title:'Service Request', form_sub:'Fill in the form and the manager will contact you shortly.',
+    form_h3:'Fill in the Form', form_req_note:'<span style="color:var(--red)">*</span> Required fields.',
+    f_name:'Your Name <span class="req">*</span>', f_name_ph:'Enter your name',
+    f_phone:'Phone Number <span class="req">*</span>', f_svc:'Service of Interest <span class="req">*</span>',
+    f_msg:'Additional Message', optional:'(optional)', f_msg_ph:'Feel free to write any questions or requests.',
+    s1d_s:'Monthly installment consultation', s2d_s:'New KT SIM or number transfer',
+    s3d_s:'Find the best plan', s4d_s:'Bundle discount consultation',
+    s5d_s:'Keep your number, change device', s6d_s:'Business & corporate plans',
+    submit_btn:'📨 Submit Request', form_note_txt:'📬 Sent directly to manager MA VLADIMIR.',
+    success_h:'Request Submitted!', success_p:'Thank you! Manager MA VLADIMIR will contact you shortly. 🙏',
+    call_now_btn:'📞 Call Now',
+    rev_title:'Customer Reviews', rev_sub:'Real feedback from our clients.',
+    map_title:'Store Location', map_sub:'Visit us in Cheonan, South Chungcheong.',
+    addr:'1F, 52 Mannam-ro, Dongnam-gu, Cheonan, Chungnam', naver_btn:'🗺️ Open in Naver Map', map_tap:'Tap to open in Naver Maps',
+    footer_txt:'Manager: MA VLADIMIR (김탄) · Sales Manager<br>📞 010-8450-8701 · 1F, 52 Mannam-ro, Dongnam-gu, Cheonan<br>© 2025 KT E&F. All rights reserved.',
+    fb_call:'📞 Call', fb_form:'📋 Apply', fb_tg:'💬 KakaoTalk',
+    alert_name:'Please enter your name.', alert_phone:'Please enter your phone number.', alert_svc:'Please select a service.',
+    svc_keys:['Phone Installment','Mobile SIM Activation','Plan Consultation','Internet + TV Bundle','Device Change','Corporate Phone'],
+  },
+  ru: {
+    store:'Синбунун Тауэр', official_dealer:'Официальный дилер KT', role:'Менеджер по продажам',
+    mgr_name:'Владимир', mgr_name_sub:'김탄',
+    hero_h1:'MA <em>VLADIMIR</em>',
+    hero_desc:'Менеджер KT이앤애프 в отделении Синбунун Тауэр.<br>Телефоны в рассрочку, подключение связи, консультация по тарифам —<br>быстро и с заботой!',
+    apply_btn:'📋 Оставить заявку', call_btn:'📞 Позвонить', role_badge:'Менеджер по продажам · 영업 매니저',
+    stat1:'клиентов обслужено', stat2:'удовлетворённость', stat3:'опыт работы', stat4n:'День в день', stat4:'подключение',
+    svc_title:'Наши услуги', svc_sub:'Нажмите на услугу — и вы перейдёте прямо к форме заявки.', popular:'🔥 Популярно',
+    s1:'Телефон в рассрочку', s1d:'Последние смартфоны в удобную ежемесячную рассрочку. iPhone, Galaxy и другие.',
+    s2:'Подключение мобильной связи', s2d:'Новая SIM-карта KT или перенос номера. Оформление в день обращения.',
+    s3:'Консультация по тарифам', s3d:'Подберём оптимальный тариф. Безлимит, семейные пакеты и другие.',
+    s4:'Интернет + ТВ в пакете', s4d:'Объедините KT интернет и IPTV — выгоднее вместе.',
+    s5:'Смена устройства', s5d:'Поменяйте телефон, сохранив текущий номер.',
+    s6:'Корпоративные телефоны', s6d:'Специальные тарифы и оптовые закупки для бизнеса.',
+    tar_title:'Популярные тарифы', tar_sub:'Примеры тарифов ниже. Для точной консультации свяжитесь с менеджером.',
+    per_month:'₩/мес', recommended:'🏆 Рекомендуем',
+    t1:'Базовый', t1p1:'Интернет 5 ГБ', t1p2:'Безлимитные звонки и СМС',
+    t2:'Стандарт', t2p1:'Безлимитный интернет', t2p2:'Безлимитные звонки и СМС',
+    t3:'Премиум', t3p1:'5G безлимитный интернет', t3p2:'Безлимитные звонки и СМС', t3p3:'Скидка при семейном пакете',
+    promo_title:'Актуальные акции', promo_sub:'Специальные предложения, которые действуют прямо сейчас.',
+    pr1tag:'🎁 Бонус при покупке', pr1title:'Купи iPhone 17 —<br>получи AirPods в подарок', pr1desc:'Бесплатные AirPods при покупке iPhone 17.', pr1until:'До 31.07.2025',
+    pr3tag:'👨‍👩‍👧 Семейный пакет', pr3title:'Экономия до<br>50% на ежемесячном тарифе', pr3desc:'Автоматическая скидка до 27 500 ₩ при объединении 2 и более линий.', pr3until:'Постоянная акция',
+    calc_title:'Калькулятор рассрочки', calc_sub:'Введите цену устройства и срок — узнаете ежемесячный платёж.',
+    calc_price:'Цена устройства (₩)', calc_down:'Первоначальный взнос (₩, необязательно)', calc_period:'Срок рассрочки',
+    m12:'12 месяцев', m24:'24 месяца', m36:'36 месяцев', m48:'48 месяцев', months_unit:' мес',
+    r_monthly:'В месяц', r_total:'Итого', r_period:'Срок',
+    calc_note:'※ Фактический платёж зависит от кредитных условий и выбранного тарифа.',
+    cat_title:'Популярные устройства', cat_sub:'Уточняйте наличие и цены у менеджера.',
+    spec1:'Натуральный титан · 256 ГБ · 6.7"', spec2:'Розовый·Чёрный·Зелёный · 128 ГБ · 6.1"',
+    spec3:'Титановый чёрный · 256 ГБ · S Pen в комплекте', spec4:'Насыщенный синий · 128 ГБ · 6.6"',
+    pdf_btn:'📄 Скачать полный каталог PDF →', pdf_alert:'PDF-каталог скоро будет доступен. Обратитесь напрямую к менеджеру!',
+    hrs_title:'Часы работы', hrs_sub:'Пожалуйста, проверьте перед визитом.',
+    days:['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
+    closed_txt:'Выходной', today_txt:'Сегодня',
+    form_title:'Оставить заявку', form_sub:'Заполните форму — менеджер свяжется с вами в ближайшее время.',
+    form_h3:'Заполните форму', form_req_note:'Поля, отмеченные <span style="color:var(--red)">*</span>, обязательны.',
+    f_name:'Ваше имя <span class="req">*</span>', f_name_ph:'Введите ваше имя',
+    f_phone:'Номер телефона <span class="req">*</span>', f_svc:'Интересующая услуга <span class="req">*</span>',
+    f_msg:'Дополнительные вопросы', optional:'(необязательно)', f_msg_ph:'Напишите любые вопросы или пожелания.',
+    s1d_s:'Консультация по ежемесячной рассрочке', s2d_s:'Новая SIM KT или перенос номера',
+    s3d_s:'Подбор оптимального тарифа', s4d_s:'Консультация по пакетной скидке',
+    s5d_s:'Смена устройства с сохранением номера', s6d_s:'Корпоративные и бизнес-тарифы',
+    submit_btn:'📨 Отправить заявку', form_note_txt:'📬 Заявка сразу поступает менеджеру Владимиру.',
+    success_h:'Заявка отправлена!', success_p:'Спасибо! Менеджер Владимир свяжется с вами в ближайшее время. 🙏',
+    call_now_btn:'📞 Позвонить прямо сейчас',
+    rev_title:'Отзывы клиентов', rev_sub:'Реальные отзывы наших клиентов.',
+    map_title:'Расположение магазина', map_sub:'Посетите нас в Чонане, провинция Южная Чхунчхон.',
+    addr:'1 этаж, 52 Манnam-ро, Тонгнам-гу, Чонан', naver_btn:'🗺️ Открыть в Naver Map', map_tap:'Нажмите, чтобы открыть в Naver Maps',
+    footer_txt:'Менеджер: Владимир · Менеджер по продажам<br>📞 010-8450-8701 · 1F, 52 Mannam-ro, Dongnam-gu, Cheonan<br>© 2025 KT이앤애프. Все права защищены.',
+    fb_call:'📞 Позвонить', fb_form:'📋 Заявка', fb_tg:'💬 KakaoTalk',
+    alert_name:'Пожалуйста, введите ваше имя.', alert_phone:'Пожалуйста, введите номер телефона.', alert_svc:'Пожалуйста, выберите услугу.',
+    svc_keys:['Телефон в рассрочку','Подключение мобильной связи','Консультация по тарифам','Интернет + ТВ в пакете','Смена устройства','Корпоративные телефоны'],
+  }
+};
+
+let lang = 'ko';
+let calcMonths = 24;
+let selSvcIdx = -1;
+
+// ── HOURS DATA ──
+const hoursData = [
+  {day:1, open:'10:00', close:'20:00'},
+  {day:2, open:'10:00', close:'20:00'},
+  {day:3, open:'10:00', close:'20:00'},
+  {day:4, open:'10:00', close:'20:00'},
+  {day:5, open:'10:00', close:'20:00'},
+  {day:6, open:'10:00', close:'20:00'},
+  {day:0, open:'10:00', close:'20:00'},
+];
+
+function renderHours() {
+  const t = T[lang];
+  const todayIdx = new Date().getDay();
+  const grid = document.getElementById('hoursGrid');
+  grid.innerHTML = hoursData.map(h => {
+    const isToday = h.day === todayIdx;
+    const isClosed = h.closed;
+    return `<div class="hours-card${isToday?' today':''}${isClosed?' closed':''}">
+      <div class="hours-day">${t.days[h.day]}</div>
+      <div class="hours-time">${isClosed ? t.closed_txt : h.open+'–'+h.close}</div>
+      ${isToday ? `<div class="today-badge">${t.today_txt}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ── APPLY TRANSLATIONS ──
+function applyLang() {
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key] !== undefined) el.placeholder = t[key].replace(/<[^>]*>/g,'');
+  });
+  renderHours();
+  // update month buttons unit
+  const unit = t.months_unit;
+  document.querySelectorAll('.month-btn').forEach((btn, i) => {
+    const months = [12,24,36,48][i];
+    btn.textContent = months + unit;
+  });
+  // re-render calc if active
+  calcInstall();
+}
+
+// ── LANGUAGE SWITCH ──
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
+  applyLang();
+}
+
+// ── CALCULATOR ──
+function setMonth(m, btn) {
+  calcMonths = m;
+  document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  calcInstall();
+}
+
+function calcInstall() {
+  const price = parseFloat(document.getElementById('calcPrice').value) || 0;
+  const down = parseFloat(document.getElementById('calcDown').value) || 0;
+  const base = price - down;
+  const t = T[lang];
+  const unit = t.months_unit;
+  if (base <= 0) {
+    document.getElementById('rMonthly').textContent = '—';
+    document.getElementById('rTotal').textContent = '—';
+    document.getElementById('rMonths').textContent = calcMonths + unit;
+    return;
+  }
+  const monthly = Math.ceil(base / calcMonths);
+  const total = monthly * calcMonths + down;
+  document.getElementById('rMonthly').textContent = monthly.toLocaleString() + '₩';
+  document.getElementById('rTotal').textContent = total.toLocaleString() + '₩';
+  document.getElementById('rMonths').textContent = calcMonths + unit;
+}
+
+// ── SERVICE PICKER ──
+function pickSvc(idx) {
+  chkSvc(idx, 'o'+(idx+1));
+  document.getElementById('form').scrollIntoView({behavior:'smooth'});
+}
+
+function chkSvc(idx, id) {
+  selSvcIdx = idx;
+  document.querySelectorAll('.svc-opt').forEach(o => o.classList.remove('on'));
+  const el = document.getElementById(id);
+  if (el) { el.classList.add('on'); el.querySelector('input').checked = true; }
+}
+
+// ── PHONE FORMAT ──
+function fmtPhone(inp) {
+  let v = inp.value.replace(/\D/g,'').slice(0,11);
+  if (v.length > 7) v = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7);
+  else if (v.length > 3) v = v.slice(0,3)+'-'+v.slice(3);
+  inp.value = v;
+}
+
+// ── SUBMIT ──
+function submitForm() {
+  const t = T[lang];
+  const name = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const msg = document.getElementById('fMsg').value.trim();
+  if (!name) { alert(t.alert_name); return; }
+  if (!phone) { alert(t.alert_phone); return; }
+  if (selSvcIdx < 0) { alert(t.alert_svc); return; }
+  const svcName = t.svc_keys[selSvcIdx];
+  const text = encodeURIComponent(
+    `[KT 이앤애프 서비스 신청]\n고객명: ${name}\n전화번호: ${phone}\n관심 서비스: ${svcName}${msg?'\n문의사항: '+msg:''}`
+  );
+  document.getElementById('formBody').style.display = 'none';
+  document.getElementById('successBox').style.display = 'block';
+  setTimeout(() => { window.open(`https://open.kakao.com/me/김탄`, '_blank'); }, 500);
+}
+
+// ── INIT ──
+applyLang();
+</script>
+</body>
+</html>
